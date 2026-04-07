@@ -1,8 +1,7 @@
 aid: pulse-software
 name: Pulse Software
 description: >-
-  The Pulse API is targeted towards developers looking to automate tasks in
-  Pulse. 
+  The Pulse API is targeted towards developers looking to automate tasks in Pulse.
 type: Index
 position: Consumer
 access: 3rd-Party
@@ -18,8 +17,7 @@ apis:
   - aid: pulse-software:pulse-software
     name: Pulse Software
     description: >-
-      The Pulse API is targeted towards developers looking to automate tasks in
-      Pulse. 
+      The Pulse API is targeted towards developers looking to automate tasks in Pulse.
     humanURL: https://apidoc.pulsesoftware.com/
     tags:
       - API
