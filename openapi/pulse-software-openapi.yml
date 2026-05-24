@@ -1,0 +1,2191 @@
+swagger: "2.0"
+info:
+  title: "Pulse Public API"
+  version: "1.0.1"
+  description: |
+    The Pulse API is targeted towards developers looking to automate tasks in Pulse. 
+    
+    # Authentication
+    All endpoints in Pulse require authentication.  Legacy endpoints require only a Private API Key, while all new endpoints incorporate JSON Web Tokens.  
+    
+    **API Key**
+    To consume a Pulse endpoint using API Key authentication, :
+      * Contact Pulse support at support@pulsesoftware.com to enable the Pulse Public API and issue your API key.
+      * Pass the API key in the **'x-Api-Key'** header with each request.
+    
+    Note: It is recommended to use a User Private API key where possible, rather than the Application Private Key. When using a User API key, functionality will be restricted based on the role of the User for which the API key was generated.  See API endpoint documentation for authorised roles. 
+    
+    **JSON Web Token (JWT)**
+    To consume a Pulse endpoint using JWT authentication:
+      * Contact Pulse support at support@pulsesoftware.com to enable the Pulse Public API and issue your API key.
+      * Request a bearer token from /pulse/jwt, passing the API key in the **'x-Api-Key'** header with the request.
+      * Pass the token issued in the **'Authorization'** header of all requests as **'bearer [token]'**
+    
+    **Note** Tokens will expire 60 minutes after being issued, at which point your application will need to request a new token.
+    
+    # Requests
+    The Pulse API follows REST principles.  Data resources are accessed via standard HTTPS requests in UTF-8 format to an API endpoint. Where possible, Web API uses appropriate HTTP verbs for each action.
+    HTTP Verbs:
+      * **GET** Retrieves resources
+      * **POST** Creates resources
+      * **PUT** Changes and/or replaces resources or collections
+      * **DELETE** Deletes resources
+    
+    The Pulse API accepts the following ISO-8601 formats for date strings:
+      * Date, Time, Timezone: e.g. "2021-06-02T21:39:18+00:00"
+      * Date, Time: e.g. "2021-06-02T21:39:18Z"
+      * Date: e.g. "2021-06-02"
+
+    # Responses
+    Pulse API returns all response data as a JSON object.  
+    
+    # Response Status Codes
+    Pulse API uses the following status codes:
+      * **200** OK - Request succeeded.  Result provided in response body.
+      * **400** Bad Request - Malformed syntax.  See message body for information.
+      * **401** Unauthorised - Missing authentication (API Key or JWT).
+      * **403** Forbidden - API user is not authorised to access requested resource.
+      * **404** Not Found - Request resource does not exist.
+    
+    # Support
+    Contact support@pulsesoftware.com for any queries or issues related to this API
+
+  termsOfService: "http://www.apache.org/licenses/LICENSE-2.0.html"
+  contact:
+    email: "support@pulsesoftware.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "*.pulsesoftware.com"
+basePath: "/webservices/api"
+tags:
+- name: "Authentication"
+  description: "Authentication for accessing Pulse Public API"
+- name: "User Details API"
+  description: "API for managing user details in Pulse"
+- name: "User Details API v2"
+  description: "API for managing user details in Pulse including additional attributes"
+- name: "Sync API"
+  description: "API for handling synchronisation data from and/or to Pulse including for managing sync history records"
+- name: "Forms API"
+  description: "API for managing forms and records in Pulse"
+- name: "Learning API"
+  description: "API for managing learning info in Pulse"
+- name: "Recruitment API"
+  description: "API for managing recruitment info in Pulse"
+- name: "Project API"
+  description: "API for managing project info in Pulse"
+- name: "Corporate Planning API"
+  description: "API for managing CPR data in Pulse"
+responses:
+  200:
+    description: "OK. Request completed successfully."
+  401:
+    description: "Missing x-api-key or the given x-api-key does not grant client with access to this API."
+  403:
+    description: "Authorised user does not have access to this resource"
+schemes:
+- "https"
+- "http"
+paths:
+  /pulse/jwt:
+    get:
+      security:
+      - ApiKey: []
+      tags:
+      - "Authentication"
+      summary: "Issue JWT Bearer Token"
+      description: "Issues a JSON Web Token for authentication with a 60 minute expiry. If requested using User API Key, token will be granted all role privileges of the User. If requested using Application API Key, no role privileges will be granted."
+      operationId: "getJwtToken"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "OK. Request completed successfully."
+        401:
+          description: "Authorization failed.  x-api-key is missing or invalid."
+          
+      
+  /security/users/{value}:
+    get:
+      security:
+      - ApiKey: []
+      tags:
+      - "User Details API"
+      summary: "Retrieve user details"
+      description: "Retrieves a list of users matching a provided user identifier. Includes an 'active' flag which indicates whether or not a user is active."
+      operationId: "getUser"
+      parameters:
+        - name: value
+          in: path
+          description: UserID, Username or Email of the desired user.
+          required: true
+          type: string
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "OK. Request completed successfully."
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/GetResponse"
+        403:
+          description: "Missing x-api-key or the given x-api-key does not grant client with access to this API."
+        404:
+          description: "User not found in Pulse."
+  /security/users:
+    get:
+      security:
+      - ApiKey: []
+      tags:
+      - "User Details API"
+      summary: "Retrieve a complete list of users in Pulse"
+      description: "Returns a list of all users in Pulse (including inactive users). Includes an 'active' flag which indicates whether or not a user is active."
+      operationId: "getUsers"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "OK. Request completed successfully."
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/GetResponse"
+        403:
+          description: "Missing x-api-key or the given x-api-key does not grant client with access to this API."
+    post:
+      security:
+      - ApiKey: []
+      tags:
+      - "User Details API"
+      summary: "Add a new user to Pulse"
+      description: "Notifications can be enabled for this endpoint. Contact Pulse support at support@pulsesoftware.com to enable notifications via the UserSyncEnableNotification config."
+      operationId: "addUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "User object to be created"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        200:
+          description: "OK. Request completed successfully."
+          schema:
+            $ref: "#/definitions/UpdateUserResponse"
+        403:
+          description: "Missing x-api-key or the given x-api-key does not grant client with access to this API."        
+    put:
+      security:
+      - ApiKey: []
+      tags:
+      - "User Details API"
+      summary: "Replaces an existing user in Pulse or creates a user if the specified user does not exist."
+      description: "Notifications can be enabled for this endpoint. Contact Pulse support at support@pulsesoftware.com to enable notifications via the UserSyncEnableNotification config."
+      operationId: "updateUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "User object to be updated to"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateUser"
+      responses:
+        200:
+          description: "OK. Request completed successfully."
+          schema:
+            $ref: "#/definitions/UpdateUserResponse"
+        403:
+          description: "Missing x-api-key or the given x-api-key does not grant client with access to this API."
+    delete:
+      security:
+      - ApiKey: []
+      tags:
+      - "User Details API"
+      summary: "Delete a user from Pulse"
+      description: "Deletes a user from Pulse using the given userId or email"
+      operationId: "deleteUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Requires a <strong>UserId</strong> or <strong>Email</strong> in order lookup the user to delete from Pulse."
+        required: true
+        schema:
+          $ref: "#/definitions/DeleteUser"
+      responses:
+        200:
+          description: ""
+        403:
+          description: "Missing x-api-key or the given x-api-key does not grant client with access to this API."
+  /training/traininghistoryrecord/{hours}:
+    get:
+      security:
+        - ApiKey: []
+      tags:
+      - "Learning API"
+      summary: "Retrieve training history records verified in the last specified number of hours"
+      description: "Retrieve training history records verified in the last specified number of hours (defaults to 12 hours if no value is given)"
+      operationId: "getTrainingHistory"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        required: true
+        name: "hours"
+        description: "The max number of hours to look back when retrieving training records based on their date of verification"
+        type: "number"
+      responses:
+        200:
+          description: "OK. Request completed successfully."
+          schema:
+            $ref: "#/definitions/GetTrainingHistoryRecordsResponse"
+        401:
+          description: "The provided API Key is invalid."
+        403:
+          description: "An API Key must be provided to use this resource."
+  /project/projectexecutionfinancialsync:
+    post:
+      security:
+        - BearerJWT: []
+      tags:
+      - "Project API"
+      summary: "Sends Project Component BIS data to Pulse"
+      description: |
+        Performs a bulk upsert of BIS financial information relating to specific project codes (Project Components) at the individual project execution level.
+        This matches on existing Project Executions by Project Component, which have to be pre-filled in the Projects Module on the Pulse website.
+        Some preliminary setup is required before this API endpoint can be consumed. Additionally, only Admin users in the Projects Module will be able to consume this API endpoint.
+        Setup instructions:
+        1. Contact Pulse support at support@pulsesoftware.com to enable the Pulse Public API. Make sure you follow the steps outlined in the Authentication section to enable JWT authentication.
+        2. In the Projects module, navigate to the Admin page.
+        3. Click 'Manage Forms'.
+        4. In a form of your choice, add the new fields that you would like to populate using this API endpoint. Ensure you make a field named 'Project Component'. This field will contain the unique Project Component value required to link a Project Execution in Pulse to a BIS Financial information record.
+        5. These fields will need to be linked to this API endpoint before it can be consumed. Contact Pulse support at support@pulsesoftware.com so that they can do this for you.
+        6. Once the new fields have been linked to the API, navigate to the Project Executions page in the Projects module and view the details of a Project Execution you would like to update via the API.
+        7. In the Project Component field you created in step 4, add the unique identifier that will link the Project Execution to a BIS financial information record.
+        
+        **Note**: if any of the linked fields are deleted and re-added, you will need to contact Pulse support (support@pulsesoftware.com) to re-link the fields to the API.
+
+        **Authorised Roles:** *ProjectAdmin*
+      operationId: "updateProjectComponent"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "BIS financial data to be added. Ensure you fill in the Project Component property of each record with the Project Component value of a Project Execution. Any fields representing the date of last update are not required in the body."
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateProjectComponent"
+      responses:
+        200:
+          description: "OK. Request completed successfully. Please see the updatedProjectComponents list in the response for the Project Components updated."
+          schema:
+            $ref: "#/definitions/UpdateProjectComponentResponse"
+        400:
+          description: "Request completed with some validation errors. Please see response for validation errors and list of updated Project Components."
+          schema:
+            $ref: "#/definitions/UpdateProjectComponentResponse"
+        401:
+          description: "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid."
+        403:
+          description: "The user corresponding to the given JWT token does not have access to this module."
+  /prf/progressupdate_bulk:
+    post: 
+      security:
+        - BearerJWT: []
+      tags:
+      - "Corporate Planning API"
+      summary: "CPI Progress Update bulk upsert"
+      description: |
+        Performs a bulk upsert of CPI Progress Updates, matching on existing records by Reference and Year
+        
+        **Authorised Roles:** *PRFAdmin*
+      operationId: "progressUpdateUpsertBulk"
+      consumes: 
+      - "appliation/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Representation of CPI Progress Updates to be upserted"
+        required: true
+        schema:
+          $ref: "#/definitions/ProgressUpdate_Bulk"
+      responses:
+        200:
+          description: "OK. Request completed successfully."
+        401:
+          description: "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid."
+        403:
+          description: "The user corresponding to the given JWT token does not have access to this module."
+        422:
+          description: "Submitted data failed validation, see errors object in response for details."
+          schema:
+            $ref: "#/definitions/PulseApiErrorResponse"
+  /forms/record/recordsByRef:
+    get: 
+      security:
+        - BearerJWT: []
+      tags:
+      - "Forms API"
+      summary: "Records by Ref ID"
+      description: |
+        Retrieve Records submitted by Form ID with or without Date Range.
+        
+        **Authorised Roles:** *ICMUser, OnboardingFormsUser, FormsUser, RCMUser*
+      operationId: "recordsByRef"
+      consumes: 
+      - "appliation/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "refId"
+        type: "string"
+        description: "Ref ID"
+        required: true
+      - in: "query"
+        name: "submittedStartDate"
+        type: "string"
+        description: "Submitted Start Date Eg. 01/01/2023"
+      - in: "query"
+        name: "submittedEndDate"
+        type: "string"
+        description: "Submitted End Date Eg. 31/01/2023"
+      responses:
+        200:
+          description: "OK. Request completed successfully."
+        401:
+          description: "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid."
+        403:
+          description: "The user corresponding to the given JWT token does not have access to this module."
+  /forms/record/recordsCountByRef:
+    get: 
+      security:
+        - BearerJWT: []
+      tags:
+      - "Forms API"
+      summary: "Records Count by Ref ID"
+      description: |
+        Retrieve Records submitted by Form ID with or without Date Range.
+        
+        **Authorised Roles:** *ICMUser, OnboardingFormsUser, FormsUser, RCMUser*
+      operationId: "recordsCountByRef"
+      consumes: 
+      - "appliation/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "refId"
+        type: "string"
+        description: "Ref ID"
+        required: true
+      - in: "query"
+        name: "submittedStartDate"
+        type: "string"
+        description: "Submitted Start Date Eg. 01/01/2023"
+      - in: "query"
+        name: "submittedEndDate"
+        type: "string"
+        description: "Submitted End Date Eg. 31/01/2023"
+      responses:
+        200:
+          description: "OK. Request completed successfully."
+        401:
+          description: "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid."
+        403:
+          description: "The user corresponding to the given JWT token does not have access to this module."
+  /forms/record/flattenRecordsByRef:
+    get: 
+      security:
+        - BearerJWT: []
+      tags:
+      - "Forms API"
+      summary: "Flatten Records by Ref ID"
+      description: |
+        Retrieve Flatten Records submitted by Form ID with or without Date Range.
+        
+        **Authorised Roles:** *ICMUser, OnboardingFormsUser, FormsUser, RCMUser*
+      operationId: "flattenRecordsByRef"
+      consumes: 
+      - "appliation/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "refId"
+        type: "string"
+        description: "Ref ID"
+      - in: "query"
+        name: "submittedStartDate"
+        type: "string"
+        description: "Submitted Start Date Eg. 01/01/2023"
+      - in: "query"
+        name: "submittedEndDate"
+        type: "string"
+        description: "Submitted End Date Eg. 31/01/2023"
+      responses:
+        200:
+          description: "OK. Request completed successfully."
+        401:
+          description: "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid."
+        403:
+          description: "The user corresponding to the given JWT token does not have access to this module."
+  
+  /forms/record/recordsByFormId:
+    get: 
+      security:
+        - BearerJWT: []
+      tags:
+      - "Forms API"
+      summary: "Records by Form ID"
+      description: |
+        Retrieve Records submitted by Form ID with or without Date Range.
+        
+        **Authorised Roles:** *ICMUser, OnboardingFormsUser, FormsUser, RCMUser*
+      operationId: "recordsByFormId"
+      consumes: 
+      - "appliation/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "formId"
+        type: "string"
+        description: "Form ID"
+        required: true
+      - in: "query"
+        name: "submittedStartDate"
+        type: "string"
+        description: "Submitted Start Date Eg. 01/01/2023"
+      - in: "query"
+        name: "submittedEndDate"
+        type: "string"
+        description: "Submitted End Date Eg. 31/01/2023"
+      responses:
+        200:
+          description: "OK. Request completed successfully."
+        401:
+          description: "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid."
+        403:
+          description: "The user corresponding to the given JWT token does not have access to this module."
+  
+  /forms/record/recordsCountByFormId:
+    get: 
+      security:
+        - BearerJWT: []
+      tags:
+      - "Forms API"
+      summary: "Records by Form ID"
+      description: |
+        Retrieve Records submitted by Form ID with or without Date Range.
+        
+        **Authorised Roles:** *ICMUser, OnboardingFormsUser, FormsUser, RCMUser*
+      operationId: "recordsCountByFormId"
+      consumes: 
+      - "appliation/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "formId"
+        type: "string"
+        description: "Form ID"
+        required: true
+      - in: "query"
+        name: "submittedStartDate"
+        type: "string"
+        description: "Submitted Start Date Eg. 01/01/2023"
+      - in: "query"
+        name: "submittedEndDate"
+        type: "string"
+        description: "Submitted End Date Eg. 31/01/2023"
+      responses:
+        200:
+          description: "OK. Request completed successfully."
+        401:
+          description: "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid."
+        403:
+          description: "The user corresponding to the given JWT token does not have access to this module."
+
+  /forms/record/flattenRecordsByFormId:
+    get: 
+      security:
+        - BearerJWT: []
+      tags:
+      - "Forms API"
+      summary: "Records by Form ID"
+      description: |
+        Retrieve Flatten Records submitted by Form ID with or without Date Range.
+        
+        **Authorised Roles:** *ICMUser, OnboardingFormsUser, FormsUser, RCMUser*
+      operationId: "flattenRecordsByFormId"
+      consumes: 
+      - "appliation/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "formId"
+        type: "string"
+        description: "Form ID"
+        required: true
+      - in: "query"
+        name: "submittedStartDate"
+        type: "string"
+        description: "Submitted Start Date Eg. 01/01/2023"
+      - in: "query"
+        name: "submittedEndDate"
+        type: "string"
+        description: "Submitted End Date Eg. 31/01/2023"
+      responses:
+        200:
+          description: "OK. Request completed successfully."
+        401:
+          description: "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid."
+        403:
+          description: "The user corresponding to the given JWT token does not have access to this module."
+
+  /forms/record/flattenRecordsByTag:
+    get: 
+      security:
+        - BearerJWT: []
+      tags:
+      - "Forms API"
+      summary: "Flatten Records by Tag"
+      description: |
+        Retrieve Flatten Records submitted by Tag with or without Date Range
+        
+        **Authorised Roles:** *PRFAdmin*
+      operationId: "flattenRecordsByTag"
+      consumes: 
+      - "appliation/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        type: "string"
+        name: "tag"
+        description: "Tag"
+        required: true
+      - in: "query"
+        name: "submittedStartDate"
+        type: "string"
+        description: "Submitted Start Date Eg. 01/01/2023"
+      - in: "query"
+        name: "submittedEndDate"
+        type: "string"
+        description: "Submitted End Date Eg. 31/01/2023"
+      responses:
+        200:
+          description: "OK. Request completed successfully."
+        401:
+          description: "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid."
+        403:
+          description: "The user corresponding to the given JWT token does not have access to this module."
+    post: 
+      security:
+        - BearerJWT: []
+      tags:
+      - "Forms API"
+      summary: "Records by Tag and Fields"
+      description: |
+        Retrieve Records submitted by Tag with or without Date Range filter by Fields
+        
+        **Authorised Roles:** *PRFAdmin*
+      operationId: "flattenRecordsByTagPost"
+      consumes: 
+      - "appliation/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "fields"
+        description: "Form Fields"
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          example:
+            - data.TITLE
+            - data.FIRSTNAME
+            - data.DROMCV2Dhd
+      - in: "query"
+        name: "tag"
+        description: "Tag"
+        required: true
+        type: "string"
+      - in: "query"
+        name: "submittedStartDate"
+        description: "Submitted Start Date Eg. 01/01/2023"
+        type: "string"
+      - in: "query"
+        name: "submittedEndDate"
+        description: "Submitted End Date Eg. 31/01/2023"
+        type: "string"
+      responses:
+        200:
+          description: "OK. Request completed successfully."
+        401:
+          description: "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid."
+        403:
+          description: "The user corresponding to the given JWT token does not have access to this module."
+
+  /forms/record/recordsCountByTag:
+    get: 
+      security:
+        - BearerJWT: []
+      tags:
+      - "Forms API"
+      summary: "Records Count by Tag"
+      description: |
+        Retrieve Records Count submitted by Tag with or without Date Range
+        
+        **Authorised Roles:** *PRFAdmin*
+      operationId: "recordsCountByTag"
+      consumes: 
+      - "appliation/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "tag"
+        description: "Tag"
+        required: true
+        type: "string"
+      - in: "query"
+        name: "submittedStartDate"
+        description: "Submitted Start Date Eg. 01/01/2023"
+        type: "string"
+      - in: "query"
+        name: "submittedEndDate"
+        description: "Submitted End Date Eg. 31/01/2023"
+        type: "string"
+      responses:
+        200:
+          description: "OK. Request completed successfully."
+        401:
+          description: "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid."
+        403:
+          description: "The user corresponding to the given JWT token does not have access to this module."
+    post: 
+      security:
+        - BearerJWT: []
+      tags:
+      - "Forms API"
+      summary: "Records by Tag and Fields"
+      description: |
+        Retrieve Records submitted by Tag with or without Date Range filter by Fields
+        
+        **Authorised Roles:** *PRFAdmin*
+      operationId: "recordsCountByTagPost"
+      consumes: 
+      - "appliation/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "fields"
+        description: "Form Fields"
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          example:
+            - data.TITLE
+            - data.FIRSTNAME
+            - data.DROMCV2Dhd
+      - in: "query"
+        name: "tag"
+        description: "Tag"
+        required: true
+        type: "string"
+      - in: "query"
+        name: "submittedStartDate"
+        description: "Submitted Start Date Eg. 01/01/2023"
+        type: "string"
+      - in: "query"
+        name: "submittedEndDate"
+        description: "Submitted End Date Eg. 31/01/2023"
+        type: "string"
+      responses:
+        200:
+          description: "OK. Request completed successfully."
+        401:
+          description: "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid."
+        403:
+          description: "The user corresponding to the given JWT token does not have access to this module."
+  
+  /forms/record/recordsByTag:
+    get: 
+      security:
+        - BearerJWT: []
+      tags:
+      - "Forms API"
+      summary: "Records by Tag"
+      description: |
+        Retrieve Records submitted by Tag with or without Date Range
+        
+        **Authorised Roles:** *PRFAdmin*
+      operationId: "recordsByTag"
+      consumes: 
+      - "appliation/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "tag"
+        description: "Tag"
+        required: true
+        type: "string"
+      - in: "query"
+        name: "submittedStartDate"
+        description: "Submitted Start Date Eg. 01/01/2023"
+        type: "string"
+      - in: "query"
+        name: "submittedEndDate"
+        description: "Submitted End Date Eg. 31/01/2023"
+        type: "string"
+      responses:
+        200:
+          description: "OK. Request completed successfully."
+        401:
+          description: "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid."
+        403:
+          description: "The user corresponding to the given JWT token does not have access to this module."
+    post: 
+      security:
+        - BearerJWT: []
+      tags:
+      - "Forms API"
+      summary: "Records by Tag and Fields"
+      description: |
+        Retrieve Records submitted by Tag with or without Date Range filter by Fields
+        
+        **Authorised Roles:** *PRFAdmin*
+      operationId: "recordsByTagPost"
+      consumes: 
+      - "appliation/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "fields"
+        description: "Form Fields"
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          example:
+            - TITLE
+            - FIRSTNAME
+            - DROMCV2Dhd
+      - in: "query"
+        name: "tag"
+        description: "Tag"
+        required: true
+        type: "string"
+      - in: "query"
+        name: "submittedStartDate"
+        description: "Submitted Start Date Eg. 01/01/2023"
+        type: "string"
+      - in: "query"
+        name: "submittedEndDate"
+        description: "Submitted End Date Eg. 31/01/2023"
+        type: "string"
+      responses:
+        200:
+          description: "OK. Request completed successfully."
+        401:
+          description: "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid."
+        403:
+          description: "The user corresponding to the given JWT token does not have access to this module."
+  /rcm/jobs/jobsV2:
+    get:
+      tags:
+        - "Recruitment API"
+      summary: "Jobs records"
+      description: |
+        Retrieve Recruitment Job Records secured by Private API key
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "header"
+          name: "x-api-key"
+          description: "API key"
+          required: true
+          type: string
+        - in: "query"
+          name: "internalOnly"
+          description: "Returns only Recruitment Jobs that are marked as Internal"
+          type: boolean
+      responses:
+        200:
+          description: "OK. Request completed successfully."
+        401:
+          description: "The provided API Key is invalid."
+        403:
+          description: "API Key must be provided to use this resource."
+  /security/UserDetails:
+    get:
+      security:
+        - BearerJWT: []
+      tags:
+        - "User Details API v2"
+      summary: "Get user detail(s) in Pulse"
+      description: |
+        Get user detail(s) in Pulse including their user additional attributes.
+        - If no query parameters are provided, returns all users.
+        - If `email`, `username`, or `userId` is provided, returns the matching user.
+        **Authorised Roles:** *PulseSecurityUser*
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "header"
+          name: "x-api-key"
+          description: "API key"
+          required: true
+          type: string
+        - in: "query"
+          name: "email"
+          description: "Email address"
+          required: false
+          type: string
+        - in: "query"
+          name: "username"
+          description: "Username"
+          required: false
+          type: string
+        - in: "query"
+          name: "userId"
+          description: "User Id"
+          required: false
+          type: string
+      responses:
+        200:
+          description: |
+            OK. Request completed successfully.
+            - If no query parameters are provided, returns all users as an array.
+            - If a query parameter is provided, returns an array with a single user or empty array if not found.
+          schema:
+            $ref: "#/definitions/UserInfos"
+        401:
+          description: "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid."
+        403:
+          description: "The user corresponding to the given JWT token does not have access to this module."
+        404:
+          description: "User not found by specified identifier"
+    post:
+      security:
+        - BearerJWT: []
+      tags:
+        - "User Details API v2"
+      summary: "Update user in Pulse"
+      description: |
+        Update user in Pulse based on userId provided in request body
+        
+        **Authorised Roles:** *PulseSecurityUser*
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "header"
+          name: "x-api-key"
+          description: "API key"
+          required: true
+          type: string
+        - in: "body"
+          name: "body"
+          description: "User detail"
+          required: true
+          schema:
+            $ref: "#/definitions/AddUserInfo"
+      responses:
+        200:
+          description: "OK. Request completed successfully."
+          schema:
+            $ref: "#/definitions/UserDetailsV2Response"
+        400:
+          description: "Invalid request body"
+          schema:
+            $ref: "#/definitions/UserDetailsV2Response"
+        401:
+          description: "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid."
+        403:
+          description: "The user corresponding to the given JWT token does not have access to this module."
+    put:
+      security:
+        - BearerJWT: []
+      tags:
+        - "User Details API v2"
+      summary: "Update user in Pulse"
+      description: |
+        Update user in Pulse based on userId provided in request body
+        
+        **Authorised Roles:** *PulseSecurityUser*
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "header"
+          name: "x-api-key"
+          description: "API key"
+          required: true
+          type: string
+        - in: "body"
+          name: "body"
+          description: "User detail"
+          required: true
+          schema:
+            $ref: "#/definitions/UserInfo"
+      responses:
+        200:
+          description: "OK. Request completed successfully."
+          schema:
+            $ref: "#/definitions/UserDetailsV2Response"
+        400:
+          description: "Invalid request body"
+          schema:
+            $ref: "#/definitions/UserDetailsV2Response"
+        401:
+          description: "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid."
+        403:
+          description: "The user corresponding to the given JWT token does not have access to this module."
+        404:
+          description: "User not found by specified user id"
+    patch:
+      security:
+        - BearerJWT: []
+      tags:
+        - "User Details API v2"
+      summary: "Update user in Pulse"
+      description: |
+        Update user in Pulse based on userId provided in request body
+        
+        **Authorised Roles:** *PulseSecurityUser*
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "header"
+          name: "x-api-key"
+          description: "API key"
+          required: true
+          type: string
+        - in: "body"
+          name: "body"
+          description: "User detail"
+          required: true
+          schema:
+            $ref: "#/definitions/UserInfo"
+      responses:
+        200:
+          description: "OK. Request completed successfully."
+          schema:
+            $ref: "#/definitions/UserDetailsV2Response"
+        400:
+          description: "Invalid request body"
+          schema:
+            $ref: "#/definitions/UserDetailsV2Response"
+        401:
+          description: "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid."
+        403:
+          description: "The user corresponding to the given JWT token does not have access to this module."
+        404:
+          description: "User not found by specified user id"
+  /security/PatchUserSync:
+    post:
+      security:
+        - BearerJWT: []
+      tags:
+        - "Sync API"
+      summary: "Update user in Pulse"
+      description: |
+        Update user in Pulse based on userId provided in request body
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "header"
+          name: "x-api-key"
+          description: "API key"
+          required: true
+          type: string
+        - in: "body"
+          name: "body"
+          description: "User detail"
+          required: true
+          schema:
+            $ref: "#/definitions/UserSyncDTOs"
+      responses:
+        200:
+          description: "OK. Request completed successfully."
+        401:
+          description: "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid."
+  /security/IntegrationSyncData:
+    post:
+      security:
+        - BearerJWT: []
+      tags:
+        - "Sync API"
+      summary: "Store integration sync data in Pulse for history purpose"
+      description: |
+        Store integration sync data in Pulse for history purpose
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "header"
+          name: "x-api-key"
+          description: "API key"
+          required: true
+          type: string
+        - in: "body"
+          name: "body"
+          description: "Integration sync data"
+          required: true
+          schema:
+            $ref: "#/definitions/StoreSyncData"
+      responses:
+        200:
+          description: "OK. Request completed successfully. Returns the fileId of the logged sync data."
+          schema:
+            type: "string"
+        401:
+          description: "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid."
+  /security/IntegrationSyncToPayrollLog:
+    post:
+      security:
+        - BearerJWT: []
+      tags:
+        - "Sync API"
+      summary: "Add sync history in Pulse"
+      description: |
+        Add sync history in Pulse
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "header"
+          name: "x-api-key"
+          description: "API key"
+          required: true
+          type: string
+        - in: "body"
+          name: "body"
+          description: "Sync history data"
+          required: true
+          schema:
+            $ref: "#/definitions/AddIntegrationSyncToPayrollHistory"
+      responses:
+        200:
+          description: "OK. Request completed successfully. Returns the id of the sync history."
+          schema:
+            type: "number"
+        401:
+          description: "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid."
+
+securityDefinitions:
+  ApiKey:
+    type: "apiKey"
+    name: "x-Api-Key"
+    in: "header"
+  BearerJWT:
+    type: "apiKey"
+    name: "Authorisation"
+    in: header
+      
+definitions:
+  PulseApiErrorResponse:
+    properties:
+      errors:
+        type: "array"
+        items:
+          $ref: "#/definitions/PulseApiError"
+        example:
+        - code: "PRF/ProgressUpdate/Reference_MissingReference"
+          detail: "Mandatory field Reference was not supplied."
+          source: "/data/0/uniqueReference"
+  PulseApiError:
+    type: "object"
+    properties:
+      code:
+        type: "string"
+        example: "PRF/ProgressUpdate/Reference_MissingReference"
+      detail:
+        type: "string"
+        example: "Mandatory field Reference was not supplied."
+      source:
+        type: "string"
+        example: "/data/0/uniqueReference"
+  UpdateUser:
+    type: "object"
+    required:
+      - "userId"
+      - "email"
+    properties:
+      userId:
+        type: "string"
+        example: "00000000-0000-0000-0000-000000000000"
+      email:
+        type: "string"
+        example: "testuser@mail.com"
+      firstName:
+        type: "string"
+        example: "Johnny"
+      lastName:
+        type: "string"
+        example: "Samson"
+      additionalPositions:
+        type: "array"
+        items:
+          $ref: "#/definitions/AdditionalPosition"
+      roles:
+        type: "array"
+        items:
+          type: "string"
+          example: "cpruser"
+      phone:
+        type: "string"
+        example: "(02) 9983 0039"
+      mobile:
+        type: "string"
+        example: "+61 412 030 992"
+      streetAddress:
+        type: "string"
+        example: "1 Talavera Rd"
+      suburb:
+        type: "string"
+        example: "Macquarie Park"
+      state:
+        type: "string"
+        example: "NSW"
+      postcode:
+        type: "string"
+        example: "2113"
+      country:
+        type: "string"
+        example: "Australia"
+      payrollNumber:
+        type: "string"
+        example: "A123B"
+      positionNumber:
+        type: "string"
+        example: "1005"
+      positionName:
+        type: "string"
+        example: "Financial Accountant"
+      supervisorEmail:
+        type: "string"
+        example: "super@gmail.com"
+      divisionName:
+        type: "string"
+        example: "Business Performance"
+      divisionCode:
+        type: "string"
+        example: "BP"
+      unitName:
+        type: "string"
+        example: "Finance"
+      unitCode:
+        type: "string"
+        example: "FIN"
+      sectionName:
+        type: "string"
+        example: "Financial Accounting"
+      sectionCode:
+        type: "string"
+        example: "FA"
+  DeleteUser:
+    type: "object"
+    required:
+      - "userId"
+      - "email"
+    properties:
+      userId:
+        type: "string"
+        example: "00000000-0000-0000-0000-000000000000"
+      email:
+        type: "string"
+        example: "jbjovi@gmail.com"
+    xml:
+      name: "DeleteUser"
+  User:
+    type: "object"
+    required:
+    - "firstName"
+    - "lastName"
+    - "email"
+    properties:
+      active:
+        type: "boolean"
+        example: true
+      firstName:
+        type: "string"
+        example: "John"
+      lastName:
+        type: "string"
+        example: "Jovi"
+      networkLogin:
+        type: "string"
+        example: "johnj"
+      phone:
+        type: "string"
+        example: "(02) 9983 0039"
+      mobile:
+        type: "string"
+        example: "+61 412 030 992"
+      streetAddress:
+        type: "string"
+        example: "1 Talavera Rd"
+      suburb:
+        type: "string"
+        example: "Macquarie Park"
+      state:
+        type: "string"
+        example: "NSW"
+      postcode:
+        type: "string"
+        example: "2113"
+      country:
+        type: "string"
+        example: "Australia"
+      payrollNumber:
+        type: "string"
+        example: "A123B"
+      positionNumber:
+        type: "string"
+        example: "1005"
+      positionName:
+        type: "string"
+        example: "Financial Accountant"
+      applicationDate:
+        type: "string"
+        example: "2020-12-30"
+      supervisorEmail:
+        type: "string"
+        example: "super@gmail.com"
+      onboarding:
+        $ref: "#/definitions/OnboardingEnrolment"
+      additionalPositions:
+        type: "array"
+        items:
+          $ref: "#/definitions/AdditionalPosition"
+      roles:
+        type: "array"
+        items:
+          type: "string"
+          example: "cpruser"
+      divisionName:
+        type: "string"
+        example: "Business Performance"
+      divisionCode:
+        type: "string"
+        example: "BP"
+      unitName:
+        type: "string"
+        example: "Finance"
+      unitCode:
+        type: "string"
+        example: "FIN"
+      sectionName:
+        type: "string"
+        example: "Financial Accounting"
+      sectionCode:
+        type: "string"
+        example: "FA"
+      userId:
+        type: "string"
+        example: "00000000-0000-0000-0000-000000000000"
+      email:
+        type: "string"
+        example: "jbjovi@gmail.com"
+    xml:
+      name: "User"
+  OnboardingEnrolment:
+    type: "object"
+    required:
+    - "enrol"
+    properties:
+      enrol:
+        type: "boolean"
+        example: "true"
+      portalId:
+        type: "integer"
+        example: "1"
+      dueDate:
+        type: "string"
+        example: "2021-12-30"
+      activeDate:
+        type: "string"
+        example: "2020-12-30"
+  AdditionalPosition:
+    type: "object"
+    required:
+    - "startDate"
+    - "endDate"
+    properties:
+      positionNumber:
+        type: "string"
+        example: "1006"
+      positionName:
+        type: "string"
+        example: "Financial Accountant"
+      startDate:
+        type: "string"
+        example: "2021-02-11"
+      endDate:
+        type: "string"
+        example: "2021-08-11"
+  GetResponse:
+    type: "object"
+    properties:
+      active:
+        type: "boolean"
+        example: true
+      firstName:
+        type: "string"
+        example: "John"
+      lastName:
+        type: "string"
+        example: "Jovi"
+      networkLogin:
+        type: "string"
+        example: "johnj"
+      phone:
+        type: "string"
+        example: "(02) 9983 0039"
+      mobile:
+        type: "string"
+        example: "+61 412 030 992"
+      streetAddress:
+        type: "string"
+        example: "1 Talavera Rd"
+      suburb:
+        type: "string"
+        example: "Macquarie Park"
+      state:
+        type: "string"
+        example: "NSW"
+      postcode:
+        type: "string"
+        example: "2113"
+      country:
+        type: "string"
+        example: "Australia"
+      payrollNumber:
+        type: "string"
+        example: "A123B"
+      positionNumber:
+        type: "string"
+        example: "1005"
+      positionName:
+        type: "string"
+        example: "Financial Accountant"
+      applicationDate:
+        type: "string"
+        example: "2020-12-30"
+      supervisorEmail:
+        type: "string"
+        example: "super@gmail.com"
+      onboarding:
+        $ref: "#/definitions/OnboardingEnrolment"
+      additionalPositions:
+        type: "array"
+        items:
+          $ref: "#/definitions/AdditionalPosition"
+      roles:
+        type: "array"
+        items:
+          type: "string"
+          example: "cpruser"
+      divisionName:
+        type: "string"
+        example: "Business Performance"
+      divisionCode:
+        type: "string"
+        example: "BP"
+      unitName:
+        type: "string"
+        example: "Finance"
+      unitCode:
+        type: "string"
+        example: "FIN"
+      sectionName:
+        type: "string"
+        example: "Financial Accounting"
+      sectionCode:
+        type: "string"
+        example: "FA"
+      userId:
+        type: "string"
+        example: "00000000-0000-0000-0000-000000000000"
+      email:
+        type: "string"
+        example: "jbjovi@gmail.com"
+    xml:
+      name: "User"
+  UpdateUserResponse:
+    type: "object"
+    properties:
+      errors:
+        type: "array"
+        items:
+          $ref: "#/definitions/PulseApiError"
+      data:
+        $ref: "#/definitions/GetResponse"
+  GetTrainingHistoryRecordsResponse:
+    type: "array"
+    items:
+      $ref: "#/definitions/TrainingHistoryRecord"
+    example:
+      - Payroll_Num: 1234
+        Username: 'test.user'
+        Email: 'test_user@test.com'
+        Given_Name: 'Test'
+        Surname: 'User'
+        Course_Name: 'How to build an API'
+        Course_Code: 'api101'
+        Completion_Date: '17/05/2021 3:36:28 PM'
+      - Payroll_Num: 1235
+        Username: 'test.user123'
+        Email: 'test_user123@test.com'
+        Given_Name: 'Tester'
+        Surname: 'User'
+        Course_Name: 'Agile Methodologies'
+        Course_Code: 'agile123'
+        Completion_Date: '9/05/2021 3:36:28 PM'
+  TrainingHistoryRecord:
+    type: "object"
+    properties:
+      Payroll_Num:
+        type: string
+      Username:
+        type: string
+      Email:
+        type: string
+      Given_Name:
+        type: string
+      Surname:
+        type: string
+      Course_Name:
+        type: string
+      Course_Code:
+        type: string
+      Completion_Date:
+        type: string
+  UpdateProjectComponent:
+    type: "object"
+    required:
+    - "data"
+    properties:
+      data:
+        type: "array"
+        items:
+          $ref: "#/definitions/UpdateProjectComponentData"
+        example:
+        - Project Component: "W046-100"
+          Description: "This is a test."
+          Full Year Original Budget: 447085
+          Full Year Revised Budget: 111771.36
+          YTD Budget: 335314.1
+          YTD Commitments: 447085.46
+          YTD Actuals: 765454
+          Available Budget: 125412
+        - Project Component: "W046-101"
+          Description: "This is also a test."
+          Full Year Original Budget: 44799.1
+          Full Year Revised Budget: 111999.36
+          YTD Budget: 999314.1
+          YTD Commitments: 499085.46
+          YTD Actuals: 87765
+          Available Budget: 215545
+  UpdateProjectComponentData:
+    type: "object"
+    required:
+    - "Project Component"
+    properties:
+      Project Component:
+        type: "string"
+        example: "W046-100"
+  UpdateProjectComponentResponse:
+    type: "object"
+    properties:
+      errors:
+        type: "array"
+        items:
+          $ref: "#/definitions/UpdateProjectComponentResponseError"
+        example:
+        - error num: "0003"
+          project-component: "W046-100"
+          error message: "Project-Component not found in Pulse."
+          error detail: "Please ensure that the Project-Component exists in Pulse."
+        - error num: "0001"
+          project-component: ""
+          error message: "Missing Project Component Id."
+          error detail: "Data must contain key 'Project Component'."
+      updatedProjectComponents:
+        type: "array"
+        items:
+          type: "string"
+        example:
+        - "project component code 1"
+        - "project component code 2"
+  UpdateProjectComponentResponseError:
+    type: "object"
+    properties:
+      error num:
+        type: "string"
+        example: "0001"
+      project-component:
+        type: "string"
+        example: "W046-100"
+      error message:
+        type: "string"
+        example: "Project-Component not found in Pulse."
+      error detail:
+        type: "string"
+        example: "Please ensure that the Project-Component exists in Pulse."
+        
+  ProgressUpdate_Bulk:
+    type: "object"
+    required:
+    - "data"
+    title: "ProgressUpdateBulkObject"
+    description: "Request object for Progress Update bulk upserts."
+    properties:
+      data:
+        type: "array"
+        items:
+          $ref: "#/definitions/ProgressUpdate_BulkData"
+        example:
+        - uniqueReference: "K-2S0"
+          prfYear: 2020
+          actualResult: "55.4"
+          periodType: "Q"
+          quarter: "Q2"
+          overwrite: true
+        - uniqueReference: "IG-88"
+          prfYear: 2020
+          actualNumerator: "2"
+          actualDenominator: "3"
+          periodType: "M"
+  ProgressUpdate_BulkData:
+    type: "object"
+    required:
+    - "uniqueReference"
+    - "prfYear"
+    - "periodType"
+    title: "ProgressUpdateObject"
+    description: |
+      Object representing a request to upsert a CPI Progress Update.
+        
+    properties:
+      uniqueReference:
+        type: "string"
+        example: "K-2S0"
+        description: The unique reference code assigned to the CPI in the Pulse UI.
+      prfYear:
+        type: "integer"
+        example: 2020
+        description: The year of the CPI targeted for Progress upsert.
+      actualResult: 
+        type: "string"
+        example: "55.4"
+        description: For CPIs *without* calculation steps, Actual Result value must be provided. For CPIs *with* calculation steps, Actual Result msut not be present
+      actualNumerator: 
+        type: number
+        example: "1.4"
+        description: For CPIs *with* calculation steps, Actual Numerator must be provided.  For CPIs *without* calculation steps Actual Numerator must not be present. 
+      actualDenominator: 
+        type: number
+        example: "4"
+        description: For CPIs *with* calculation steps, Actual Denominator must be provided.  For CPIs *without* calculation steps Actual Denominator must not be present.
+      periodType:
+        type: "string"
+        example: "M"
+        pattern: '(M|Q|H|Y)'
+        description: |
+          Period Type must match the CPI frequency configured in pulse.  
+          Possible Values:
+          * 'M' - Monthly
+          * 'Q' - Quarterly
+          * 'H' - Half Yearly
+          * 'Y' - Yearly
+      month: 
+        type: "string"
+        example: "Jan"
+        pattern: '(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)'
+        description: | 
+          For Monthly CPIs, a Month value may be provided.  For non-monthly CPIs, Month must not be provided.
+          If no Month value is provided, Month will be set to the current Month as configured in the Reporting Year and Period admin page.  
+      quarter: 
+        type: "string"
+        example: "Q1"
+        pattern: 'Q[1-4]'
+        description: |
+          For Quarterly CPIs, a Quarter value may be provided.  For non-quarterly CPIs, Quarter must not be provided.
+          If no Quarter value is provided, Quarter will be set to the current Quarter as configured in the Reporting Year and Period admin page.  
+      halfYear: 
+        type: "string"
+        example: "H1"
+        pattern: 'H[1-2]'
+        description: |
+          For Half Yearly CPIs, a Half Year value may be provided.  For non-halfyear CPIs, HalfYear must not be provided.
+          If no Half Year value is provided, Half Year will be set to the current Half Year as configured in the Reporting Year and Period admin page.  
+      year: 
+        type: "string"
+        example: "2020"
+        pattern: '[0-9]{4}' 
+        description: |
+          For Yearly CPIs, a Year value may be provided.  For non-monthly CPIs, Year must not be provided.
+          If no Year value is provided, Year will be set to the current Year as configured in the Reporting Year and Period admin page.  
+      overwrite:
+        type: "boolean"
+        example: true
+        description: |
+          Flag required to perform updates of existing Progress Updates.  When this flag is set to true, Pulse will update existing Progress Updates with the data submitted via API.  
+          If this flag is set to false, attemtping to update any Progress Update for which there is existing data will result in an error. 
+  UserInfos:
+    type: array
+    items:
+      $ref: '#/definitions/UserInfo'
+  UserInfo:
+    type: object
+    properties:
+      active:
+        type: boolean
+      userId:
+        type: string
+        format: uuid
+      title:
+        type: string
+      firstName:
+        type: string
+      middleName:
+        type: string
+      lastName:
+        type: string
+      preferredName:
+        type: string
+      dateOfBirth:
+        type: string
+      gender:
+        type: string
+      mobilePhone:
+        type: string
+      workPhone:
+        type: string
+      telephone:
+        type: string
+      primaryEmail:
+        type: string
+      additionalEmail:
+        type: string
+      home_AddressLine1:
+        type: string
+      home_AddressLine2:
+        type: string
+      home_City:
+        type: string
+      home_Country:
+        type: string
+      home_PostCode:
+        type: string
+      home_State:
+        type: string
+      postal_AddressLine1:
+        type: string
+      postal_AddressLine2:
+        type: string
+      postal_City:
+        type: string
+      postal_Country:
+        type: string
+      postal_PostCode:
+        type: string
+      postal_State:
+        type: string
+      postalIsHome:
+        type: boolean
+      username:
+        type: string
+      payrollNumber:
+        type: string
+      divisionCode:
+        type: string
+      divisionName:
+        type: string
+      unitCode:
+        type: string
+      unitName:
+        type: string
+      sectionCode:
+        type: string
+      sectionName:
+        type: string
+      supervisorEmail:
+        type: string
+      teamName:
+        type: string
+      pulseRepresentativeEmail:
+        type: string
+      employmentStartDate:
+        type: string
+      employmentEndDate:
+        type: string
+      reasonOfTermination:
+        type: string
+      emergencyContact1_Name:
+        type: string
+      emergencyContact1_Relationship:
+        type: string
+      emergencyContact1_AddressLine1:
+        type: string
+      emergencyContact1_AddressLine2:
+        type: string
+      emergencyContact1_City:
+        type: string
+      emergencyContact1_State:
+        type: string
+      emergencyContact1_Country:
+        type: string
+      emergencyContact1_Postcode:
+        type: string
+      emergencyContact1_Mobile:
+        type: string
+      emergencyContact1_WorkPhone:
+        type: string
+      emergencyContact1_Telephone:
+        type: string
+      emergencyContact1_Email:
+        type: string
+      emergencyContact2_Name:
+        type: string
+      emergencyContact2_Relationship:
+        type: string
+      emergencyContact2_AddressLine1:
+        type: string
+      emergencyContact2_AddressLine2:
+        type: string
+      emergencyContact2_City:
+        type: string
+      emergencyContact2_State:
+        type: string
+      emergencyContact2_Country:
+        type: string
+      emergencyContact2_Postcode:
+        type: string
+      emergencyContact2_Mobile:
+        type: string
+      emergencyContact2_WorkPhone:
+        type: string
+      emergencyContact2_Telephone:
+        type: string
+      emergencyContact2_Email:
+        type: string
+      primaryPositionNumber:
+        type: string
+      primaryPositionName:
+        type: string
+      primaryPositionStartDate:
+        type: string
+      primaryPositionEndDate:
+        type: string
+      primaryPositionNotes:
+        type: string
+      employmentType:
+        type: string
+      onboarding:
+        type: array
+        items:
+          $ref: "#/definitions/UserOnboardingDetailsDTO"
+      additionalPositions:
+        type: array
+        items:
+          $ref: '#/definitions/UserAdditionalPositionDTO'
+      roles:
+        type: array
+        items:
+          type: string
+      userAdditionalAttributes:
+        type: array
+        items:
+          $ref: '#/definitions/AdditionalAttributesDTO'
+  AddUserInfo:
+    allOf:
+      - $ref: '#/definitions/UserInfo'
+      - type: object
+        properties:
+          password:
+            type: string
+          confirmPassword:
+            type: string
+          sendWelcomeEmail:
+            type: boolean
+  UserOnboardingDetailsDTO:
+    type: object
+    properties:
+      portalID:
+        type: integer
+        format: int32
+      portalName:
+        type: string
+      activeDate:
+        type: string
+      dueDate:
+        type: string
+  UserAdditionalPositionDTO:
+    type: object
+    properties:
+      positionNo:
+        type: string
+      positionName:
+        type: string
+      startDate:
+        type: string
+      endDate:
+        type: string
+      notes:
+        type: string
+      supervisorEmail:
+        type: string
+  AdditionalAttributesDTO:
+    type: object
+    properties:
+      tabId:
+        type: integer
+        format: int32
+      tabName:
+        type: string
+      attributeId:
+        type: integer
+        format: int32
+      attributeName:
+        type: string
+      attributeValue:
+        type: string
+      attributeDataType:
+        type: string
+  UserAdditionalAttributesDTO:
+    type: object
+    properties:
+      userId:
+        type: string
+        format: uuid
+      additionalAttributes:
+        type: array
+        items:
+          $ref: '#/definitions/AdditionalAttributesDTO'
+  UserDetailsV2Response:
+    type: object
+    properties:
+      status:
+        type: string
+      errors:
+        type: array
+        items:
+          $ref: "#/definitions/UserDetailsV2ApiError"
+      data:
+        $ref: '#/definitions/UserInfo'
+  UserDetailsV2ApiError:
+    type: object
+    properties:
+      field:
+        type: string
+      message:
+        type: string
+  UserSyncDTOs:
+    type: array
+    items:
+      $ref: '#/definitions/UserSyncDTO'
+  UserSyncDTO:
+    type: object
+    properties:
+      title:
+        type: string
+      firstName:
+        type: string
+      middleName:
+        type: string
+      surname:
+        type: string
+      lastName:
+        type: string
+      preferredName:
+        type: string
+      email:
+        type: string
+      additionalEmail:
+        type: string
+      dob:
+        type: string
+      gender:
+        type: string
+      mobilePhone:
+        type: string
+      workPhone:
+        type: string
+      telephone:
+        type: string
+      home_AddressLine1:
+        type: string
+      home_AddressLine2:
+        type: string
+      home_City:
+        type: string
+      home_Country:
+        type: string
+      home_PostCode:
+        type: string
+      home_State:
+        type: string
+      postal_AddressLine1:
+        type: string
+      postal_AddressLine2:
+        type: string
+      postal_City:
+        type: string
+      postal_Country:
+        type: string
+      postal_PostCode:
+        type: string
+      postal_State:
+        type: string
+      employmentStartDate:
+        type: string
+      employmentEndDate:
+        type: string
+      reasonOfTermination:
+        type: string
+      councilNetworkLogin:
+        type: string
+      payrollNo:
+        type: string
+      positionNo:
+        type: string
+      positionName:
+        type: string
+      positionStartDate:
+        type: string
+      positionEndDate:
+        type: string
+      positionDivision:
+        type: string
+      positionUnit:
+        type: string
+      positionSection:
+        type: string
+      positionTeam:
+        type: string
+      positionSupervisor:
+        type: string
+      positionIncumbentsAssigned:
+        type: string
+      supervisor:
+        type: string
+      supervisorPayrollNo:
+        type: string
+      divisionCode:
+        type: string
+      divisionName:
+        type: string
+      unitCode:
+        type: string
+      unitName:
+        type: string
+      sectionCode:
+        type: string
+      sectionName:
+        type: string
+      empType:
+        type: string
+      team:
+        type: string
+      emergencyContact1_Name:
+        type: string
+      emergencyContact1_Relationship:
+        type: string
+      emergencyContact1_AddressLine1:
+        type: string
+      emergencyContact1_AddressLine2:
+        type: string
+      emergencyContact1_City:
+        type: string
+      emergencyContact1_State:
+        type: string
+      emergencyContact1_PostCode:
+        type: string
+      emergencyContact1_Country:
+        type: string
+      emergencyContact1_Mobile:
+        type: string
+      emergencyContact1_WorkPhone:
+        type: string
+      emergencyContact1_Email:
+        type: string
+      emergencyContact1_Telephone:
+        type: string
+      emergencyContact2_Name:
+        type: string
+      emergencyContact2_Relationship:
+        type: string
+      emergencyContact2_AddressLine1:
+        type: string
+      emergencyContact2_AddressLine2:
+        type: string
+      emergencyContact2_City:
+        type: string
+      emergencyContact2_State:
+        type: string
+      emergencyContact2_PostCode:
+        type: string
+      emergencyContact2_Country:
+        type: string
+      emergencyContact2_Mobile:
+        type: string
+      emergencyContact2_WorkPhone:
+        type: string
+      emergencyContact2_Email:
+        type: string
+      emergencyContact2_Telephone:
+        type: string
+      isActive:
+        type: string
+      externalUserId:
+        type: string
+      integrationName:
+        type: string
+      siteName:
+        type: string
+      employmentType:
+        type: string
+      permissions:
+        type: array
+        items:
+          type: string
+      additionalAttributes:
+        type: array
+        items:
+          $ref: '#/definitions/AdditionalAttributesDTO'
+      additionalPositions:
+        type: string
+      additionalUserPositions:
+        type: array
+        items:
+          $ref: '#/definitions/AdditionalPositionsDTO'
+      roles:
+        type: string
+  AdditionalPositionsDTO:
+    type: object
+    properties:
+      positionNo:
+        type: string
+      positionName:
+        type: string
+      positionStartDate:
+        type: string
+      positionEndDate:
+        type: string
+      positionDivision:
+        type: string
+      positionUnit:
+        type: string
+      positionSection:
+        type: string
+      positionSupervisor:
+        type: string
+      positionTeam:
+        type: string
+      positionIncumbentsAssigned:
+        type: string
+  StoreSyncData:
+    type: object
+    properties:
+      jsonStringData:
+        type: string
+      folder:
+        type: string
+  AddIntegrationSyncToPayrollHistory:
+    type: object
+    properties:
+      integrationName:
+        type: string
+      jsonFile:
+        type: string
+      userId:
+        type: string
+        format: uuid
+      source:
+        type: string
+      externalUserSyncStatuses:
+        type: array
+        items:
+          $ref: '#/definitions/ExternalUserSyncStatusDTO'
+  ExternalUserSyncStatusDTO:
+    type: object
+    properties:
+      userId:
+        type: string
+      status:
+        type: string
+      syncCategory:
+        type: string
+      message:
+        type: string
+      integrationUserId:
+        type: string
+      integrationName:
+        type: string
+      objectHash:
+        type: string
+      details:
+        type: array
+        items:
+          $ref: '#/definitions/ExternalUserSyncStatusDetailDTO'
+  ExternalUserSyncStatusDetailDTO:
+    type: object
+    properties:
+      status:
+        type: string
+      syncCategory:
+        type: string
+      key:
+        type: string
+      objectHash:
+        type: string
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
