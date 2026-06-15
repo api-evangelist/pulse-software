@@ -1,0 +1,733 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pulse Public API",
+    "version": "1.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Issue JWT Bearer Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/pulse/jwt"
+          },
+          "docs": "Issues a JSON Web Token for authentication with a 60 minute expiry. If requested using User API Key, token will be granted all role privileges of the User. If requested using Application API Key, no role privileges will be granted."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "User Details API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve user details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/security/users/:value",
+            "params": [
+              {
+                "name": "value",
+                "value": "",
+                "type": "path",
+                "description": "UserID, Username or Email of the desired user."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of users matching a provided user identifier. Includes an 'active' flag which indicates whether or not a user is active."
+        },
+        {
+          "info": {
+            "name": "Retrieve a complete list of users in Pulse",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/security/users"
+          },
+          "docs": "Returns a list of all users in Pulse (including inactive users). Includes an 'active' flag which indicates whether or not a user is active."
+        },
+        {
+          "info": {
+            "name": "Add a new user to Pulse",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/security/users"
+          },
+          "docs": "Notifications can be enabled for this endpoint. Contact Pulse support at support@pulsesoftware.com to enable notifications via the UserSyncEnableNotification config."
+        },
+        {
+          "info": {
+            "name": "Replaces an existing user in Pulse or creates a user if the specified user does not exist.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/security/users"
+          },
+          "docs": "Notifications can be enabled for this endpoint. Contact Pulse support at support@pulsesoftware.com to enable notifications via the UserSyncEnableNotification config."
+        },
+        {
+          "info": {
+            "name": "Delete a user from Pulse",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/security/users"
+          },
+          "docs": "Deletes a user from Pulse using the given userId or email"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Learning API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve training history records verified in the last specified number of hours",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/training/traininghistoryrecord/:hours",
+            "params": [
+              {
+                "name": "hours",
+                "value": "",
+                "type": "path",
+                "description": "The max number of hours to look back when retrieving training records based on their date of verification"
+              }
+            ]
+          },
+          "docs": "Retrieve training history records verified in the last specified number of hours (defaults to 12 hours if no value is given)"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Project API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Sends Project Component BIS data to Pulse",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/projectexecutionfinancialsync"
+          },
+          "docs": "Performs a bulk upsert of BIS financial information relating to specific project codes (Project Components) at the individual project execution level.\nThis matches on existing Project Executions by Project Component, which have to be pre-filled in the Projects Module on the Pulse website.\nSome preliminary setup is required before this API endpoint can be consumed. Additionally, only Admin users in the Projects Module will be able to consume this API endpoint.\nSetup instructions:\n1. Contact Pulse"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Corporate Planning API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CPI Progress Update bulk upsert",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/prf/progressupdate_bulk"
+          },
+          "docs": "Performs a bulk upsert of CPI Progress Updates, matching on existing records by Reference and Year\n\n**Authorised Roles:** *PRFAdmin*\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Forms API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Records by Ref ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/forms/record/recordsByRef",
+            "params": [
+              {
+                "name": "refId",
+                "value": "",
+                "type": "query",
+                "description": "Ref ID"
+              },
+              {
+                "name": "submittedStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted Start Date Eg. 01/01/2023"
+              },
+              {
+                "name": "submittedEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted End Date Eg. 31/01/2023"
+              }
+            ]
+          },
+          "docs": "Retrieve Records submitted by Form ID with or without Date Range.\n\n**Authorised Roles:** *ICMUser, OnboardingFormsUser, FormsUser, RCMUser*\n"
+        },
+        {
+          "info": {
+            "name": "Records Count by Ref ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/forms/record/recordsCountByRef",
+            "params": [
+              {
+                "name": "refId",
+                "value": "",
+                "type": "query",
+                "description": "Ref ID"
+              },
+              {
+                "name": "submittedStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted Start Date Eg. 01/01/2023"
+              },
+              {
+                "name": "submittedEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted End Date Eg. 31/01/2023"
+              }
+            ]
+          },
+          "docs": "Retrieve Records submitted by Form ID with or without Date Range.\n\n**Authorised Roles:** *ICMUser, OnboardingFormsUser, FormsUser, RCMUser*\n"
+        },
+        {
+          "info": {
+            "name": "Flatten Records by Ref ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/forms/record/flattenRecordsByRef",
+            "params": [
+              {
+                "name": "refId",
+                "value": "",
+                "type": "query",
+                "description": "Ref ID"
+              },
+              {
+                "name": "submittedStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted Start Date Eg. 01/01/2023"
+              },
+              {
+                "name": "submittedEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted End Date Eg. 31/01/2023"
+              }
+            ]
+          },
+          "docs": "Retrieve Flatten Records submitted by Form ID with or without Date Range.\n\n**Authorised Roles:** *ICMUser, OnboardingFormsUser, FormsUser, RCMUser*\n"
+        },
+        {
+          "info": {
+            "name": "Records by Form ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/forms/record/recordsByFormId",
+            "params": [
+              {
+                "name": "formId",
+                "value": "",
+                "type": "query",
+                "description": "Form ID"
+              },
+              {
+                "name": "submittedStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted Start Date Eg. 01/01/2023"
+              },
+              {
+                "name": "submittedEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted End Date Eg. 31/01/2023"
+              }
+            ]
+          },
+          "docs": "Retrieve Records submitted by Form ID with or without Date Range.\n\n**Authorised Roles:** *ICMUser, OnboardingFormsUser, FormsUser, RCMUser*\n"
+        },
+        {
+          "info": {
+            "name": "Records by Form ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/forms/record/recordsCountByFormId",
+            "params": [
+              {
+                "name": "formId",
+                "value": "",
+                "type": "query",
+                "description": "Form ID"
+              },
+              {
+                "name": "submittedStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted Start Date Eg. 01/01/2023"
+              },
+              {
+                "name": "submittedEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted End Date Eg. 31/01/2023"
+              }
+            ]
+          },
+          "docs": "Retrieve Records submitted by Form ID with or without Date Range.\n\n**Authorised Roles:** *ICMUser, OnboardingFormsUser, FormsUser, RCMUser*\n"
+        },
+        {
+          "info": {
+            "name": "Records by Form ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/forms/record/flattenRecordsByFormId",
+            "params": [
+              {
+                "name": "formId",
+                "value": "",
+                "type": "query",
+                "description": "Form ID"
+              },
+              {
+                "name": "submittedStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted Start Date Eg. 01/01/2023"
+              },
+              {
+                "name": "submittedEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted End Date Eg. 31/01/2023"
+              }
+            ]
+          },
+          "docs": "Retrieve Flatten Records submitted by Form ID with or without Date Range.\n\n**Authorised Roles:** *ICMUser, OnboardingFormsUser, FormsUser, RCMUser*\n"
+        },
+        {
+          "info": {
+            "name": "Flatten Records by Tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/forms/record/flattenRecordsByTag",
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Tag"
+              },
+              {
+                "name": "submittedStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted Start Date Eg. 01/01/2023"
+              },
+              {
+                "name": "submittedEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted End Date Eg. 31/01/2023"
+              }
+            ]
+          },
+          "docs": "Retrieve Flatten Records submitted by Tag with or without Date Range\n\n**Authorised Roles:** *PRFAdmin*\n"
+        },
+        {
+          "info": {
+            "name": "Records by Tag and Fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/forms/record/flattenRecordsByTag",
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Tag"
+              },
+              {
+                "name": "submittedStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted Start Date Eg. 01/01/2023"
+              },
+              {
+                "name": "submittedEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted End Date Eg. 31/01/2023"
+              }
+            ]
+          },
+          "docs": "Retrieve Records submitted by Tag with or without Date Range filter by Fields\n\n**Authorised Roles:** *PRFAdmin*\n"
+        },
+        {
+          "info": {
+            "name": "Records Count by Tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/forms/record/recordsCountByTag",
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Tag"
+              },
+              {
+                "name": "submittedStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted Start Date Eg. 01/01/2023"
+              },
+              {
+                "name": "submittedEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted End Date Eg. 31/01/2023"
+              }
+            ]
+          },
+          "docs": "Retrieve Records Count submitted by Tag with or without Date Range\n\n**Authorised Roles:** *PRFAdmin*\n"
+        },
+        {
+          "info": {
+            "name": "Records by Tag and Fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/forms/record/recordsCountByTag",
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Tag"
+              },
+              {
+                "name": "submittedStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted Start Date Eg. 01/01/2023"
+              },
+              {
+                "name": "submittedEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted End Date Eg. 31/01/2023"
+              }
+            ]
+          },
+          "docs": "Retrieve Records submitted by Tag with or without Date Range filter by Fields\n\n**Authorised Roles:** *PRFAdmin*\n"
+        },
+        {
+          "info": {
+            "name": "Records by Tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/forms/record/recordsByTag",
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Tag"
+              },
+              {
+                "name": "submittedStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted Start Date Eg. 01/01/2023"
+              },
+              {
+                "name": "submittedEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted End Date Eg. 31/01/2023"
+              }
+            ]
+          },
+          "docs": "Retrieve Records submitted by Tag with or without Date Range\n\n**Authorised Roles:** *PRFAdmin*\n"
+        },
+        {
+          "info": {
+            "name": "Records by Tag and Fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/forms/record/recordsByTag",
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Tag"
+              },
+              {
+                "name": "submittedStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted Start Date Eg. 01/01/2023"
+              },
+              {
+                "name": "submittedEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted End Date Eg. 31/01/2023"
+              }
+            ]
+          },
+          "docs": "Retrieve Records submitted by Tag with or without Date Range filter by Fields\n\n**Authorised Roles:** *PRFAdmin*\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Recruitment API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Jobs records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/rcm/jobs/jobsV2",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "internalOnly",
+                "value": "",
+                "type": "query",
+                "description": "Returns only Recruitment Jobs that are marked as Internal"
+              }
+            ]
+          },
+          "docs": "Retrieve Recruitment Job Records secured by Private API key\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "User Details API v2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get user detail(s) in Pulse",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/security/UserDetails",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Email address"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "query",
+                "description": "Username"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query",
+                "description": "User Id"
+              }
+            ]
+          },
+          "docs": "Get user detail(s) in Pulse including their user additional attributes.\n- If no query parameters are provided, returns all users.\n- If `email`, `username`, or `userId` is provided, returns the matching user.\n**Authorised Roles:** *PulseSecurityUser*\n"
+        },
+        {
+          "info": {
+            "name": "Update user in Pulse",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/security/UserDetails",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Update user in Pulse based on userId provided in request body\n\n**Authorised Roles:** *PulseSecurityUser*\n"
+        },
+        {
+          "info": {
+            "name": "Update user in Pulse",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/security/UserDetails",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Update user in Pulse based on userId provided in request body\n\n**Authorised Roles:** *PulseSecurityUser*\n"
+        },
+        {
+          "info": {
+            "name": "Update user in Pulse",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/security/UserDetails",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Update user in Pulse based on userId provided in request body\n\n**Authorised Roles:** *PulseSecurityUser*\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sync API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update user in Pulse",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/security/PatchUserSync",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Update user in Pulse based on userId provided in request body\n"
+        },
+        {
+          "info": {
+            "name": "Store integration sync data in Pulse for history purpose",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/security/IntegrationSyncData",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Store integration sync data in Pulse for history purpose\n"
+        },
+        {
+          "info": {
+            "name": "Add sync history in Pulse",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/security/IntegrationSyncToPayrollLog",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Add sync history in Pulse\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
