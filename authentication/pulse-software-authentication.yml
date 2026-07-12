@@ -1,0 +1,21 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/pulse-software-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: ApiKey
+  type: apiKey
+  in: header
+  parameter: x-Api-Key
+  sources:
+  - openapi/pulse-software-openapi.yml
+- name: BearerJWT
+  type: apiKey
+  in: header
+  parameter: Authorisation
+  sources:
+  - openapi/pulse-software-openapi.yml

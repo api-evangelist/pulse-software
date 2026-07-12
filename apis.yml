@@ -16,6 +16,10 @@ url: >-
   https://raw.githubusercontent.com/api-evangelist/pulse-software/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 common:
+  - type: DomainSecurity
+    url: security/pulse-software-domain-security.yml
+  - type: Authentication
+    url: authentication/pulse-software-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/pulsesoftware
 apis:
