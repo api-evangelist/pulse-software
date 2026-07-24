@@ -1,0 +1,172 @@
+swagger: '2.0'
+info:
+  title: Pulse Public Authentication Corporate Planning API API
+  version: 1.0.1
+  description: "The Pulse API is targeted towards developers looking to automate tasks in Pulse. \n\n# Authentication\nAll endpoints in Pulse require authentication.  Legacy endpoints require only a Private API Key, while all new endpoints incorporate JSON Web Tokens.  \n\n**API Key**\nTo consume a Pulse endpoint using API Key authentication, :\n  * Contact Pulse support at support@pulsesoftware.com to enable the Pulse Public API and issue your API key.\n  * Pass the API key in the **'x-Api-Key'** header with each request.\n\nNote: It is recommended to use a User Private API key where possible, rather than the Application Private Key. When using a User API key, functionality will be restricted based on the role of the User for which the API key was generated.  See API endpoint documentation for authorised roles. \n\n**JSON Web Token (JWT)**\nTo consume a Pulse endpoint using JWT authentication:\n  * Contact Pulse support at support@pulsesoftware.com to enable the Pulse Public API and issue your API key.\n  * Request a bearer token from /pulse/jwt, passing the API key in the **'x-Api-Key'** header with the request.\n  * Pass the token issued in the **'Authorization'** header of all requests as **'bearer [token]'**\n\n**Note** Tokens will expire 60 minutes after being issued, at which point your application will need to request a new token.\n\n# Requests\nThe Pulse API follows REST principles.  Data resources are accessed via standard HTTPS requests in UTF-8 format to an API endpoint. Where possible, Web API uses appropriate HTTP verbs for each action.\nHTTP Verbs:\n  * **GET** Retrieves resources\n  * **POST** Creates resources\n  * **PUT** Changes and/or replaces resources or collections\n  * **DELETE** Deletes resources\n\nThe Pulse API accepts the following ISO-8601 formats for date strings:\n  * Date, Time, Timezone: e.g. \"2021-06-02T21:39:18+00:00\"\n  * Date, Time: e.g. \"2021-06-02T21:39:18Z\"\n  * Date: e.g. \"2021-06-02\"\n\n# Responses\nPulse API returns all response data as a JSON object.  \n\n# Response Status Codes\nPulse API uses the following status codes:\n  * **200** OK - Request succeeded.  Result provided in response body.\n  * **400** Bad Request - Malformed syntax.  See message body for information.\n  * **401** Unauthorised - Missing authentication (API Key or JWT).\n  * **403** Forbidden - API user is not authorised to access requested resource.\n  * **404** Not Found - Request resource does not exist.\n\n# Support\nContact support@pulsesoftware.com for any queries or issues related to this API\n"
+  termsOfService: http://www.apache.org/licenses/LICENSE-2.0.html
+  contact:
+    email: support@pulsesoftware.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+host: '*.pulsesoftware.com'
+basePath: /webservices/api
+schemes:
+- https
+- http
+tags:
+- name: Corporate Planning API
+  description: API for managing CPR data in Pulse
+paths:
+  /prf/progressupdate_bulk:
+    post:
+      security:
+      - BearerJWT: []
+      tags:
+      - Corporate Planning API
+      summary: CPI Progress Update bulk upsert
+      description: 'Performs a bulk upsert of CPI Progress Updates, matching on existing records by Reference and Year
+
+
+        **Authorised Roles:** *PRFAdmin*
+
+        '
+      operationId: progressUpdateUpsertBulk
+      consumes:
+      - appliation/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Representation of CPI Progress Updates to be upserted
+        required: true
+        schema:
+          $ref: '#/definitions/ProgressUpdate_Bulk'
+      responses:
+        200:
+          description: OK. Request completed successfully.
+        401:
+          description: Missing JWT Bearer token in the Authorization header or the given JWT token is invalid.
+        403:
+          description: The user corresponding to the given JWT token does not have access to this module.
+        422:
+          description: Submitted data failed validation, see errors object in response for details.
+          schema:
+            $ref: '#/definitions/PulseApiErrorResponse'
+definitions:
+  PulseApiError:
+    type: object
+    properties:
+      code:
+        type: string
+        example: PRF/ProgressUpdate/Reference_MissingReference
+      detail:
+        type: string
+        example: Mandatory field Reference was not supplied.
+      source:
+        type: string
+        example: /data/0/uniqueReference
+  PulseApiErrorResponse:
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: '#/definitions/PulseApiError'
+        example:
+        - code: PRF/ProgressUpdate/Reference_MissingReference
+          detail: Mandatory field Reference was not supplied.
+          source: /data/0/uniqueReference
+  ProgressUpdate_BulkData:
+    type: object
+    required:
+    - uniqueReference
+    - prfYear
+    - periodType
+    title: ProgressUpdateObject
+    description: "Object representing a request to upsert a CPI Progress Update.\n  \n"
+    properties:
+      uniqueReference:
+        type: string
+        example: K-2S0
+        description: The unique reference code assigned to the CPI in the Pulse UI.
+      prfYear:
+        type: integer
+        example: 2020
+        description: The year of the CPI targeted for Progress upsert.
+      actualResult:
+        type: string
+        example: '55.4'
+        description: For CPIs *without* calculation steps, Actual Result value must be provided. For CPIs *with* calculation steps, Actual Result msut not be present
+      actualNumerator:
+        type: number
+        example: '1.4'
+        description: For CPIs *with* calculation steps, Actual Numerator must be provided.  For CPIs *without* calculation steps Actual Numerator must not be present.
+      actualDenominator:
+        type: number
+        example: '4'
+        description: For CPIs *with* calculation steps, Actual Denominator must be provided.  For CPIs *without* calculation steps Actual Denominator must not be present.
+      periodType:
+        type: string
+        example: M
+        pattern: (M|Q|H|Y)
+        description: "Period Type must match the CPI frequency configured in pulse.  \nPossible Values:\n* 'M' - Monthly\n* 'Q' - Quarterly\n* 'H' - Half Yearly\n* 'Y' - Yearly\n"
+      month:
+        type: string
+        example: Jan
+        pattern: (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)
+        description: "For Monthly CPIs, a Month value may be provided.  For non-monthly CPIs, Month must not be provided.\nIf no Month value is provided, Month will be set to the current Month as configured in the Reporting Year and Period admin page.  \n"
+      quarter:
+        type: string
+        example: Q1
+        pattern: Q[1-4]
+        description: "For Quarterly CPIs, a Quarter value may be provided.  For non-quarterly CPIs, Quarter must not be provided.\nIf no Quarter value is provided, Quarter will be set to the current Quarter as configured in the Reporting Year and Period admin page.  \n"
+      halfYear:
+        type: string
+        example: H1
+        pattern: H[1-2]
+        description: "For Half Yearly CPIs, a Half Year value may be provided.  For non-halfyear CPIs, HalfYear must not be provided.\nIf no Half Year value is provided, Half Year will be set to the current Half Year as configured in the Reporting Year and Period admin page.  \n"
+      year:
+        type: string
+        example: '2020'
+        pattern: '[0-9]{4}'
+        description: "For Yearly CPIs, a Year value may be provided.  For non-monthly CPIs, Year must not be provided.\nIf no Year value is provided, Year will be set to the current Year as configured in the Reporting Year and Period admin page.  \n"
+      overwrite:
+        type: boolean
+        example: true
+        description: "Flag required to perform updates of existing Progress Updates.  When this flag is set to true, Pulse will update existing Progress Updates with the data submitted via API.  \nIf this flag is set to false, attemtping to update any Progress Update for which there is existing data will result in an error. \n"
+  ProgressUpdate_Bulk:
+    type: object
+    required:
+    - data
+    title: ProgressUpdateBulkObject
+    description: Request object for Progress Update bulk upserts.
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/ProgressUpdate_BulkData'
+        example:
+        - uniqueReference: K-2S0
+          prfYear: 2020
+          actualResult: '55.4'
+          periodType: Q
+          quarter: Q2
+          overwrite: true
+        - uniqueReference: IG-88
+          prfYear: 2020
+          actualNumerator: '2'
+          actualDenominator: '3'
+          periodType: M
+securityDefinitions:
+  ApiKey:
+    type: apiKey
+    name: x-Api-Key
+    in: header
+  BearerJWT:
+    type: apiKey
+    name: Authorisation
+    in: header
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io

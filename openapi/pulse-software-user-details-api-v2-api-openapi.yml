@@ -1,0 +1,457 @@
+swagger: '2.0'
+info:
+  title: Pulse Public Authentication User Details API v2 API
+  version: 1.0.1
+  description: "The Pulse API is targeted towards developers looking to automate tasks in Pulse. \n\n# Authentication\nAll endpoints in Pulse require authentication.  Legacy endpoints require only a Private API Key, while all new endpoints incorporate JSON Web Tokens.  \n\n**API Key**\nTo consume a Pulse endpoint using API Key authentication, :\n  * Contact Pulse support at support@pulsesoftware.com to enable the Pulse Public API and issue your API key.\n  * Pass the API key in the **'x-Api-Key'** header with each request.\n\nNote: It is recommended to use a User Private API key where possible, rather than the Application Private Key. When using a User API key, functionality will be restricted based on the role of the User for which the API key was generated.  See API endpoint documentation for authorised roles. \n\n**JSON Web Token (JWT)**\nTo consume a Pulse endpoint using JWT authentication:\n  * Contact Pulse support at support@pulsesoftware.com to enable the Pulse Public API and issue your API key.\n  * Request a bearer token from /pulse/jwt, passing the API key in the **'x-Api-Key'** header with the request.\n  * Pass the token issued in the **'Authorization'** header of all requests as **'bearer [token]'**\n\n**Note** Tokens will expire 60 minutes after being issued, at which point your application will need to request a new token.\n\n# Requests\nThe Pulse API follows REST principles.  Data resources are accessed via standard HTTPS requests in UTF-8 format to an API endpoint. Where possible, Web API uses appropriate HTTP verbs for each action.\nHTTP Verbs:\n  * **GET** Retrieves resources\n  * **POST** Creates resources\n  * **PUT** Changes and/or replaces resources or collections\n  * **DELETE** Deletes resources\n\nThe Pulse API accepts the following ISO-8601 formats for date strings:\n  * Date, Time, Timezone: e.g. \"2021-06-02T21:39:18+00:00\"\n  * Date, Time: e.g. \"2021-06-02T21:39:18Z\"\n  * Date: e.g. \"2021-06-02\"\n\n# Responses\nPulse API returns all response data as a JSON object.  \n\n# Response Status Codes\nPulse API uses the following status codes:\n  * **200** OK - Request succeeded.  Result provided in response body.\n  * **400** Bad Request - Malformed syntax.  See message body for information.\n  * **401** Unauthorised - Missing authentication (API Key or JWT).\n  * **403** Forbidden - API user is not authorised to access requested resource.\n  * **404** Not Found - Request resource does not exist.\n\n# Support\nContact support@pulsesoftware.com for any queries or issues related to this API\n"
+  termsOfService: http://www.apache.org/licenses/LICENSE-2.0.html
+  contact:
+    email: support@pulsesoftware.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+host: '*.pulsesoftware.com'
+basePath: /webservices/api
+schemes:
+- https
+- http
+tags:
+- name: User Details API v2
+  description: API for managing user details in Pulse including additional attributes
+paths:
+  /security/UserDetails:
+    get:
+      security:
+      - BearerJWT: []
+      tags:
+      - User Details API v2
+      summary: Get user detail(s) in Pulse
+      description: 'Get user detail(s) in Pulse including their user additional attributes.
+
+        - If no query parameters are provided, returns all users.
+
+        - If `email`, `username`, or `userId` is provided, returns the matching user.
+
+        **Authorised Roles:** *PulseSecurityUser*
+
+        '
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: x-api-key
+        description: API key
+        required: true
+        type: string
+      - in: query
+        name: email
+        description: Email address
+        required: false
+        type: string
+      - in: query
+        name: username
+        description: Username
+        required: false
+        type: string
+      - in: query
+        name: userId
+        description: User Id
+        required: false
+        type: string
+      responses:
+        200:
+          description: 'OK. Request completed successfully.
+
+            - If no query parameters are provided, returns all users as an array.
+
+            - If a query parameter is provided, returns an array with a single user or empty array if not found.
+
+            '
+          schema:
+            $ref: '#/definitions/UserInfos'
+        401:
+          description: Missing JWT Bearer token in the Authorization header or the given JWT token is invalid.
+        403:
+          description: The user corresponding to the given JWT token does not have access to this module.
+        404:
+          description: User not found by specified identifier
+    post:
+      security:
+      - BearerJWT: []
+      tags:
+      - User Details API v2
+      summary: Update user in Pulse
+      description: 'Update user in Pulse based on userId provided in request body
+
+
+        **Authorised Roles:** *PulseSecurityUser*
+
+        '
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: x-api-key
+        description: API key
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: User detail
+        required: true
+        schema:
+          $ref: '#/definitions/AddUserInfo'
+      responses:
+        200:
+          description: OK. Request completed successfully.
+          schema:
+            $ref: '#/definitions/UserDetailsV2Response'
+        400:
+          description: Invalid request body
+          schema:
+            $ref: '#/definitions/UserDetailsV2Response'
+        401:
+          description: Missing JWT Bearer token in the Authorization header or the given JWT token is invalid.
+        403:
+          description: The user corresponding to the given JWT token does not have access to this module.
+    put:
+      security:
+      - BearerJWT: []
+      tags:
+      - User Details API v2
+      summary: Update user in Pulse
+      description: 'Update user in Pulse based on userId provided in request body
+
+
+        **Authorised Roles:** *PulseSecurityUser*
+
+        '
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: x-api-key
+        description: API key
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: User detail
+        required: true
+        schema:
+          $ref: '#/definitions/UserInfo'
+      responses:
+        200:
+          description: OK. Request completed successfully.
+          schema:
+            $ref: '#/definitions/UserDetailsV2Response'
+        400:
+          description: Invalid request body
+          schema:
+            $ref: '#/definitions/UserDetailsV2Response'
+        401:
+          description: Missing JWT Bearer token in the Authorization header or the given JWT token is invalid.
+        403:
+          description: The user corresponding to the given JWT token does not have access to this module.
+        404:
+          description: User not found by specified user id
+    patch:
+      security:
+      - BearerJWT: []
+      tags:
+      - User Details API v2
+      summary: Update user in Pulse
+      description: 'Update user in Pulse based on userId provided in request body
+
+
+        **Authorised Roles:** *PulseSecurityUser*
+
+        '
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: x-api-key
+        description: API key
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: User detail
+        required: true
+        schema:
+          $ref: '#/definitions/UserInfo'
+      responses:
+        200:
+          description: OK. Request completed successfully.
+          schema:
+            $ref: '#/definitions/UserDetailsV2Response'
+        400:
+          description: Invalid request body
+          schema:
+            $ref: '#/definitions/UserDetailsV2Response'
+        401:
+          description: Missing JWT Bearer token in the Authorization header or the given JWT token is invalid.
+        403:
+          description: The user corresponding to the given JWT token does not have access to this module.
+        404:
+          description: User not found by specified user id
+definitions:
+  AddUserInfo:
+    allOf:
+    - $ref: '#/definitions/UserInfo'
+    - type: object
+      properties:
+        password:
+          type: string
+        confirmPassword:
+          type: string
+        sendWelcomeEmail:
+          type: boolean
+  UserDetailsV2ApiError:
+    type: object
+    properties:
+      field:
+        type: string
+      message:
+        type: string
+  UserOnboardingDetailsDTO:
+    type: object
+    properties:
+      portalID:
+        type: integer
+        format: int32
+      portalName:
+        type: string
+      activeDate:
+        type: string
+      dueDate:
+        type: string
+  AdditionalAttributesDTO:
+    type: object
+    properties:
+      tabId:
+        type: integer
+        format: int32
+      tabName:
+        type: string
+      attributeId:
+        type: integer
+        format: int32
+      attributeName:
+        type: string
+      attributeValue:
+        type: string
+      attributeDataType:
+        type: string
+  UserInfos:
+    type: array
+    items:
+      $ref: '#/definitions/UserInfo'
+  UserInfo:
+    type: object
+    properties:
+      active:
+        type: boolean
+      userId:
+        type: string
+        format: uuid
+      title:
+        type: string
+      firstName:
+        type: string
+      middleName:
+        type: string
+      lastName:
+        type: string
+      preferredName:
+        type: string
+      dateOfBirth:
+        type: string
+      gender:
+        type: string
+      mobilePhone:
+        type: string
+      workPhone:
+        type: string
+      telephone:
+        type: string
+      primaryEmail:
+        type: string
+      additionalEmail:
+        type: string
+      home_AddressLine1:
+        type: string
+      home_AddressLine2:
+        type: string
+      home_City:
+        type: string
+      home_Country:
+        type: string
+      home_PostCode:
+        type: string
+      home_State:
+        type: string
+      postal_AddressLine1:
+        type: string
+      postal_AddressLine2:
+        type: string
+      postal_City:
+        type: string
+      postal_Country:
+        type: string
+      postal_PostCode:
+        type: string
+      postal_State:
+        type: string
+      postalIsHome:
+        type: boolean
+      username:
+        type: string
+      payrollNumber:
+        type: string
+      divisionCode:
+        type: string
+      divisionName:
+        type: string
+      unitCode:
+        type: string
+      unitName:
+        type: string
+      sectionCode:
+        type: string
+      sectionName:
+        type: string
+      supervisorEmail:
+        type: string
+      teamName:
+        type: string
+      pulseRepresentativeEmail:
+        type: string
+      employmentStartDate:
+        type: string
+      employmentEndDate:
+        type: string
+      reasonOfTermination:
+        type: string
+      emergencyContact1_Name:
+        type: string
+      emergencyContact1_Relationship:
+        type: string
+      emergencyContact1_AddressLine1:
+        type: string
+      emergencyContact1_AddressLine2:
+        type: string
+      emergencyContact1_City:
+        type: string
+      emergencyContact1_State:
+        type: string
+      emergencyContact1_Country:
+        type: string
+      emergencyContact1_Postcode:
+        type: string
+      emergencyContact1_Mobile:
+        type: string
+      emergencyContact1_WorkPhone:
+        type: string
+      emergencyContact1_Telephone:
+        type: string
+      emergencyContact1_Email:
+        type: string
+      emergencyContact2_Name:
+        type: string
+      emergencyContact2_Relationship:
+        type: string
+      emergencyContact2_AddressLine1:
+        type: string
+      emergencyContact2_AddressLine2:
+        type: string
+      emergencyContact2_City:
+        type: string
+      emergencyContact2_State:
+        type: string
+      emergencyContact2_Country:
+        type: string
+      emergencyContact2_Postcode:
+        type: string
+      emergencyContact2_Mobile:
+        type: string
+      emergencyContact2_WorkPhone:
+        type: string
+      emergencyContact2_Telephone:
+        type: string
+      emergencyContact2_Email:
+        type: string
+      primaryPositionNumber:
+        type: string
+      primaryPositionName:
+        type: string
+      primaryPositionStartDate:
+        type: string
+      primaryPositionEndDate:
+        type: string
+      primaryPositionNotes:
+        type: string
+      employmentType:
+        type: string
+      onboarding:
+        type: array
+        items:
+          $ref: '#/definitions/UserOnboardingDetailsDTO'
+      additionalPositions:
+        type: array
+        items:
+          $ref: '#/definitions/UserAdditionalPositionDTO'
+      roles:
+        type: array
+        items:
+          type: string
+      userAdditionalAttributes:
+        type: array
+        items:
+          $ref: '#/definitions/AdditionalAttributesDTO'
+  UserDetailsV2Response:
+    type: object
+    properties:
+      status:
+        type: string
+      errors:
+        type: array
+        items:
+          $ref: '#/definitions/UserDetailsV2ApiError'
+      data:
+        $ref: '#/definitions/UserInfo'
+  UserAdditionalPositionDTO:
+    type: object
+    properties:
+      positionNo:
+        type: string
+      positionName:
+        type: string
+      startDate:
+        type: string
+      endDate:
+        type: string
+      notes:
+        type: string
+      supervisorEmail:
+        type: string
+securityDefinitions:
+  ApiKey:
+    type: apiKey
+    name: x-Api-Key
+    in: header
+  BearerJWT:
+    type: apiKey
+    name: Authorisation
+    in: header
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
