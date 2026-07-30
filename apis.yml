@@ -3,9 +3,22 @@ name: Pulse Software
 description: >-
   The Pulse API is targeted towards developers looking to automate tasks in Pulse.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/pulse-software.png
 tags:
   - Pulse
   - Automation
@@ -25,18 +38,99 @@ common:
   - type: LinkedIn
     url: https://www.linkedin.com/company/pulsesoftware
 apis:
-  - aid: pulse-software:pulse-software
-    name: Pulse Software
-    description: >-
-      The Pulse API is targeted towards developers looking to automate tasks in Pulse.
-    humanURL: https://apidoc.pulsesoftware.com/
-    tags:
-      - Pulse
-      - Automation
-      - Developer
-    properties:
-      - type: Documentation
-        url: https://apidoc.pulsesoftware.com/
+- aid: pulse-software:pulse-software
+  name: Pulse Software
+  description: The Pulse API is targeted towards developers looking to automate tasks in Pulse.
+  humanURL: https://apidoc.pulsesoftware.com/
+  tags:
+  - Pulse
+  - Automation
+  - Developer
+  properties:
+  - type: Documentation
+    url: https://apidoc.pulsesoftware.com/
+- aid: pulse-software:pulse-software-authentication-api
+  name: Pulse Software Authentication API
+  description: Authentication for accessing Pulse Public API
+  humanURL: https://apidoc.pulsesoftware.com/
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/pulse-software-authentication-api-openapi.yml
+- aid: pulse-software:pulse-software-corporate-planning-api-api
+  name: Pulse Software Corporate Planning API API
+  description: API for managing CPR data in Pulse
+  humanURL: https://apidoc.pulsesoftware.com/
+  tags:
+  - Corporate Planning API
+  properties:
+  - type: OpenAPI
+    url: openapi/pulse-software-corporate-planning-api-api-openapi.yml
+- aid: pulse-software:pulse-software-forms-api-api
+  name: Pulse Software Forms API API
+  description: API for managing forms and records in Pulse
+  humanURL: https://apidoc.pulsesoftware.com/
+  tags:
+  - Forms API
+  properties:
+  - type: OpenAPI
+    url: openapi/pulse-software-forms-api-api-openapi.yml
+- aid: pulse-software:pulse-software-learning-api-api
+  name: Pulse Software Learning API API
+  description: API for managing learning info in Pulse
+  humanURL: https://apidoc.pulsesoftware.com/
+  tags:
+  - Learning API
+  properties:
+  - type: OpenAPI
+    url: openapi/pulse-software-learning-api-api-openapi.yml
+- aid: pulse-software:pulse-software-project-api-api
+  name: Pulse Software Project API API
+  description: API for managing project info in Pulse
+  humanURL: https://apidoc.pulsesoftware.com/
+  tags:
+  - Project API
+  properties:
+  - type: OpenAPI
+    url: openapi/pulse-software-project-api-api-openapi.yml
+- aid: pulse-software:pulse-software-recruitment-api-api
+  name: Pulse Software Recruitment API API
+  description: API for managing recruitment info in Pulse
+  humanURL: https://apidoc.pulsesoftware.com/
+  tags:
+  - Recruitment API
+  properties:
+  - type: OpenAPI
+    url: openapi/pulse-software-recruitment-api-api-openapi.yml
+- aid: pulse-software:pulse-software-sync-api-api
+  name: Pulse Software Sync API API
+  description: >-
+    API for handling synchronisation data from and/or to Pulse including for managing sync history records
+  humanURL: https://apidoc.pulsesoftware.com/
+  tags:
+  - Sync API
+  properties:
+  - type: OpenAPI
+    url: openapi/pulse-software-sync-api-api-openapi.yml
+- aid: pulse-software:pulse-software-user-details-api-api
+  name: Pulse Software User Details API API
+  description: API for managing user details in Pulse
+  humanURL: https://apidoc.pulsesoftware.com/
+  tags:
+  - User Details API
+  properties:
+  - type: OpenAPI
+    url: openapi/pulse-software-user-details-api-api-openapi.yml
+- aid: pulse-software:pulse-software-user-details-api-v2-api
+  name: Pulse Software User Details API v2 API
+  description: API for managing user details in Pulse including additional attributes
+  humanURL: https://apidoc.pulsesoftware.com/
+  tags:
+  - User Details API v2
+  properties:
+  - type: OpenAPI
+    url: openapi/pulse-software-user-details-api-v2-api-openapi.yml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
