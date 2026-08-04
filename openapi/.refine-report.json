@@ -1,0 +1,30 @@
+{
+  "provider": "pulse-software",
+  "sources": [
+    "pulse-software-authentication-api-openapi.yml",
+    "pulse-software-corporate-planning-api-api-openapi.yml",
+    "pulse-software-forms-api-api-openapi.yml",
+    "pulse-software-learning-api-api-openapi.yml",
+    "pulse-software-project-api-api-openapi.yml",
+    "pulse-software-recruitment-api-api-openapi.yml",
+    "pulse-software-sync-api-api-openapi.yml",
+    "pulse-software-user-details-api-api-openapi.yml",
+    "pulse-software-user-details-api-v2-api-openapi.yml"
+  ],
+  "outputs": [
+    "pulse-software-authentication-api-openapi.yml",
+    "pulse-software-corporate-planning-api-api-openapi.yml",
+    "pulse-software-forms-api-api-openapi.yml",
+    "pulse-software-learning-api-api-openapi.yml",
+    "pulse-software-project-api-api-openapi.yml",
+    "pulse-software-recruitment-api-api-openapi.yml",
+    "pulse-software-sync-api-api-openapi.yml",
+    "pulse-software-user-details-api-api-openapi.yml",
+    "pulse-software-user-details-api-v2-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
