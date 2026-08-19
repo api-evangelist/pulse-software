@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pulse Public Authentication User Details API v2 API",
+    "version": "1.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User Details API v2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get user detail(s) in Pulse",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/security/UserDetails",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Email address"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "query",
+                "description": "Username"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query",
+                "description": "User Id"
+              }
+            ]
+          },
+          "docs": "Get user detail(s) in Pulse including their user additional attributes.\n- If no query parameters are provided, returns all users.\n- If `email`, `username`, or `userId` is provided, returns the matching user.\n**Authorised Roles:** *PulseSecurityUser*\n"
+        },
+        {
+          "info": {
+            "name": "Update user in Pulse",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/security/UserDetails",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Update user in Pulse based on userId provided in request body\n\n**Authorised Roles:** *PulseSecurityUser*\n"
+        },
+        {
+          "info": {
+            "name": "Update user in Pulse",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/security/UserDetails",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Update user in Pulse based on userId provided in request body\n\n**Authorised Roles:** *PulseSecurityUser*\n"
+        },
+        {
+          "info": {
+            "name": "Update user in Pulse",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/security/UserDetails",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Update user in Pulse based on userId provided in request body\n\n**Authorised Roles:** *PulseSecurityUser*\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,2807 @@
+{
+  "item": [
+    {
+      "id": "92f4ea60-549a-4ab2-93d7-05d91aeb26c8",
+      "name": "Forms API",
+      "description": {
+        "content": "API for managing forms and records in Pulse",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7528c651-40fb-426e-8a3b-c83cfcea2b52",
+          "name": "Records by Ref ID",
+          "request": {
+            "name": "Records by Ref ID",
+            "description": {
+              "content": "Retrieve Records submitted by Form ID with or without Date Range.\n\n**Authorised Roles:** *ICMUser, OnboardingFormsUser, FormsUser, RCMUser*\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "forms",
+                "record",
+                "recordsByRef"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "refId",
+                  "value": "<string>",
+                  "description": "(Required) Ref ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "submittedStartDate",
+                  "value": "<string>",
+                  "description": "Submitted Start Date Eg. 01/01/2023"
+                },
+                {
+                  "disabled": false,
+                  "key": "submittedEndDate",
+                  "value": "<string>",
+                  "description": "Submitted End Date Eg. 31/01/2023"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorisation"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "986c1c7c-3736-4c41-8506-b16d5b84b687",
+              "name": "OK. Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "recordsByRef"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "refId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5192e5b2-8cda-4669-b473-42f10c2a29ce",
+              "name": "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "recordsByRef"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "refId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "42c9a935-4fa6-49f9-a6f3-38c9f762ccac",
+              "name": "The user corresponding to the given JWT token does not have access to this module.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "recordsByRef"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "refId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1953473a-3b43-413b-add8-6065c741cb4a",
+          "name": "Records Count by Ref ID",
+          "request": {
+            "name": "Records Count by Ref ID",
+            "description": {
+              "content": "Retrieve Records submitted by Form ID with or without Date Range.\n\n**Authorised Roles:** *ICMUser, OnboardingFormsUser, FormsUser, RCMUser*\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "forms",
+                "record",
+                "recordsCountByRef"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "refId",
+                  "value": "<string>",
+                  "description": "(Required) Ref ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "submittedStartDate",
+                  "value": "<string>",
+                  "description": "Submitted Start Date Eg. 01/01/2023"
+                },
+                {
+                  "disabled": false,
+                  "key": "submittedEndDate",
+                  "value": "<string>",
+                  "description": "Submitted End Date Eg. 31/01/2023"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorisation"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7aad67a2-62b9-4559-a43d-b51348b58da4",
+              "name": "OK. Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "recordsCountByRef"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "refId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6b70b21f-900d-4c04-b585-be179b352a7b",
+              "name": "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "recordsCountByRef"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "refId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "02b3fb90-6d94-4ef1-9bc7-cc8ef3e4d115",
+              "name": "The user corresponding to the given JWT token does not have access to this module.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "recordsCountByRef"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "refId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e44e99db-d63d-43ec-aca5-d1adeae57179",
+          "name": "Flatten Records by Ref ID",
+          "request": {
+            "name": "Flatten Records by Ref ID",
+            "description": {
+              "content": "Retrieve Flatten Records submitted by Form ID with or without Date Range.\n\n**Authorised Roles:** *ICMUser, OnboardingFormsUser, FormsUser, RCMUser*\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "forms",
+                "record",
+                "flattenRecordsByRef"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "refId",
+                  "value": "<string>",
+                  "description": "Ref ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "submittedStartDate",
+                  "value": "<string>",
+                  "description": "Submitted Start Date Eg. 01/01/2023"
+                },
+                {
+                  "disabled": false,
+                  "key": "submittedEndDate",
+                  "value": "<string>",
+                  "description": "Submitted End Date Eg. 31/01/2023"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorisation"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d4b79359-1403-4294-9792-6ffefff5b0d5",
+              "name": "OK. Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "flattenRecordsByRef"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "refId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a4958358-5aca-426c-bb82-0b8c9ea5f3b5",
+              "name": "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "flattenRecordsByRef"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "refId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "444103d2-421f-4aae-8d24-4c1424890f97",
+              "name": "The user corresponding to the given JWT token does not have access to this module.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "flattenRecordsByRef"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "refId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d695c01-7ef9-427c-ac42-5470fb2b7455",
+          "name": "Records by Form ID",
+          "request": {
+            "name": "Records by Form ID",
+            "description": {
+              "content": "Retrieve Records submitted by Form ID with or without Date Range.\n\n**Authorised Roles:** *ICMUser, OnboardingFormsUser, FormsUser, RCMUser*\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "forms",
+                "record",
+                "recordsByFormId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "formId",
+                  "value": "<string>",
+                  "description": "(Required) Form ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "submittedStartDate",
+                  "value": "<string>",
+                  "description": "Submitted Start Date Eg. 01/01/2023"
+                },
+                {
+                  "disabled": false,
+                  "key": "submittedEndDate",
+                  "value": "<string>",
+                  "description": "Submitted End Date Eg. 31/01/2023"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorisation"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "229e5070-43dc-4ca2-a864-d8aed08c83e7",
+              "name": "OK. Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "recordsByFormId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "formId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c8a2ca0e-3c02-48de-b3a1-1510e1968fa1",
+              "name": "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "recordsByFormId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "formId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dc6f547d-2411-4106-a4ae-c6802728c6ca",
+              "name": "The user corresponding to the given JWT token does not have access to this module.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "recordsByFormId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "formId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e5c2bbf0-a00d-4909-9d26-760c211c4a35",
+          "name": "Records by Form ID",
+          "request": {
+            "name": "Records by Form ID",
+            "description": {
+              "content": "Retrieve Records submitted by Form ID with or without Date Range.\n\n**Authorised Roles:** *ICMUser, OnboardingFormsUser, FormsUser, RCMUser*\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "forms",
+                "record",
+                "recordsCountByFormId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "formId",
+                  "value": "<string>",
+                  "description": "(Required) Form ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "submittedStartDate",
+                  "value": "<string>",
+                  "description": "Submitted Start Date Eg. 01/01/2023"
+                },
+                {
+                  "disabled": false,
+                  "key": "submittedEndDate",
+                  "value": "<string>",
+                  "description": "Submitted End Date Eg. 31/01/2023"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorisation"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c6015a8c-4b9d-4ae6-996c-eb7174619982",
+              "name": "OK. Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "recordsCountByFormId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "formId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3d68cdb9-0e6f-47a5-bc26-a237479a444e",
+              "name": "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "recordsCountByFormId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "formId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "46e39b8e-a77b-44d2-a7d4-870ebdbe8f44",
+              "name": "The user corresponding to the given JWT token does not have access to this module.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "recordsCountByFormId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "formId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e73b9fa-4372-4367-b3ba-07ff97e1a85b",
+          "name": "Records by Form ID",
+          "request": {
+            "name": "Records by Form ID",
+            "description": {
+              "content": "Retrieve Flatten Records submitted by Form ID with or without Date Range.\n\n**Authorised Roles:** *ICMUser, OnboardingFormsUser, FormsUser, RCMUser*\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "forms",
+                "record",
+                "flattenRecordsByFormId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "formId",
+                  "value": "<string>",
+                  "description": "(Required) Form ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "submittedStartDate",
+                  "value": "<string>",
+                  "description": "Submitted Start Date Eg. 01/01/2023"
+                },
+                {
+                  "disabled": false,
+                  "key": "submittedEndDate",
+                  "value": "<string>",
+                  "description": "Submitted End Date Eg. 31/01/2023"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorisation"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d56d05ab-c5a2-4749-9a40-4b99351deab4",
+              "name": "OK. Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "flattenRecordsByFormId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "formId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c3138bce-92ac-437a-8b16-a6b4f255907e",
+              "name": "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "flattenRecordsByFormId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "formId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ffc542a8-3ca0-4737-b121-d453570dca22",
+              "name": "The user corresponding to the given JWT token does not have access to this module.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "flattenRecordsByFormId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "formId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "119ae059-6e35-4326-be47-78ec984c52b9",
+          "name": "Flatten Records by Tag",
+          "request": {
+            "name": "Flatten Records by Tag",
+            "description": {
+              "content": "Retrieve Flatten Records submitted by Tag with or without Date Range\n\n**Authorised Roles:** *PRFAdmin*\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "forms",
+                "record",
+                "flattenRecordsByTag"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tag",
+                  "value": "<string>",
+                  "description": "(Required) Tag"
+                },
+                {
+                  "disabled": false,
+                  "key": "submittedStartDate",
+                  "value": "<string>",
+                  "description": "Submitted Start Date Eg. 01/01/2023"
+                },
+                {
+                  "disabled": false,
+                  "key": "submittedEndDate",
+                  "value": "<string>",
+                  "description": "Submitted End Date Eg. 31/01/2023"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorisation"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c630f471-0731-452b-b738-9f13a6ddece9",
+              "name": "OK. Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "flattenRecordsByTag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "09500b4b-0c49-44f6-9a99-4952aa2fef2f",
+              "name": "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "flattenRecordsByTag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9a4f5711-8582-4624-a7fd-10d0d78ec092",
+              "name": "The user corresponding to the given JWT token does not have access to this module.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "flattenRecordsByTag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37092fd7-da94-440e-ad59-05c18adc611b",
+          "name": "Records by Tag and Fields",
+          "request": {
+            "name": "Records by Tag and Fields",
+            "description": {
+              "content": "Retrieve Records submitted by Tag with or without Date Range filter by Fields\n\n**Authorised Roles:** *PRFAdmin*\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "forms",
+                "record",
+                "flattenRecordsByTag"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tag",
+                  "value": "<string>",
+                  "description": "(Required) Tag"
+                },
+                {
+                  "disabled": false,
+                  "key": "submittedStartDate",
+                  "value": "<string>",
+                  "description": "Submitted Start Date Eg. 01/01/2023"
+                },
+                {
+                  "disabled": false,
+                  "key": "submittedEndDate",
+                  "value": "<string>",
+                  "description": "Submitted End Date Eg. 31/01/2023"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "appliation/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorisation"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  \"<string>\",\n  \"<string>\"\n]"
+            }
+          },
+          "response": [
+            {
+              "id": "d244feed-68bc-4536-a953-5de4158e293f",
+              "name": "OK. Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "flattenRecordsByTag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9d47d79e-858c-488b-978b-5148c1066925",
+              "name": "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "flattenRecordsByTag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6a8e4073-0245-4cbf-95c9-a1592590e2f7",
+              "name": "The user corresponding to the given JWT token does not have access to this module.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "flattenRecordsByTag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3efc4e84-b801-4aa3-babb-f72c7a148c6f",
+          "name": "Records Count by Tag",
+          "request": {
+            "name": "Records Count by Tag",
+            "description": {
+              "content": "Retrieve Records Count submitted by Tag with or without Date Range\n\n**Authorised Roles:** *PRFAdmin*\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "forms",
+                "record",
+                "recordsCountByTag"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tag",
+                  "value": "<string>",
+                  "description": "(Required) Tag"
+                },
+                {
+                  "disabled": false,
+                  "key": "submittedStartDate",
+                  "value": "<string>",
+                  "description": "Submitted Start Date Eg. 01/01/2023"
+                },
+                {
+                  "disabled": false,
+                  "key": "submittedEndDate",
+                  "value": "<string>",
+                  "description": "Submitted End Date Eg. 31/01/2023"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorisation"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b42fce25-b8d0-44e2-a58f-4b3076044167",
+              "name": "OK. Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "recordsCountByTag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "08a6fa7b-209a-44b8-8800-eca607ecddd0",
+              "name": "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "recordsCountByTag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e52cc3fb-7272-4bb8-a778-15f06e77d9ab",
+              "name": "The user corresponding to the given JWT token does not have access to this module.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "recordsCountByTag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05549efd-97dc-4928-891b-11e3d8398f28",
+          "name": "Records by Tag and Fields",
+          "request": {
+            "name": "Records by Tag and Fields",
+            "description": {
+              "content": "Retrieve Records submitted by Tag with or without Date Range filter by Fields\n\n**Authorised Roles:** *PRFAdmin*\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "forms",
+                "record",
+                "recordsCountByTag"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tag",
+                  "value": "<string>",
+                  "description": "(Required) Tag"
+                },
+                {
+                  "disabled": false,
+                  "key": "submittedStartDate",
+                  "value": "<string>",
+                  "description": "Submitted Start Date Eg. 01/01/2023"
+                },
+                {
+                  "disabled": false,
+                  "key": "submittedEndDate",
+                  "value": "<string>",
+                  "description": "Submitted End Date Eg. 31/01/2023"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "appliation/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorisation"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  \"<string>\",\n  \"<string>\"\n]"
+            }
+          },
+          "response": [
+            {
+              "id": "45478209-f333-4047-a5e3-9b0143f5e629",
+              "name": "OK. Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "recordsCountByTag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4435dc06-5968-4816-a703-beef0ec5fdd1",
+              "name": "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "recordsCountByTag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8cc70805-cd02-4b7d-9bf3-5bd2afe8c320",
+              "name": "The user corresponding to the given JWT token does not have access to this module.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "recordsCountByTag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9290ece-9462-4027-bc69-dd08866d22f1",
+          "name": "Records by Tag",
+          "request": {
+            "name": "Records by Tag",
+            "description": {
+              "content": "Retrieve Records submitted by Tag with or without Date Range\n\n**Authorised Roles:** *PRFAdmin*\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "forms",
+                "record",
+                "recordsByTag"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tag",
+                  "value": "<string>",
+                  "description": "(Required) Tag"
+                },
+                {
+                  "disabled": false,
+                  "key": "submittedStartDate",
+                  "value": "<string>",
+                  "description": "Submitted Start Date Eg. 01/01/2023"
+                },
+                {
+                  "disabled": false,
+                  "key": "submittedEndDate",
+                  "value": "<string>",
+                  "description": "Submitted End Date Eg. 31/01/2023"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorisation"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e343a2ae-b7e6-46e7-950b-fa28481fd46d",
+              "name": "OK. Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "recordsByTag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c4e6b1ed-d638-4b66-83e7-07776715093b",
+              "name": "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "recordsByTag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "13755989-ba99-451a-bb31-27612df0cbcd",
+              "name": "The user corresponding to the given JWT token does not have access to this module.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "recordsByTag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6099f718-95e6-4c8c-ad24-e515e2fbd82f",
+          "name": "Records by Tag and Fields",
+          "request": {
+            "name": "Records by Tag and Fields",
+            "description": {
+              "content": "Retrieve Records submitted by Tag with or without Date Range filter by Fields\n\n**Authorised Roles:** *PRFAdmin*\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "forms",
+                "record",
+                "recordsByTag"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tag",
+                  "value": "<string>",
+                  "description": "(Required) Tag"
+                },
+                {
+                  "disabled": false,
+                  "key": "submittedStartDate",
+                  "value": "<string>",
+                  "description": "Submitted Start Date Eg. 01/01/2023"
+                },
+                {
+                  "disabled": false,
+                  "key": "submittedEndDate",
+                  "value": "<string>",
+                  "description": "Submitted End Date Eg. 31/01/2023"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "appliation/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorisation"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  \"<string>\",\n  \"<string>\"\n]"
+            }
+          },
+          "response": [
+            {
+              "id": "3a22a913-6b71-4b13-a4e1-4324fa08a3bc",
+              "name": "OK. Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "recordsByTag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"TITLE\",\n  \"FIRSTNAME\",\n  \"DROMCV2Dhd\"\n]"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "717d21ef-20a4-4e5e-8b7a-5e5a8dc85e25",
+              "name": "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "recordsByTag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"TITLE\",\n  \"FIRSTNAME\",\n  \"DROMCV2Dhd\"\n]"
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bbc0ef4b-2a33-46d5-8d15-ec3d345311be",
+              "name": "The user corresponding to the given JWT token does not have access to this module.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    "record",
+                    "recordsByTag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "submittedEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"TITLE\",\n  \"FIRSTNAME\",\n  \"DROMCV2Dhd\"\n]"
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://*.pulsesoftware.com/webservices/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "605e92e7-9f7a-4e36-99e0-c16e62d6358c",
+    "name": "Pulse Public Authentication Forms API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Pulse API is targeted towards developers looking to automate tasks in Pulse. \n\n# Authentication\nAll endpoints in Pulse require authentication.  Legacy endpoints require only a Private API Key, while all new endpoints incorporate JSON Web Tokens.  \n\n**API Key**\nTo consume a Pulse endpoint using API Key authentication, :\n  * Contact Pulse support at support@pulsesoftware.com to enable the Pulse Public API and issue your API key.\n  * Pass the API key in the **'x-Api-Key'** header with each request.\n\nNote: It is recommended to use a User Private API key where possible, rather than the Application Private Key. When using a User API key, functionality will be restricted based on the role of the User for which the API key was generated.  See API endpoint documentation for authorised roles. \n\n**JSON Web Token (JWT)**\nTo consume a Pulse endpoint using JWT authentication:\n  * Contact Pulse support at support@pulsesoftware.com to enable the Pulse Public API and issue your API key.\n  * Request a bearer token from /pulse/jwt, passing the API key in the **'x-Api-Key'** header with the request.\n  * Pass the token issued in the **'Authorization'** header of all requests as **'bearer [token]'**\n\n**Note** Tokens will expire 60 minutes after being issued, at which point your application will need to request a new token.\n\n# Requests\nThe Pulse API follows REST principles.  Data resources are accessed via standard HTTPS requests in UTF-8 format to an API endpoint. Where possible, Web API uses appropriate HTTP verbs for each action.\nHTTP Verbs:\n  * **GET** Retrieves resources\n  * **POST** Creates resources\n  * **PUT** Changes and/or replaces resources or collections\n  * **DELETE** Deletes resources\n\nThe Pulse API accepts the following ISO-8601 formats for date strings:\n  * Date, Time, Timezone: e.g. \"2021-06-02T21:39:18+00:00\"\n  * Date, Time: e.g. \"2021-06-02T21:39:18Z\"\n  * Date: e.g. \"2021-06-02\"\n\n# Responses\nPulse API returns all response data as a JSON object.  \n\n# Response Status Codes\nPulse API uses the following status codes:\n  * **200** OK - Request succeeded.  Result provided in response body.\n  * **400** Bad Request - Malformed syntax.  See message body for information.\n  * **401** Unauthorised - Missing authentication (API Key or JWT).\n  * **403** Forbidden - API user is not authorised to access requested resource.\n  * **404** Not Found - Request resource does not exist.\n\n# Support\nContact support@pulsesoftware.com for any queries or issues related to this API\n\n\nContact Support:\n Email: support@pulsesoftware.com",
+      "type": "text/plain"
+    }
+  }
+}

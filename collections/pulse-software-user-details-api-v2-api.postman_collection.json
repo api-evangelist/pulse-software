@@ -1,0 +1,1262 @@
+{
+  "item": [
+    {
+      "id": "dba74143-ed13-4e86-b45e-08022ea1942a",
+      "name": "User Details API v2",
+      "description": {
+        "content": "API for managing user details in Pulse including additional attributes",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "781aea09-ca7f-4ba5-a86e-ad1cde1c2f2d",
+          "name": "Get user detail(s) in Pulse",
+          "request": {
+            "name": "Get user detail(s) in Pulse",
+            "description": {
+              "content": "Get user detail(s) in Pulse including their user additional attributes.\n- If no query parameters are provided, returns all users.\n- If `email`, `username`, or `userId` is provided, returns the matching user.\n**Authorised Roles:** *PulseSecurityUser*\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "security",
+                "UserDetails"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<string>",
+                  "description": "Email address"
+                },
+                {
+                  "disabled": false,
+                  "key": "username",
+                  "value": "<string>",
+                  "description": "Username"
+                },
+                {
+                  "disabled": false,
+                  "key": "userId",
+                  "value": "<string>",
+                  "description": "User Id"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API key",
+                "key": "x-api-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorisation"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0bda29cf-904a-4444-8794-fe6b53e27999",
+              "name": "OK. Request completed successfully.\n- If no query parameters are provided, returns all users as an array.\n- If a query parameter is provided, returns an array with a single user or empty array if not found.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "UserDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"active\": false,\n    \"userId\": \"4bbe3c87-ea8c-e432-4641-0b756117357d\",\n    \"title\": \"string\",\n    \"firstName\": \"string\",\n    \"middleName\": \"string\",\n    \"lastName\": \"string\",\n    \"preferredName\": \"string\",\n    \"dateOfBirth\": \"string\",\n    \"gender\": \"string\",\n    \"mobilePhone\": \"string\",\n    \"workPhone\": \"string\",\n    \"telephone\": \"string\",\n    \"primaryEmail\": \"string\",\n    \"additionalEmail\": \"string\",\n    \"home_AddressLine1\": \"string\",\n    \"home_AddressLine2\": \"string\",\n    \"home_City\": \"string\",\n    \"home_Country\": \"string\",\n    \"home_PostCode\": \"string\",\n    \"home_State\": \"string\",\n    \"postal_AddressLine1\": \"string\",\n    \"postal_AddressLine2\": \"string\",\n    \"postal_City\": \"string\",\n    \"postal_Country\": \"string\",\n    \"postal_PostCode\": \"string\",\n    \"postal_State\": \"string\",\n    \"postalIsHome\": false,\n    \"username\": \"string\",\n    \"payrollNumber\": \"string\",\n    \"divisionCode\": \"string\",\n    \"divisionName\": \"string\",\n    \"unitCode\": \"string\",\n    \"unitName\": \"string\",\n    \"sectionCode\": \"string\",\n    \"sectionName\": \"string\",\n    \"supervisorEmail\": \"string\",\n    \"teamName\": \"string\",\n    \"pulseRepresentativeEmail\": \"string\",\n    \"employmentStartDate\": \"string\",\n    \"employmentEndDate\": \"string\",\n    \"reasonOfTermination\": \"string\",\n    \"emergencyContact1_Name\": \"string\",\n    \"emergencyContact1_Relationship\": \"string\",\n    \"emergencyContact1_AddressLine1\": \"string\",\n    \"emergencyContact1_AddressLine2\": \"string\",\n    \"emergencyContact1_City\": \"string\",\n    \"emergencyContact1_State\": \"string\",\n    \"emergencyContact1_Country\": \"string\",\n    \"emergencyContact1_Postcode\": \"string\",\n    \"emergencyContact1_Mobile\": \"string\",\n    \"emergencyContact1_WorkPhone\": \"string\",\n    \"emergencyContact1_Telephone\": \"string\",\n    \"emergencyContact1_Email\": \"string\",\n    \"emergencyContact2_Name\": \"string\",\n    \"emergencyContact2_Relationship\": \"string\",\n    \"emergencyContact2_AddressLine1\": \"string\",\n    \"emergencyContact2_AddressLine2\": \"string\",\n    \"emergencyContact2_City\": \"string\",\n    \"emergencyContact2_State\": \"string\",\n    \"emergencyContact2_Country\": \"string\",\n    \"emergencyContact2_Postcode\": \"string\",\n    \"emergencyContact2_Mobile\": \"string\",\n    \"emergencyContact2_WorkPhone\": \"string\",\n    \"emergencyContact2_Telephone\": \"string\",\n    \"emergencyContact2_Email\": \"string\",\n    \"primaryPositionNumber\": \"string\",\n    \"primaryPositionName\": \"string\",\n    \"primaryPositionStartDate\": \"string\",\n    \"primaryPositionEndDate\": \"string\",\n    \"primaryPositionNotes\": \"string\",\n    \"employmentType\": \"string\",\n    \"onboarding\": [\n      {\n        \"portalID\": 7238,\n        \"portalName\": \"string\",\n        \"activeDate\": \"string\",\n        \"dueDate\": \"string\"\n      },\n      {\n        \"portalID\": 1427,\n        \"portalName\": \"string\",\n        \"activeDate\": \"string\",\n        \"dueDate\": \"string\"\n      }\n    ],\n    \"additionalPositions\": [\n      {\n        \"positionNo\": \"string\",\n        \"positionName\": \"string\",\n        \"startDate\": \"string\",\n        \"endDate\": \"string\",\n        \"notes\": \"string\",\n        \"supervisorEmail\": \"string\"\n      },\n      {\n        \"positionNo\": \"string\",\n        \"positionName\": \"string\",\n        \"startDate\": \"string\",\n        \"endDate\": \"string\",\n        \"notes\": \"string\",\n        \"supervisorEmail\": \"string\"\n      }\n    ],\n    \"roles\": [\n      \"string\",\n      \"string\"\n    ],\n    \"userAdditionalAttributes\": [\n      {\n        \"tabId\": 1032,\n        \"tabName\": \"string\",\n        \"attributeId\": 4346,\n        \"attributeName\": \"string\",\n        \"attributeValue\": \"string\",\n        \"attributeDataType\": \"string\"\n      },\n      {\n        \"tabId\": 470,\n        \"tabName\": \"string\",\n        \"attributeId\": 9008,\n        \"attributeName\": \"string\",\n        \"attributeValue\": \"string\",\n        \"attributeDataType\": \"string\"\n      }\n    ]\n  },\n  {\n    \"active\": true,\n    \"userId\": \"ed3cd646-9780-b7d8-77fe-0d2eb9d6ffcb\",\n    \"title\": \"string\",\n    \"firstName\": \"string\",\n    \"middleName\": \"string\",\n    \"lastName\": \"string\",\n    \"preferredName\": \"string\",\n    \"dateOfBirth\": \"string\",\n    \"gender\": \"string\",\n    \"mobilePhone\": \"string\",\n    \"workPhone\": \"string\",\n    \"telephone\": \"string\",\n    \"primaryEmail\": \"string\",\n    \"additionalEmail\": \"string\",\n    \"home_AddressLine1\": \"string\",\n    \"home_AddressLine2\": \"string\",\n    \"home_City\": \"string\",\n    \"home_Country\": \"string\",\n    \"home_PostCode\": \"string\",\n    \"home_State\": \"string\",\n    \"postal_AddressLine1\": \"string\",\n    \"postal_AddressLine2\": \"string\",\n    \"postal_City\": \"string\",\n    \"postal_Country\": \"string\",\n    \"postal_PostCode\": \"string\",\n    \"postal_State\": \"string\",\n    \"postalIsHome\": false,\n    \"username\": \"string\",\n    \"payrollNumber\": \"string\",\n    \"divisionCode\": \"string\",\n    \"divisionName\": \"string\",\n    \"unitCode\": \"string\",\n    \"unitName\": \"string\",\n    \"sectionCode\": \"string\",\n    \"sectionName\": \"string\",\n    \"supervisorEmail\": \"string\",\n    \"teamName\": \"string\",\n    \"pulseRepresentativeEmail\": \"string\",\n    \"employmentStartDate\": \"string\",\n    \"employmentEndDate\": \"string\",\n    \"reasonOfTermination\": \"string\",\n    \"emergencyContact1_Name\": \"string\",\n    \"emergencyContact1_Relationship\": \"string\",\n    \"emergencyContact1_AddressLine1\": \"string\",\n    \"emergencyContact1_AddressLine2\": \"string\",\n    \"emergencyContact1_City\": \"string\",\n    \"emergencyContact1_State\": \"string\",\n    \"emergencyContact1_Country\": \"string\",\n    \"emergencyContact1_Postcode\": \"string\",\n    \"emergencyContact1_Mobile\": \"string\",\n    \"emergencyContact1_WorkPhone\": \"string\",\n    \"emergencyContact1_Telephone\": \"string\",\n    \"emergencyContact1_Email\": \"string\",\n    \"emergencyContact2_Name\": \"string\",\n    \"emergencyContact2_Relationship\": \"string\",\n    \"emergencyContact2_AddressLine1\": \"string\",\n    \"emergencyContact2_AddressLine2\": \"string\",\n    \"emergencyContact2_City\": \"string\",\n    \"emergencyContact2_State\": \"string\",\n    \"emergencyContact2_Country\": \"string\",\n    \"emergencyContact2_Postcode\": \"string\",\n    \"emergencyContact2_Mobile\": \"string\",\n    \"emergencyContact2_WorkPhone\": \"string\",\n    \"emergencyContact2_Telephone\": \"string\",\n    \"emergencyContact2_Email\": \"string\",\n    \"primaryPositionNumber\": \"string\",\n    \"primaryPositionName\": \"string\",\n    \"primaryPositionStartDate\": \"string\",\n    \"primaryPositionEndDate\": \"string\",\n    \"primaryPositionNotes\": \"string\",\n    \"employmentType\": \"string\",\n    \"onboarding\": [\n      {\n        \"portalID\": 5751,\n        \"portalName\": \"string\",\n        \"activeDate\": \"string\",\n        \"dueDate\": \"string\"\n      },\n      {\n        \"portalID\": 3606,\n        \"portalName\": \"string\",\n        \"activeDate\": \"string\",\n        \"dueDate\": \"string\"\n      }\n    ],\n    \"additionalPositions\": [\n      {\n        \"positionNo\": \"string\",\n        \"positionName\": \"string\",\n        \"startDate\": \"string\",\n        \"endDate\": \"string\",\n        \"notes\": \"string\",\n        \"supervisorEmail\": \"string\"\n      },\n      {\n        \"positionNo\": \"string\",\n        \"positionName\": \"string\",\n        \"startDate\": \"string\",\n        \"endDate\": \"string\",\n        \"notes\": \"string\",\n        \"supervisorEmail\": \"string\"\n      }\n    ],\n    \"roles\": [\n      \"string\",\n      \"string\"\n    ],\n    \"userAdditionalAttributes\": [\n      {\n        \"tabId\": 8310,\n        \"tabName\": \"string\",\n        \"attributeId\": 662,\n        \"attributeName\": \"string\",\n        \"attributeValue\": \"string\",\n        \"attributeDataType\": \"string\"\n      },\n      {\n        \"tabId\": 3191,\n        \"tabName\": \"string\",\n        \"attributeId\": 3788,\n        \"attributeName\": \"string\",\n        \"attributeValue\": \"string\",\n        \"attributeDataType\": \"string\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5bd3f1b0-16b3-4150-bc7d-74c765b6a86c",
+              "name": "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "UserDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "148e5ff3-2559-479a-9fe8-88cc86d566db",
+              "name": "The user corresponding to the given JWT token does not have access to this module.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "UserDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b28d2818-b1bc-41d4-88d8-8f4fa40fcac6",
+              "name": "User not found by specified identifier",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "UserDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "55c9af24-8025-46ea-bc6a-8dac4c89dd77",
+          "name": "Update user in Pulse",
+          "request": {
+            "name": "Update user in Pulse",
+            "description": {
+              "content": "Update user in Pulse based on userId provided in request body\n\n**Authorised Roles:** *PulseSecurityUser*\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "security",
+                "UserDetails"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API key",
+                "key": "x-api-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorisation"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"active\": \"<boolean>\",\n  \"userId\": \"<uuid>\",\n  \"title\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"preferredName\": \"<string>\",\n  \"dateOfBirth\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"mobilePhone\": \"<string>\",\n  \"workPhone\": \"<string>\",\n  \"telephone\": \"<string>\",\n  \"primaryEmail\": \"<string>\",\n  \"additionalEmail\": \"<string>\",\n  \"home_AddressLine1\": \"<string>\",\n  \"home_AddressLine2\": \"<string>\",\n  \"home_City\": \"<string>\",\n  \"home_Country\": \"<string>\",\n  \"home_PostCode\": \"<string>\",\n  \"home_State\": \"<string>\",\n  \"postal_AddressLine1\": \"<string>\",\n  \"postal_AddressLine2\": \"<string>\",\n  \"postal_City\": \"<string>\",\n  \"postal_Country\": \"<string>\",\n  \"postal_PostCode\": \"<string>\",\n  \"postal_State\": \"<string>\",\n  \"postalIsHome\": \"<boolean>\",\n  \"username\": \"<string>\",\n  \"payrollNumber\": \"<string>\",\n  \"divisionCode\": \"<string>\",\n  \"divisionName\": \"<string>\",\n  \"unitCode\": \"<string>\",\n  \"unitName\": \"<string>\",\n  \"sectionCode\": \"<string>\",\n  \"sectionName\": \"<string>\",\n  \"supervisorEmail\": \"<string>\",\n  \"teamName\": \"<string>\",\n  \"pulseRepresentativeEmail\": \"<string>\",\n  \"employmentStartDate\": \"<string>\",\n  \"employmentEndDate\": \"<string>\",\n  \"reasonOfTermination\": \"<string>\",\n  \"emergencyContact1_Name\": \"<string>\",\n  \"emergencyContact1_Relationship\": \"<string>\",\n  \"emergencyContact1_AddressLine1\": \"<string>\",\n  \"emergencyContact1_AddressLine2\": \"<string>\",\n  \"emergencyContact1_City\": \"<string>\",\n  \"emergencyContact1_State\": \"<string>\",\n  \"emergencyContact1_Country\": \"<string>\",\n  \"emergencyContact1_Postcode\": \"<string>\",\n  \"emergencyContact1_Mobile\": \"<string>\",\n  \"emergencyContact1_WorkPhone\": \"<string>\",\n  \"emergencyContact1_Telephone\": \"<string>\",\n  \"emergencyContact1_Email\": \"<string>\",\n  \"emergencyContact2_Name\": \"<string>\",\n  \"emergencyContact2_Relationship\": \"<string>\",\n  \"emergencyContact2_AddressLine1\": \"<string>\",\n  \"emergencyContact2_AddressLine2\": \"<string>\",\n  \"emergencyContact2_City\": \"<string>\",\n  \"emergencyContact2_State\": \"<string>\",\n  \"emergencyContact2_Country\": \"<string>\",\n  \"emergencyContact2_Postcode\": \"<string>\",\n  \"emergencyContact2_Mobile\": \"<string>\",\n  \"emergencyContact2_WorkPhone\": \"<string>\",\n  \"emergencyContact2_Telephone\": \"<string>\",\n  \"emergencyContact2_Email\": \"<string>\",\n  \"primaryPositionNumber\": \"<string>\",\n  \"primaryPositionName\": \"<string>\",\n  \"primaryPositionStartDate\": \"<string>\",\n  \"primaryPositionEndDate\": \"<string>\",\n  \"primaryPositionNotes\": \"<string>\",\n  \"employmentType\": \"<string>\",\n  \"onboarding\": [\n    {\n      \"portalID\": \"<integer>\",\n      \"portalName\": \"<string>\",\n      \"activeDate\": \"<string>\",\n      \"dueDate\": \"<string>\"\n    },\n    {\n      \"portalID\": \"<integer>\",\n      \"portalName\": \"<string>\",\n      \"activeDate\": \"<string>\",\n      \"dueDate\": \"<string>\"\n    }\n  ],\n  \"additionalPositions\": [\n    {\n      \"positionNo\": \"<string>\",\n      \"positionName\": \"<string>\",\n      \"startDate\": \"<string>\",\n      \"endDate\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"supervisorEmail\": \"<string>\"\n    },\n    {\n      \"positionNo\": \"<string>\",\n      \"positionName\": \"<string>\",\n      \"startDate\": \"<string>\",\n      \"endDate\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"supervisorEmail\": \"<string>\"\n    }\n  ],\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userAdditionalAttributes\": [\n    {\n      \"tabId\": \"<integer>\",\n      \"tabName\": \"<string>\",\n      \"attributeId\": \"<integer>\",\n      \"attributeName\": \"<string>\",\n      \"attributeValue\": \"<string>\",\n      \"attributeDataType\": \"<string>\"\n    },\n    {\n      \"tabId\": \"<integer>\",\n      \"tabName\": \"<string>\",\n      \"attributeId\": \"<integer>\",\n      \"attributeName\": \"<string>\",\n      \"attributeValue\": \"<string>\",\n      \"attributeDataType\": \"<string>\"\n    }\n  ],\n  \"password\": \"<string>\",\n  \"confirmPassword\": \"<string>\",\n  \"sendWelcomeEmail\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3ba55bbe-a318-4cdf-9be8-77255484ce4c",
+              "name": "OK. Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "UserDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"active\": \"<boolean>\",\n  \"userId\": \"<uuid>\",\n  \"title\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"preferredName\": \"<string>\",\n  \"dateOfBirth\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"mobilePhone\": \"<string>\",\n  \"workPhone\": \"<string>\",\n  \"telephone\": \"<string>\",\n  \"primaryEmail\": \"<string>\",\n  \"additionalEmail\": \"<string>\",\n  \"home_AddressLine1\": \"<string>\",\n  \"home_AddressLine2\": \"<string>\",\n  \"home_City\": \"<string>\",\n  \"home_Country\": \"<string>\",\n  \"home_PostCode\": \"<string>\",\n  \"home_State\": \"<string>\",\n  \"postal_AddressLine1\": \"<string>\",\n  \"postal_AddressLine2\": \"<string>\",\n  \"postal_City\": \"<string>\",\n  \"postal_Country\": \"<string>\",\n  \"postal_PostCode\": \"<string>\",\n  \"postal_State\": \"<string>\",\n  \"postalIsHome\": \"<boolean>\",\n  \"username\": \"<string>\",\n  \"payrollNumber\": \"<string>\",\n  \"divisionCode\": \"<string>\",\n  \"divisionName\": \"<string>\",\n  \"unitCode\": \"<string>\",\n  \"unitName\": \"<string>\",\n  \"sectionCode\": \"<string>\",\n  \"sectionName\": \"<string>\",\n  \"supervisorEmail\": \"<string>\",\n  \"teamName\": \"<string>\",\n  \"pulseRepresentativeEmail\": \"<string>\",\n  \"employmentStartDate\": \"<string>\",\n  \"employmentEndDate\": \"<string>\",\n  \"reasonOfTermination\": \"<string>\",\n  \"emergencyContact1_Name\": \"<string>\",\n  \"emergencyContact1_Relationship\": \"<string>\",\n  \"emergencyContact1_AddressLine1\": \"<string>\",\n  \"emergencyContact1_AddressLine2\": \"<string>\",\n  \"emergencyContact1_City\": \"<string>\",\n  \"emergencyContact1_State\": \"<string>\",\n  \"emergencyContact1_Country\": \"<string>\",\n  \"emergencyContact1_Postcode\": \"<string>\",\n  \"emergencyContact1_Mobile\": \"<string>\",\n  \"emergencyContact1_WorkPhone\": \"<string>\",\n  \"emergencyContact1_Telephone\": \"<string>\",\n  \"emergencyContact1_Email\": \"<string>\",\n  \"emergencyContact2_Name\": \"<string>\",\n  \"emergencyContact2_Relationship\": \"<string>\",\n  \"emergencyContact2_AddressLine1\": \"<string>\",\n  \"emergencyContact2_AddressLine2\": \"<string>\",\n  \"emergencyContact2_City\": \"<string>\",\n  \"emergencyContact2_State\": \"<string>\",\n  \"emergencyContact2_Country\": \"<string>\",\n  \"emergencyContact2_Postcode\": \"<string>\",\n  \"emergencyContact2_Mobile\": \"<string>\",\n  \"emergencyContact2_WorkPhone\": \"<string>\",\n  \"emergencyContact2_Telephone\": \"<string>\",\n  \"emergencyContact2_Email\": \"<string>\",\n  \"primaryPositionNumber\": \"<string>\",\n  \"primaryPositionName\": \"<string>\",\n  \"primaryPositionStartDate\": \"<string>\",\n  \"primaryPositionEndDate\": \"<string>\",\n  \"primaryPositionNotes\": \"<string>\",\n  \"employmentType\": \"<string>\",\n  \"onboarding\": [\n    {\n      \"portalID\": \"<integer>\",\n      \"portalName\": \"<string>\",\n      \"activeDate\": \"<string>\",\n      \"dueDate\": \"<string>\"\n    },\n    {\n      \"portalID\": \"<integer>\",\n      \"portalName\": \"<string>\",\n      \"activeDate\": \"<string>\",\n      \"dueDate\": \"<string>\"\n    }\n  ],\n  \"additionalPositions\": [\n    {\n      \"positionNo\": \"<string>\",\n      \"positionName\": \"<string>\",\n      \"startDate\": \"<string>\",\n      \"endDate\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"supervisorEmail\": \"<string>\"\n    },\n    {\n      \"positionNo\": \"<string>\",\n      \"positionName\": \"<string>\",\n      \"startDate\": \"<string>\",\n      \"endDate\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"supervisorEmail\": \"<string>\"\n    }\n  ],\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userAdditionalAttributes\": [\n    {\n      \"tabId\": \"<integer>\",\n      \"tabName\": \"<string>\",\n      \"attributeId\": \"<integer>\",\n      \"attributeName\": \"<string>\",\n      \"attributeValue\": \"<string>\",\n      \"attributeDataType\": \"<string>\"\n    },\n    {\n      \"tabId\": \"<integer>\",\n      \"tabName\": \"<string>\",\n      \"attributeId\": \"<integer>\",\n      \"attributeName\": \"<string>\",\n      \"attributeValue\": \"<string>\",\n      \"attributeDataType\": \"<string>\"\n    }\n  ],\n  \"password\": \"<string>\",\n  \"confirmPassword\": \"<string>\",\n  \"sendWelcomeEmail\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ],\n  \"data\": {\n    \"active\": \"<boolean>\",\n    \"userId\": \"<uuid>\",\n    \"title\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"preferredName\": \"<string>\",\n    \"dateOfBirth\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"mobilePhone\": \"<string>\",\n    \"workPhone\": \"<string>\",\n    \"telephone\": \"<string>\",\n    \"primaryEmail\": \"<string>\",\n    \"additionalEmail\": \"<string>\",\n    \"home_AddressLine1\": \"<string>\",\n    \"home_AddressLine2\": \"<string>\",\n    \"home_City\": \"<string>\",\n    \"home_Country\": \"<string>\",\n    \"home_PostCode\": \"<string>\",\n    \"home_State\": \"<string>\",\n    \"postal_AddressLine1\": \"<string>\",\n    \"postal_AddressLine2\": \"<string>\",\n    \"postal_City\": \"<string>\",\n    \"postal_Country\": \"<string>\",\n    \"postal_PostCode\": \"<string>\",\n    \"postal_State\": \"<string>\",\n    \"postalIsHome\": \"<boolean>\",\n    \"username\": \"<string>\",\n    \"payrollNumber\": \"<string>\",\n    \"divisionCode\": \"<string>\",\n    \"divisionName\": \"<string>\",\n    \"unitCode\": \"<string>\",\n    \"unitName\": \"<string>\",\n    \"sectionCode\": \"<string>\",\n    \"sectionName\": \"<string>\",\n    \"supervisorEmail\": \"<string>\",\n    \"teamName\": \"<string>\",\n    \"pulseRepresentativeEmail\": \"<string>\",\n    \"employmentStartDate\": \"<string>\",\n    \"employmentEndDate\": \"<string>\",\n    \"reasonOfTermination\": \"<string>\",\n    \"emergencyContact1_Name\": \"<string>\",\n    \"emergencyContact1_Relationship\": \"<string>\",\n    \"emergencyContact1_AddressLine1\": \"<string>\",\n    \"emergencyContact1_AddressLine2\": \"<string>\",\n    \"emergencyContact1_City\": \"<string>\",\n    \"emergencyContact1_State\": \"<string>\",\n    \"emergencyContact1_Country\": \"<string>\",\n    \"emergencyContact1_Postcode\": \"<string>\",\n    \"emergencyContact1_Mobile\": \"<string>\",\n    \"emergencyContact1_WorkPhone\": \"<string>\",\n    \"emergencyContact1_Telephone\": \"<string>\",\n    \"emergencyContact1_Email\": \"<string>\",\n    \"emergencyContact2_Name\": \"<string>\",\n    \"emergencyContact2_Relationship\": \"<string>\",\n    \"emergencyContact2_AddressLine1\": \"<string>\",\n    \"emergencyContact2_AddressLine2\": \"<string>\",\n    \"emergencyContact2_City\": \"<string>\",\n    \"emergencyContact2_State\": \"<string>\",\n    \"emergencyContact2_Country\": \"<string>\",\n    \"emergencyContact2_Postcode\": \"<string>\",\n    \"emergencyContact2_Mobile\": \"<string>\",\n    \"emergencyContact2_WorkPhone\": \"<string>\",\n    \"emergencyContact2_Telephone\": \"<string>\",\n    \"emergencyContact2_Email\": \"<string>\",\n    \"primaryPositionNumber\": \"<string>\",\n    \"primaryPositionName\": \"<string>\",\n    \"primaryPositionStartDate\": \"<string>\",\n    \"primaryPositionEndDate\": \"<string>\",\n    \"primaryPositionNotes\": \"<string>\",\n    \"employmentType\": \"<string>\",\n    \"onboarding\": [\n      {\n        \"portalID\": \"<integer>\",\n        \"portalName\": \"<string>\",\n        \"activeDate\": \"<string>\",\n        \"dueDate\": \"<string>\"\n      },\n      {\n        \"portalID\": \"<integer>\",\n        \"portalName\": \"<string>\",\n        \"activeDate\": \"<string>\",\n        \"dueDate\": \"<string>\"\n      }\n    ],\n    \"additionalPositions\": [\n      {\n        \"positionNo\": \"<string>\",\n        \"positionName\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"notes\": \"<string>\",\n        \"supervisorEmail\": \"<string>\"\n      },\n      {\n        \"positionNo\": \"<string>\",\n        \"positionName\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"notes\": \"<string>\",\n        \"supervisorEmail\": \"<string>\"\n      }\n    ],\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"userAdditionalAttributes\": [\n      {\n        \"tabId\": \"<integer>\",\n        \"tabName\": \"<string>\",\n        \"attributeId\": \"<integer>\",\n        \"attributeName\": \"<string>\",\n        \"attributeValue\": \"<string>\",\n        \"attributeDataType\": \"<string>\"\n      },\n      {\n        \"tabId\": \"<integer>\",\n        \"tabName\": \"<string>\",\n        \"attributeId\": \"<integer>\",\n        \"attributeName\": \"<string>\",\n        \"attributeValue\": \"<string>\",\n        \"attributeDataType\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "671b0a1d-0b80-4f98-a0dc-1e64524bff5e",
+              "name": "Invalid request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "UserDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"active\": \"<boolean>\",\n  \"userId\": \"<uuid>\",\n  \"title\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"preferredName\": \"<string>\",\n  \"dateOfBirth\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"mobilePhone\": \"<string>\",\n  \"workPhone\": \"<string>\",\n  \"telephone\": \"<string>\",\n  \"primaryEmail\": \"<string>\",\n  \"additionalEmail\": \"<string>\",\n  \"home_AddressLine1\": \"<string>\",\n  \"home_AddressLine2\": \"<string>\",\n  \"home_City\": \"<string>\",\n  \"home_Country\": \"<string>\",\n  \"home_PostCode\": \"<string>\",\n  \"home_State\": \"<string>\",\n  \"postal_AddressLine1\": \"<string>\",\n  \"postal_AddressLine2\": \"<string>\",\n  \"postal_City\": \"<string>\",\n  \"postal_Country\": \"<string>\",\n  \"postal_PostCode\": \"<string>\",\n  \"postal_State\": \"<string>\",\n  \"postalIsHome\": \"<boolean>\",\n  \"username\": \"<string>\",\n  \"payrollNumber\": \"<string>\",\n  \"divisionCode\": \"<string>\",\n  \"divisionName\": \"<string>\",\n  \"unitCode\": \"<string>\",\n  \"unitName\": \"<string>\",\n  \"sectionCode\": \"<string>\",\n  \"sectionName\": \"<string>\",\n  \"supervisorEmail\": \"<string>\",\n  \"teamName\": \"<string>\",\n  \"pulseRepresentativeEmail\": \"<string>\",\n  \"employmentStartDate\": \"<string>\",\n  \"employmentEndDate\": \"<string>\",\n  \"reasonOfTermination\": \"<string>\",\n  \"emergencyContact1_Name\": \"<string>\",\n  \"emergencyContact1_Relationship\": \"<string>\",\n  \"emergencyContact1_AddressLine1\": \"<string>\",\n  \"emergencyContact1_AddressLine2\": \"<string>\",\n  \"emergencyContact1_City\": \"<string>\",\n  \"emergencyContact1_State\": \"<string>\",\n  \"emergencyContact1_Country\": \"<string>\",\n  \"emergencyContact1_Postcode\": \"<string>\",\n  \"emergencyContact1_Mobile\": \"<string>\",\n  \"emergencyContact1_WorkPhone\": \"<string>\",\n  \"emergencyContact1_Telephone\": \"<string>\",\n  \"emergencyContact1_Email\": \"<string>\",\n  \"emergencyContact2_Name\": \"<string>\",\n  \"emergencyContact2_Relationship\": \"<string>\",\n  \"emergencyContact2_AddressLine1\": \"<string>\",\n  \"emergencyContact2_AddressLine2\": \"<string>\",\n  \"emergencyContact2_City\": \"<string>\",\n  \"emergencyContact2_State\": \"<string>\",\n  \"emergencyContact2_Country\": \"<string>\",\n  \"emergencyContact2_Postcode\": \"<string>\",\n  \"emergencyContact2_Mobile\": \"<string>\",\n  \"emergencyContact2_WorkPhone\": \"<string>\",\n  \"emergencyContact2_Telephone\": \"<string>\",\n  \"emergencyContact2_Email\": \"<string>\",\n  \"primaryPositionNumber\": \"<string>\",\n  \"primaryPositionName\": \"<string>\",\n  \"primaryPositionStartDate\": \"<string>\",\n  \"primaryPositionEndDate\": \"<string>\",\n  \"primaryPositionNotes\": \"<string>\",\n  \"employmentType\": \"<string>\",\n  \"onboarding\": [\n    {\n      \"portalID\": \"<integer>\",\n      \"portalName\": \"<string>\",\n      \"activeDate\": \"<string>\",\n      \"dueDate\": \"<string>\"\n    },\n    {\n      \"portalID\": \"<integer>\",\n      \"portalName\": \"<string>\",\n      \"activeDate\": \"<string>\",\n      \"dueDate\": \"<string>\"\n    }\n  ],\n  \"additionalPositions\": [\n    {\n      \"positionNo\": \"<string>\",\n      \"positionName\": \"<string>\",\n      \"startDate\": \"<string>\",\n      \"endDate\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"supervisorEmail\": \"<string>\"\n    },\n    {\n      \"positionNo\": \"<string>\",\n      \"positionName\": \"<string>\",\n      \"startDate\": \"<string>\",\n      \"endDate\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"supervisorEmail\": \"<string>\"\n    }\n  ],\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userAdditionalAttributes\": [\n    {\n      \"tabId\": \"<integer>\",\n      \"tabName\": \"<string>\",\n      \"attributeId\": \"<integer>\",\n      \"attributeName\": \"<string>\",\n      \"attributeValue\": \"<string>\",\n      \"attributeDataType\": \"<string>\"\n    },\n    {\n      \"tabId\": \"<integer>\",\n      \"tabName\": \"<string>\",\n      \"attributeId\": \"<integer>\",\n      \"attributeName\": \"<string>\",\n      \"attributeValue\": \"<string>\",\n      \"attributeDataType\": \"<string>\"\n    }\n  ],\n  \"password\": \"<string>\",\n  \"confirmPassword\": \"<string>\",\n  \"sendWelcomeEmail\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ],\n  \"data\": {\n    \"active\": \"<boolean>\",\n    \"userId\": \"<uuid>\",\n    \"title\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"preferredName\": \"<string>\",\n    \"dateOfBirth\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"mobilePhone\": \"<string>\",\n    \"workPhone\": \"<string>\",\n    \"telephone\": \"<string>\",\n    \"primaryEmail\": \"<string>\",\n    \"additionalEmail\": \"<string>\",\n    \"home_AddressLine1\": \"<string>\",\n    \"home_AddressLine2\": \"<string>\",\n    \"home_City\": \"<string>\",\n    \"home_Country\": \"<string>\",\n    \"home_PostCode\": \"<string>\",\n    \"home_State\": \"<string>\",\n    \"postal_AddressLine1\": \"<string>\",\n    \"postal_AddressLine2\": \"<string>\",\n    \"postal_City\": \"<string>\",\n    \"postal_Country\": \"<string>\",\n    \"postal_PostCode\": \"<string>\",\n    \"postal_State\": \"<string>\",\n    \"postalIsHome\": \"<boolean>\",\n    \"username\": \"<string>\",\n    \"payrollNumber\": \"<string>\",\n    \"divisionCode\": \"<string>\",\n    \"divisionName\": \"<string>\",\n    \"unitCode\": \"<string>\",\n    \"unitName\": \"<string>\",\n    \"sectionCode\": \"<string>\",\n    \"sectionName\": \"<string>\",\n    \"supervisorEmail\": \"<string>\",\n    \"teamName\": \"<string>\",\n    \"pulseRepresentativeEmail\": \"<string>\",\n    \"employmentStartDate\": \"<string>\",\n    \"employmentEndDate\": \"<string>\",\n    \"reasonOfTermination\": \"<string>\",\n    \"emergencyContact1_Name\": \"<string>\",\n    \"emergencyContact1_Relationship\": \"<string>\",\n    \"emergencyContact1_AddressLine1\": \"<string>\",\n    \"emergencyContact1_AddressLine2\": \"<string>\",\n    \"emergencyContact1_City\": \"<string>\",\n    \"emergencyContact1_State\": \"<string>\",\n    \"emergencyContact1_Country\": \"<string>\",\n    \"emergencyContact1_Postcode\": \"<string>\",\n    \"emergencyContact1_Mobile\": \"<string>\",\n    \"emergencyContact1_WorkPhone\": \"<string>\",\n    \"emergencyContact1_Telephone\": \"<string>\",\n    \"emergencyContact1_Email\": \"<string>\",\n    \"emergencyContact2_Name\": \"<string>\",\n    \"emergencyContact2_Relationship\": \"<string>\",\n    \"emergencyContact2_AddressLine1\": \"<string>\",\n    \"emergencyContact2_AddressLine2\": \"<string>\",\n    \"emergencyContact2_City\": \"<string>\",\n    \"emergencyContact2_State\": \"<string>\",\n    \"emergencyContact2_Country\": \"<string>\",\n    \"emergencyContact2_Postcode\": \"<string>\",\n    \"emergencyContact2_Mobile\": \"<string>\",\n    \"emergencyContact2_WorkPhone\": \"<string>\",\n    \"emergencyContact2_Telephone\": \"<string>\",\n    \"emergencyContact2_Email\": \"<string>\",\n    \"primaryPositionNumber\": \"<string>\",\n    \"primaryPositionName\": \"<string>\",\n    \"primaryPositionStartDate\": \"<string>\",\n    \"primaryPositionEndDate\": \"<string>\",\n    \"primaryPositionNotes\": \"<string>\",\n    \"employmentType\": \"<string>\",\n    \"onboarding\": [\n      {\n        \"portalID\": \"<integer>\",\n        \"portalName\": \"<string>\",\n        \"activeDate\": \"<string>\",\n        \"dueDate\": \"<string>\"\n      },\n      {\n        \"portalID\": \"<integer>\",\n        \"portalName\": \"<string>\",\n        \"activeDate\": \"<string>\",\n        \"dueDate\": \"<string>\"\n      }\n    ],\n    \"additionalPositions\": [\n      {\n        \"positionNo\": \"<string>\",\n        \"positionName\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"notes\": \"<string>\",\n        \"supervisorEmail\": \"<string>\"\n      },\n      {\n        \"positionNo\": \"<string>\",\n        \"positionName\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"notes\": \"<string>\",\n        \"supervisorEmail\": \"<string>\"\n      }\n    ],\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"userAdditionalAttributes\": [\n      {\n        \"tabId\": \"<integer>\",\n        \"tabName\": \"<string>\",\n        \"attributeId\": \"<integer>\",\n        \"attributeName\": \"<string>\",\n        \"attributeValue\": \"<string>\",\n        \"attributeDataType\": \"<string>\"\n      },\n      {\n        \"tabId\": \"<integer>\",\n        \"tabName\": \"<string>\",\n        \"attributeId\": \"<integer>\",\n        \"attributeName\": \"<string>\",\n        \"attributeValue\": \"<string>\",\n        \"attributeDataType\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6863b825-ac06-420f-a202-2ebb8e89a3b0",
+              "name": "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "UserDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"active\": \"<boolean>\",\n  \"userId\": \"<uuid>\",\n  \"title\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"preferredName\": \"<string>\",\n  \"dateOfBirth\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"mobilePhone\": \"<string>\",\n  \"workPhone\": \"<string>\",\n  \"telephone\": \"<string>\",\n  \"primaryEmail\": \"<string>\",\n  \"additionalEmail\": \"<string>\",\n  \"home_AddressLine1\": \"<string>\",\n  \"home_AddressLine2\": \"<string>\",\n  \"home_City\": \"<string>\",\n  \"home_Country\": \"<string>\",\n  \"home_PostCode\": \"<string>\",\n  \"home_State\": \"<string>\",\n  \"postal_AddressLine1\": \"<string>\",\n  \"postal_AddressLine2\": \"<string>\",\n  \"postal_City\": \"<string>\",\n  \"postal_Country\": \"<string>\",\n  \"postal_PostCode\": \"<string>\",\n  \"postal_State\": \"<string>\",\n  \"postalIsHome\": \"<boolean>\",\n  \"username\": \"<string>\",\n  \"payrollNumber\": \"<string>\",\n  \"divisionCode\": \"<string>\",\n  \"divisionName\": \"<string>\",\n  \"unitCode\": \"<string>\",\n  \"unitName\": \"<string>\",\n  \"sectionCode\": \"<string>\",\n  \"sectionName\": \"<string>\",\n  \"supervisorEmail\": \"<string>\",\n  \"teamName\": \"<string>\",\n  \"pulseRepresentativeEmail\": \"<string>\",\n  \"employmentStartDate\": \"<string>\",\n  \"employmentEndDate\": \"<string>\",\n  \"reasonOfTermination\": \"<string>\",\n  \"emergencyContact1_Name\": \"<string>\",\n  \"emergencyContact1_Relationship\": \"<string>\",\n  \"emergencyContact1_AddressLine1\": \"<string>\",\n  \"emergencyContact1_AddressLine2\": \"<string>\",\n  \"emergencyContact1_City\": \"<string>\",\n  \"emergencyContact1_State\": \"<string>\",\n  \"emergencyContact1_Country\": \"<string>\",\n  \"emergencyContact1_Postcode\": \"<string>\",\n  \"emergencyContact1_Mobile\": \"<string>\",\n  \"emergencyContact1_WorkPhone\": \"<string>\",\n  \"emergencyContact1_Telephone\": \"<string>\",\n  \"emergencyContact1_Email\": \"<string>\",\n  \"emergencyContact2_Name\": \"<string>\",\n  \"emergencyContact2_Relationship\": \"<string>\",\n  \"emergencyContact2_AddressLine1\": \"<string>\",\n  \"emergencyContact2_AddressLine2\": \"<string>\",\n  \"emergencyContact2_City\": \"<string>\",\n  \"emergencyContact2_State\": \"<string>\",\n  \"emergencyContact2_Country\": \"<string>\",\n  \"emergencyContact2_Postcode\": \"<string>\",\n  \"emergencyContact2_Mobile\": \"<string>\",\n  \"emergencyContact2_WorkPhone\": \"<string>\",\n  \"emergencyContact2_Telephone\": \"<string>\",\n  \"emergencyContact2_Email\": \"<string>\",\n  \"primaryPositionNumber\": \"<string>\",\n  \"primaryPositionName\": \"<string>\",\n  \"primaryPositionStartDate\": \"<string>\",\n  \"primaryPositionEndDate\": \"<string>\",\n  \"primaryPositionNotes\": \"<string>\",\n  \"employmentType\": \"<string>\",\n  \"onboarding\": [\n    {\n      \"portalID\": \"<integer>\",\n      \"portalName\": \"<string>\",\n      \"activeDate\": \"<string>\",\n      \"dueDate\": \"<string>\"\n    },\n    {\n      \"portalID\": \"<integer>\",\n      \"portalName\": \"<string>\",\n      \"activeDate\": \"<string>\",\n      \"dueDate\": \"<string>\"\n    }\n  ],\n  \"additionalPositions\": [\n    {\n      \"positionNo\": \"<string>\",\n      \"positionName\": \"<string>\",\n      \"startDate\": \"<string>\",\n      \"endDate\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"supervisorEmail\": \"<string>\"\n    },\n    {\n      \"positionNo\": \"<string>\",\n      \"positionName\": \"<string>\",\n      \"startDate\": \"<string>\",\n      \"endDate\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"supervisorEmail\": \"<string>\"\n    }\n  ],\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userAdditionalAttributes\": [\n    {\n      \"tabId\": \"<integer>\",\n      \"tabName\": \"<string>\",\n      \"attributeId\": \"<integer>\",\n      \"attributeName\": \"<string>\",\n      \"attributeValue\": \"<string>\",\n      \"attributeDataType\": \"<string>\"\n    },\n    {\n      \"tabId\": \"<integer>\",\n      \"tabName\": \"<string>\",\n      \"attributeId\": \"<integer>\",\n      \"attributeName\": \"<string>\",\n      \"attributeValue\": \"<string>\",\n      \"attributeDataType\": \"<string>\"\n    }\n  ],\n  \"password\": \"<string>\",\n  \"confirmPassword\": \"<string>\",\n  \"sendWelcomeEmail\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "78471cc8-b519-4469-bc7b-40c625bc4419",
+              "name": "The user corresponding to the given JWT token does not have access to this module.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "UserDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"active\": \"<boolean>\",\n  \"userId\": \"<uuid>\",\n  \"title\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"preferredName\": \"<string>\",\n  \"dateOfBirth\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"mobilePhone\": \"<string>\",\n  \"workPhone\": \"<string>\",\n  \"telephone\": \"<string>\",\n  \"primaryEmail\": \"<string>\",\n  \"additionalEmail\": \"<string>\",\n  \"home_AddressLine1\": \"<string>\",\n  \"home_AddressLine2\": \"<string>\",\n  \"home_City\": \"<string>\",\n  \"home_Country\": \"<string>\",\n  \"home_PostCode\": \"<string>\",\n  \"home_State\": \"<string>\",\n  \"postal_AddressLine1\": \"<string>\",\n  \"postal_AddressLine2\": \"<string>\",\n  \"postal_City\": \"<string>\",\n  \"postal_Country\": \"<string>\",\n  \"postal_PostCode\": \"<string>\",\n  \"postal_State\": \"<string>\",\n  \"postalIsHome\": \"<boolean>\",\n  \"username\": \"<string>\",\n  \"payrollNumber\": \"<string>\",\n  \"divisionCode\": \"<string>\",\n  \"divisionName\": \"<string>\",\n  \"unitCode\": \"<string>\",\n  \"unitName\": \"<string>\",\n  \"sectionCode\": \"<string>\",\n  \"sectionName\": \"<string>\",\n  \"supervisorEmail\": \"<string>\",\n  \"teamName\": \"<string>\",\n  \"pulseRepresentativeEmail\": \"<string>\",\n  \"employmentStartDate\": \"<string>\",\n  \"employmentEndDate\": \"<string>\",\n  \"reasonOfTermination\": \"<string>\",\n  \"emergencyContact1_Name\": \"<string>\",\n  \"emergencyContact1_Relationship\": \"<string>\",\n  \"emergencyContact1_AddressLine1\": \"<string>\",\n  \"emergencyContact1_AddressLine2\": \"<string>\",\n  \"emergencyContact1_City\": \"<string>\",\n  \"emergencyContact1_State\": \"<string>\",\n  \"emergencyContact1_Country\": \"<string>\",\n  \"emergencyContact1_Postcode\": \"<string>\",\n  \"emergencyContact1_Mobile\": \"<string>\",\n  \"emergencyContact1_WorkPhone\": \"<string>\",\n  \"emergencyContact1_Telephone\": \"<string>\",\n  \"emergencyContact1_Email\": \"<string>\",\n  \"emergencyContact2_Name\": \"<string>\",\n  \"emergencyContact2_Relationship\": \"<string>\",\n  \"emergencyContact2_AddressLine1\": \"<string>\",\n  \"emergencyContact2_AddressLine2\": \"<string>\",\n  \"emergencyContact2_City\": \"<string>\",\n  \"emergencyContact2_State\": \"<string>\",\n  \"emergencyContact2_Country\": \"<string>\",\n  \"emergencyContact2_Postcode\": \"<string>\",\n  \"emergencyContact2_Mobile\": \"<string>\",\n  \"emergencyContact2_WorkPhone\": \"<string>\",\n  \"emergencyContact2_Telephone\": \"<string>\",\n  \"emergencyContact2_Email\": \"<string>\",\n  \"primaryPositionNumber\": \"<string>\",\n  \"primaryPositionName\": \"<string>\",\n  \"primaryPositionStartDate\": \"<string>\",\n  \"primaryPositionEndDate\": \"<string>\",\n  \"primaryPositionNotes\": \"<string>\",\n  \"employmentType\": \"<string>\",\n  \"onboarding\": [\n    {\n      \"portalID\": \"<integer>\",\n      \"portalName\": \"<string>\",\n      \"activeDate\": \"<string>\",\n      \"dueDate\": \"<string>\"\n    },\n    {\n      \"portalID\": \"<integer>\",\n      \"portalName\": \"<string>\",\n      \"activeDate\": \"<string>\",\n      \"dueDate\": \"<string>\"\n    }\n  ],\n  \"additionalPositions\": [\n    {\n      \"positionNo\": \"<string>\",\n      \"positionName\": \"<string>\",\n      \"startDate\": \"<string>\",\n      \"endDate\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"supervisorEmail\": \"<string>\"\n    },\n    {\n      \"positionNo\": \"<string>\",\n      \"positionName\": \"<string>\",\n      \"startDate\": \"<string>\",\n      \"endDate\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"supervisorEmail\": \"<string>\"\n    }\n  ],\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userAdditionalAttributes\": [\n    {\n      \"tabId\": \"<integer>\",\n      \"tabName\": \"<string>\",\n      \"attributeId\": \"<integer>\",\n      \"attributeName\": \"<string>\",\n      \"attributeValue\": \"<string>\",\n      \"attributeDataType\": \"<string>\"\n    },\n    {\n      \"tabId\": \"<integer>\",\n      \"tabName\": \"<string>\",\n      \"attributeId\": \"<integer>\",\n      \"attributeName\": \"<string>\",\n      \"attributeValue\": \"<string>\",\n      \"attributeDataType\": \"<string>\"\n    }\n  ],\n  \"password\": \"<string>\",\n  \"confirmPassword\": \"<string>\",\n  \"sendWelcomeEmail\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b0d70fab-6f2f-4e52-9ae8-727100f8b6df",
+          "name": "Update user in Pulse",
+          "request": {
+            "name": "Update user in Pulse",
+            "description": {
+              "content": "Update user in Pulse based on userId provided in request body\n\n**Authorised Roles:** *PulseSecurityUser*\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "security",
+                "UserDetails"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API key",
+                "key": "x-api-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorisation"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"active\": \"<boolean>\",\n  \"userId\": \"<uuid>\",\n  \"title\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"preferredName\": \"<string>\",\n  \"dateOfBirth\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"mobilePhone\": \"<string>\",\n  \"workPhone\": \"<string>\",\n  \"telephone\": \"<string>\",\n  \"primaryEmail\": \"<string>\",\n  \"additionalEmail\": \"<string>\",\n  \"home_AddressLine1\": \"<string>\",\n  \"home_AddressLine2\": \"<string>\",\n  \"home_City\": \"<string>\",\n  \"home_Country\": \"<string>\",\n  \"home_PostCode\": \"<string>\",\n  \"home_State\": \"<string>\",\n  \"postal_AddressLine1\": \"<string>\",\n  \"postal_AddressLine2\": \"<string>\",\n  \"postal_City\": \"<string>\",\n  \"postal_Country\": \"<string>\",\n  \"postal_PostCode\": \"<string>\",\n  \"postal_State\": \"<string>\",\n  \"postalIsHome\": \"<boolean>\",\n  \"username\": \"<string>\",\n  \"payrollNumber\": \"<string>\",\n  \"divisionCode\": \"<string>\",\n  \"divisionName\": \"<string>\",\n  \"unitCode\": \"<string>\",\n  \"unitName\": \"<string>\",\n  \"sectionCode\": \"<string>\",\n  \"sectionName\": \"<string>\",\n  \"supervisorEmail\": \"<string>\",\n  \"teamName\": \"<string>\",\n  \"pulseRepresentativeEmail\": \"<string>\",\n  \"employmentStartDate\": \"<string>\",\n  \"employmentEndDate\": \"<string>\",\n  \"reasonOfTermination\": \"<string>\",\n  \"emergencyContact1_Name\": \"<string>\",\n  \"emergencyContact1_Relationship\": \"<string>\",\n  \"emergencyContact1_AddressLine1\": \"<string>\",\n  \"emergencyContact1_AddressLine2\": \"<string>\",\n  \"emergencyContact1_City\": \"<string>\",\n  \"emergencyContact1_State\": \"<string>\",\n  \"emergencyContact1_Country\": \"<string>\",\n  \"emergencyContact1_Postcode\": \"<string>\",\n  \"emergencyContact1_Mobile\": \"<string>\",\n  \"emergencyContact1_WorkPhone\": \"<string>\",\n  \"emergencyContact1_Telephone\": \"<string>\",\n  \"emergencyContact1_Email\": \"<string>\",\n  \"emergencyContact2_Name\": \"<string>\",\n  \"emergencyContact2_Relationship\": \"<string>\",\n  \"emergencyContact2_AddressLine1\": \"<string>\",\n  \"emergencyContact2_AddressLine2\": \"<string>\",\n  \"emergencyContact2_City\": \"<string>\",\n  \"emergencyContact2_State\": \"<string>\",\n  \"emergencyContact2_Country\": \"<string>\",\n  \"emergencyContact2_Postcode\": \"<string>\",\n  \"emergencyContact2_Mobile\": \"<string>\",\n  \"emergencyContact2_WorkPhone\": \"<string>\",\n  \"emergencyContact2_Telephone\": \"<string>\",\n  \"emergencyContact2_Email\": \"<string>\",\n  \"primaryPositionNumber\": \"<string>\",\n  \"primaryPositionName\": \"<string>\",\n  \"primaryPositionStartDate\": \"<string>\",\n  \"primaryPositionEndDate\": \"<string>\",\n  \"primaryPositionNotes\": \"<string>\",\n  \"employmentType\": \"<string>\",\n  \"onboarding\": [\n    {\n      \"portalID\": \"<integer>\",\n      \"portalName\": \"<string>\",\n      \"activeDate\": \"<string>\",\n      \"dueDate\": \"<string>\"\n    },\n    {\n      \"portalID\": \"<integer>\",\n      \"portalName\": \"<string>\",\n      \"activeDate\": \"<string>\",\n      \"dueDate\": \"<string>\"\n    }\n  ],\n  \"additionalPositions\": [\n    {\n      \"positionNo\": \"<string>\",\n      \"positionName\": \"<string>\",\n      \"startDate\": \"<string>\",\n      \"endDate\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"supervisorEmail\": \"<string>\"\n    },\n    {\n      \"positionNo\": \"<string>\",\n      \"positionName\": \"<string>\",\n      \"startDate\": \"<string>\",\n      \"endDate\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"supervisorEmail\": \"<string>\"\n    }\n  ],\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userAdditionalAttributes\": [\n    {\n      \"tabId\": \"<integer>\",\n      \"tabName\": \"<string>\",\n      \"attributeId\": \"<integer>\",\n      \"attributeName\": \"<string>\",\n      \"attributeValue\": \"<string>\",\n      \"attributeDataType\": \"<string>\"\n    },\n    {\n      \"tabId\": \"<integer>\",\n      \"tabName\": \"<string>\",\n      \"attributeId\": \"<integer>\",\n      \"attributeName\": \"<string>\",\n      \"attributeValue\": \"<string>\",\n      \"attributeDataType\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6e74c6e5-ae73-4f0f-b372-ef72de797e4c",
+              "name": "OK. Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "UserDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ],\n  \"data\": {\n    \"active\": \"<boolean>\",\n    \"userId\": \"<uuid>\",\n    \"title\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"preferredName\": \"<string>\",\n    \"dateOfBirth\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"mobilePhone\": \"<string>\",\n    \"workPhone\": \"<string>\",\n    \"telephone\": \"<string>\",\n    \"primaryEmail\": \"<string>\",\n    \"additionalEmail\": \"<string>\",\n    \"home_AddressLine1\": \"<string>\",\n    \"home_AddressLine2\": \"<string>\",\n    \"home_City\": \"<string>\",\n    \"home_Country\": \"<string>\",\n    \"home_PostCode\": \"<string>\",\n    \"home_State\": \"<string>\",\n    \"postal_AddressLine1\": \"<string>\",\n    \"postal_AddressLine2\": \"<string>\",\n    \"postal_City\": \"<string>\",\n    \"postal_Country\": \"<string>\",\n    \"postal_PostCode\": \"<string>\",\n    \"postal_State\": \"<string>\",\n    \"postalIsHome\": \"<boolean>\",\n    \"username\": \"<string>\",\n    \"payrollNumber\": \"<string>\",\n    \"divisionCode\": \"<string>\",\n    \"divisionName\": \"<string>\",\n    \"unitCode\": \"<string>\",\n    \"unitName\": \"<string>\",\n    \"sectionCode\": \"<string>\",\n    \"sectionName\": \"<string>\",\n    \"supervisorEmail\": \"<string>\",\n    \"teamName\": \"<string>\",\n    \"pulseRepresentativeEmail\": \"<string>\",\n    \"employmentStartDate\": \"<string>\",\n    \"employmentEndDate\": \"<string>\",\n    \"reasonOfTermination\": \"<string>\",\n    \"emergencyContact1_Name\": \"<string>\",\n    \"emergencyContact1_Relationship\": \"<string>\",\n    \"emergencyContact1_AddressLine1\": \"<string>\",\n    \"emergencyContact1_AddressLine2\": \"<string>\",\n    \"emergencyContact1_City\": \"<string>\",\n    \"emergencyContact1_State\": \"<string>\",\n    \"emergencyContact1_Country\": \"<string>\",\n    \"emergencyContact1_Postcode\": \"<string>\",\n    \"emergencyContact1_Mobile\": \"<string>\",\n    \"emergencyContact1_WorkPhone\": \"<string>\",\n    \"emergencyContact1_Telephone\": \"<string>\",\n    \"emergencyContact1_Email\": \"<string>\",\n    \"emergencyContact2_Name\": \"<string>\",\n    \"emergencyContact2_Relationship\": \"<string>\",\n    \"emergencyContact2_AddressLine1\": \"<string>\",\n    \"emergencyContact2_AddressLine2\": \"<string>\",\n    \"emergencyContact2_City\": \"<string>\",\n    \"emergencyContact2_State\": \"<string>\",\n    \"emergencyContact2_Country\": \"<string>\",\n    \"emergencyContact2_Postcode\": \"<string>\",\n    \"emergencyContact2_Mobile\": \"<string>\",\n    \"emergencyContact2_WorkPhone\": \"<string>\",\n    \"emergencyContact2_Telephone\": \"<string>\",\n    \"emergencyContact2_Email\": \"<string>\",\n    \"primaryPositionNumber\": \"<string>\",\n    \"primaryPositionName\": \"<string>\",\n    \"primaryPositionStartDate\": \"<string>\",\n    \"primaryPositionEndDate\": \"<string>\",\n    \"primaryPositionNotes\": \"<string>\",\n    \"employmentType\": \"<string>\",\n    \"onboarding\": [\n      {\n        \"portalID\": \"<integer>\",\n        \"portalName\": \"<string>\",\n        \"activeDate\": \"<string>\",\n        \"dueDate\": \"<string>\"\n      },\n      {\n        \"portalID\": \"<integer>\",\n        \"portalName\": \"<string>\",\n        \"activeDate\": \"<string>\",\n        \"dueDate\": \"<string>\"\n      }\n    ],\n    \"additionalPositions\": [\n      {\n        \"positionNo\": \"<string>\",\n        \"positionName\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"notes\": \"<string>\",\n        \"supervisorEmail\": \"<string>\"\n      },\n      {\n        \"positionNo\": \"<string>\",\n        \"positionName\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"notes\": \"<string>\",\n        \"supervisorEmail\": \"<string>\"\n      }\n    ],\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"userAdditionalAttributes\": [\n      {\n        \"tabId\": \"<integer>\",\n        \"tabName\": \"<string>\",\n        \"attributeId\": \"<integer>\",\n        \"attributeName\": \"<string>\",\n        \"attributeValue\": \"<string>\",\n        \"attributeDataType\": \"<string>\"\n      },\n      {\n        \"tabId\": \"<integer>\",\n        \"tabName\": \"<string>\",\n        \"attributeId\": \"<integer>\",\n        \"attributeName\": \"<string>\",\n        \"attributeValue\": \"<string>\",\n        \"attributeDataType\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fdf94011-ebb1-448f-803e-22b624dee762",
+              "name": "Invalid request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "UserDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ],\n  \"data\": {\n    \"active\": \"<boolean>\",\n    \"userId\": \"<uuid>\",\n    \"title\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"preferredName\": \"<string>\",\n    \"dateOfBirth\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"mobilePhone\": \"<string>\",\n    \"workPhone\": \"<string>\",\n    \"telephone\": \"<string>\",\n    \"primaryEmail\": \"<string>\",\n    \"additionalEmail\": \"<string>\",\n    \"home_AddressLine1\": \"<string>\",\n    \"home_AddressLine2\": \"<string>\",\n    \"home_City\": \"<string>\",\n    \"home_Country\": \"<string>\",\n    \"home_PostCode\": \"<string>\",\n    \"home_State\": \"<string>\",\n    \"postal_AddressLine1\": \"<string>\",\n    \"postal_AddressLine2\": \"<string>\",\n    \"postal_City\": \"<string>\",\n    \"postal_Country\": \"<string>\",\n    \"postal_PostCode\": \"<string>\",\n    \"postal_State\": \"<string>\",\n    \"postalIsHome\": \"<boolean>\",\n    \"username\": \"<string>\",\n    \"payrollNumber\": \"<string>\",\n    \"divisionCode\": \"<string>\",\n    \"divisionName\": \"<string>\",\n    \"unitCode\": \"<string>\",\n    \"unitName\": \"<string>\",\n    \"sectionCode\": \"<string>\",\n    \"sectionName\": \"<string>\",\n    \"supervisorEmail\": \"<string>\",\n    \"teamName\": \"<string>\",\n    \"pulseRepresentativeEmail\": \"<string>\",\n    \"employmentStartDate\": \"<string>\",\n    \"employmentEndDate\": \"<string>\",\n    \"reasonOfTermination\": \"<string>\",\n    \"emergencyContact1_Name\": \"<string>\",\n    \"emergencyContact1_Relationship\": \"<string>\",\n    \"emergencyContact1_AddressLine1\": \"<string>\",\n    \"emergencyContact1_AddressLine2\": \"<string>\",\n    \"emergencyContact1_City\": \"<string>\",\n    \"emergencyContact1_State\": \"<string>\",\n    \"emergencyContact1_Country\": \"<string>\",\n    \"emergencyContact1_Postcode\": \"<string>\",\n    \"emergencyContact1_Mobile\": \"<string>\",\n    \"emergencyContact1_WorkPhone\": \"<string>\",\n    \"emergencyContact1_Telephone\": \"<string>\",\n    \"emergencyContact1_Email\": \"<string>\",\n    \"emergencyContact2_Name\": \"<string>\",\n    \"emergencyContact2_Relationship\": \"<string>\",\n    \"emergencyContact2_AddressLine1\": \"<string>\",\n    \"emergencyContact2_AddressLine2\": \"<string>\",\n    \"emergencyContact2_City\": \"<string>\",\n    \"emergencyContact2_State\": \"<string>\",\n    \"emergencyContact2_Country\": \"<string>\",\n    \"emergencyContact2_Postcode\": \"<string>\",\n    \"emergencyContact2_Mobile\": \"<string>\",\n    \"emergencyContact2_WorkPhone\": \"<string>\",\n    \"emergencyContact2_Telephone\": \"<string>\",\n    \"emergencyContact2_Email\": \"<string>\",\n    \"primaryPositionNumber\": \"<string>\",\n    \"primaryPositionName\": \"<string>\",\n    \"primaryPositionStartDate\": \"<string>\",\n    \"primaryPositionEndDate\": \"<string>\",\n    \"primaryPositionNotes\": \"<string>\",\n    \"employmentType\": \"<string>\",\n    \"onboarding\": [\n      {\n        \"portalID\": \"<integer>\",\n        \"portalName\": \"<string>\",\n        \"activeDate\": \"<string>\",\n        \"dueDate\": \"<string>\"\n      },\n      {\n        \"portalID\": \"<integer>\",\n        \"portalName\": \"<string>\",\n        \"activeDate\": \"<string>\",\n        \"dueDate\": \"<string>\"\n      }\n    ],\n    \"additionalPositions\": [\n      {\n        \"positionNo\": \"<string>\",\n        \"positionName\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"notes\": \"<string>\",\n        \"supervisorEmail\": \"<string>\"\n      },\n      {\n        \"positionNo\": \"<string>\",\n        \"positionName\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"notes\": \"<string>\",\n        \"supervisorEmail\": \"<string>\"\n      }\n    ],\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"userAdditionalAttributes\": [\n      {\n        \"tabId\": \"<integer>\",\n        \"tabName\": \"<string>\",\n        \"attributeId\": \"<integer>\",\n        \"attributeName\": \"<string>\",\n        \"attributeValue\": \"<string>\",\n        \"attributeDataType\": \"<string>\"\n      },\n      {\n        \"tabId\": \"<integer>\",\n        \"tabName\": \"<string>\",\n        \"attributeId\": \"<integer>\",\n        \"attributeName\": \"<string>\",\n        \"attributeValue\": \"<string>\",\n        \"attributeDataType\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b0425d94-e887-4a82-930e-4e0b416f3f2a",
+              "name": "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "UserDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f2f2f996-d66a-4d14-a632-e620e8d24e96",
+              "name": "The user corresponding to the given JWT token does not have access to this module.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "UserDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c43f32c7-1f0b-475d-9787-1e26ad1b9a61",
+              "name": "User not found by specified user id",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "UserDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "816b16c2-f5bb-43f7-b9ad-1a8af4614e77",
+          "name": "Update user in Pulse",
+          "request": {
+            "name": "Update user in Pulse",
+            "description": {
+              "content": "Update user in Pulse based on userId provided in request body\n\n**Authorised Roles:** *PulseSecurityUser*\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "security",
+                "UserDetails"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API key",
+                "key": "x-api-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorisation"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"active\": \"<boolean>\",\n  \"userId\": \"<uuid>\",\n  \"title\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"preferredName\": \"<string>\",\n  \"dateOfBirth\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"mobilePhone\": \"<string>\",\n  \"workPhone\": \"<string>\",\n  \"telephone\": \"<string>\",\n  \"primaryEmail\": \"<string>\",\n  \"additionalEmail\": \"<string>\",\n  \"home_AddressLine1\": \"<string>\",\n  \"home_AddressLine2\": \"<string>\",\n  \"home_City\": \"<string>\",\n  \"home_Country\": \"<string>\",\n  \"home_PostCode\": \"<string>\",\n  \"home_State\": \"<string>\",\n  \"postal_AddressLine1\": \"<string>\",\n  \"postal_AddressLine2\": \"<string>\",\n  \"postal_City\": \"<string>\",\n  \"postal_Country\": \"<string>\",\n  \"postal_PostCode\": \"<string>\",\n  \"postal_State\": \"<string>\",\n  \"postalIsHome\": \"<boolean>\",\n  \"username\": \"<string>\",\n  \"payrollNumber\": \"<string>\",\n  \"divisionCode\": \"<string>\",\n  \"divisionName\": \"<string>\",\n  \"unitCode\": \"<string>\",\n  \"unitName\": \"<string>\",\n  \"sectionCode\": \"<string>\",\n  \"sectionName\": \"<string>\",\n  \"supervisorEmail\": \"<string>\",\n  \"teamName\": \"<string>\",\n  \"pulseRepresentativeEmail\": \"<string>\",\n  \"employmentStartDate\": \"<string>\",\n  \"employmentEndDate\": \"<string>\",\n  \"reasonOfTermination\": \"<string>\",\n  \"emergencyContact1_Name\": \"<string>\",\n  \"emergencyContact1_Relationship\": \"<string>\",\n  \"emergencyContact1_AddressLine1\": \"<string>\",\n  \"emergencyContact1_AddressLine2\": \"<string>\",\n  \"emergencyContact1_City\": \"<string>\",\n  \"emergencyContact1_State\": \"<string>\",\n  \"emergencyContact1_Country\": \"<string>\",\n  \"emergencyContact1_Postcode\": \"<string>\",\n  \"emergencyContact1_Mobile\": \"<string>\",\n  \"emergencyContact1_WorkPhone\": \"<string>\",\n  \"emergencyContact1_Telephone\": \"<string>\",\n  \"emergencyContact1_Email\": \"<string>\",\n  \"emergencyContact2_Name\": \"<string>\",\n  \"emergencyContact2_Relationship\": \"<string>\",\n  \"emergencyContact2_AddressLine1\": \"<string>\",\n  \"emergencyContact2_AddressLine2\": \"<string>\",\n  \"emergencyContact2_City\": \"<string>\",\n  \"emergencyContact2_State\": \"<string>\",\n  \"emergencyContact2_Country\": \"<string>\",\n  \"emergencyContact2_Postcode\": \"<string>\",\n  \"emergencyContact2_Mobile\": \"<string>\",\n  \"emergencyContact2_WorkPhone\": \"<string>\",\n  \"emergencyContact2_Telephone\": \"<string>\",\n  \"emergencyContact2_Email\": \"<string>\",\n  \"primaryPositionNumber\": \"<string>\",\n  \"primaryPositionName\": \"<string>\",\n  \"primaryPositionStartDate\": \"<string>\",\n  \"primaryPositionEndDate\": \"<string>\",\n  \"primaryPositionNotes\": \"<string>\",\n  \"employmentType\": \"<string>\",\n  \"onboarding\": [\n    {\n      \"portalID\": \"<integer>\",\n      \"portalName\": \"<string>\",\n      \"activeDate\": \"<string>\",\n      \"dueDate\": \"<string>\"\n    },\n    {\n      \"portalID\": \"<integer>\",\n      \"portalName\": \"<string>\",\n      \"activeDate\": \"<string>\",\n      \"dueDate\": \"<string>\"\n    }\n  ],\n  \"additionalPositions\": [\n    {\n      \"positionNo\": \"<string>\",\n      \"positionName\": \"<string>\",\n      \"startDate\": \"<string>\",\n      \"endDate\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"supervisorEmail\": \"<string>\"\n    },\n    {\n      \"positionNo\": \"<string>\",\n      \"positionName\": \"<string>\",\n      \"startDate\": \"<string>\",\n      \"endDate\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"supervisorEmail\": \"<string>\"\n    }\n  ],\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userAdditionalAttributes\": [\n    {\n      \"tabId\": \"<integer>\",\n      \"tabName\": \"<string>\",\n      \"attributeId\": \"<integer>\",\n      \"attributeName\": \"<string>\",\n      \"attributeValue\": \"<string>\",\n      \"attributeDataType\": \"<string>\"\n    },\n    {\n      \"tabId\": \"<integer>\",\n      \"tabName\": \"<string>\",\n      \"attributeId\": \"<integer>\",\n      \"attributeName\": \"<string>\",\n      \"attributeValue\": \"<string>\",\n      \"attributeDataType\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "29cab8a9-5904-438b-b04d-093103d3ece8",
+              "name": "OK. Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "UserDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ],\n  \"data\": {\n    \"active\": \"<boolean>\",\n    \"userId\": \"<uuid>\",\n    \"title\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"preferredName\": \"<string>\",\n    \"dateOfBirth\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"mobilePhone\": \"<string>\",\n    \"workPhone\": \"<string>\",\n    \"telephone\": \"<string>\",\n    \"primaryEmail\": \"<string>\",\n    \"additionalEmail\": \"<string>\",\n    \"home_AddressLine1\": \"<string>\",\n    \"home_AddressLine2\": \"<string>\",\n    \"home_City\": \"<string>\",\n    \"home_Country\": \"<string>\",\n    \"home_PostCode\": \"<string>\",\n    \"home_State\": \"<string>\",\n    \"postal_AddressLine1\": \"<string>\",\n    \"postal_AddressLine2\": \"<string>\",\n    \"postal_City\": \"<string>\",\n    \"postal_Country\": \"<string>\",\n    \"postal_PostCode\": \"<string>\",\n    \"postal_State\": \"<string>\",\n    \"postalIsHome\": \"<boolean>\",\n    \"username\": \"<string>\",\n    \"payrollNumber\": \"<string>\",\n    \"divisionCode\": \"<string>\",\n    \"divisionName\": \"<string>\",\n    \"unitCode\": \"<string>\",\n    \"unitName\": \"<string>\",\n    \"sectionCode\": \"<string>\",\n    \"sectionName\": \"<string>\",\n    \"supervisorEmail\": \"<string>\",\n    \"teamName\": \"<string>\",\n    \"pulseRepresentativeEmail\": \"<string>\",\n    \"employmentStartDate\": \"<string>\",\n    \"employmentEndDate\": \"<string>\",\n    \"reasonOfTermination\": \"<string>\",\n    \"emergencyContact1_Name\": \"<string>\",\n    \"emergencyContact1_Relationship\": \"<string>\",\n    \"emergencyContact1_AddressLine1\": \"<string>\",\n    \"emergencyContact1_AddressLine2\": \"<string>\",\n    \"emergencyContact1_City\": \"<string>\",\n    \"emergencyContact1_State\": \"<string>\",\n    \"emergencyContact1_Country\": \"<string>\",\n    \"emergencyContact1_Postcode\": \"<string>\",\n    \"emergencyContact1_Mobile\": \"<string>\",\n    \"emergencyContact1_WorkPhone\": \"<string>\",\n    \"emergencyContact1_Telephone\": \"<string>\",\n    \"emergencyContact1_Email\": \"<string>\",\n    \"emergencyContact2_Name\": \"<string>\",\n    \"emergencyContact2_Relationship\": \"<string>\",\n    \"emergencyContact2_AddressLine1\": \"<string>\",\n    \"emergencyContact2_AddressLine2\": \"<string>\",\n    \"emergencyContact2_City\": \"<string>\",\n    \"emergencyContact2_State\": \"<string>\",\n    \"emergencyContact2_Country\": \"<string>\",\n    \"emergencyContact2_Postcode\": \"<string>\",\n    \"emergencyContact2_Mobile\": \"<string>\",\n    \"emergencyContact2_WorkPhone\": \"<string>\",\n    \"emergencyContact2_Telephone\": \"<string>\",\n    \"emergencyContact2_Email\": \"<string>\",\n    \"primaryPositionNumber\": \"<string>\",\n    \"primaryPositionName\": \"<string>\",\n    \"primaryPositionStartDate\": \"<string>\",\n    \"primaryPositionEndDate\": \"<string>\",\n    \"primaryPositionNotes\": \"<string>\",\n    \"employmentType\": \"<string>\",\n    \"onboarding\": [\n      {\n        \"portalID\": \"<integer>\",\n        \"portalName\": \"<string>\",\n        \"activeDate\": \"<string>\",\n        \"dueDate\": \"<string>\"\n      },\n      {\n        \"portalID\": \"<integer>\",\n        \"portalName\": \"<string>\",\n        \"activeDate\": \"<string>\",\n        \"dueDate\": \"<string>\"\n      }\n    ],\n    \"additionalPositions\": [\n      {\n        \"positionNo\": \"<string>\",\n        \"positionName\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"notes\": \"<string>\",\n        \"supervisorEmail\": \"<string>\"\n      },\n      {\n        \"positionNo\": \"<string>\",\n        \"positionName\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"notes\": \"<string>\",\n        \"supervisorEmail\": \"<string>\"\n      }\n    ],\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"userAdditionalAttributes\": [\n      {\n        \"tabId\": \"<integer>\",\n        \"tabName\": \"<string>\",\n        \"attributeId\": \"<integer>\",\n        \"attributeName\": \"<string>\",\n        \"attributeValue\": \"<string>\",\n        \"attributeDataType\": \"<string>\"\n      },\n      {\n        \"tabId\": \"<integer>\",\n        \"tabName\": \"<string>\",\n        \"attributeId\": \"<integer>\",\n        \"attributeName\": \"<string>\",\n        \"attributeValue\": \"<string>\",\n        \"attributeDataType\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a0ebc4ca-7d7f-41f8-b796-08c18bfe8562",
+              "name": "Invalid request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "UserDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ],\n  \"data\": {\n    \"active\": \"<boolean>\",\n    \"userId\": \"<uuid>\",\n    \"title\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"preferredName\": \"<string>\",\n    \"dateOfBirth\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"mobilePhone\": \"<string>\",\n    \"workPhone\": \"<string>\",\n    \"telephone\": \"<string>\",\n    \"primaryEmail\": \"<string>\",\n    \"additionalEmail\": \"<string>\",\n    \"home_AddressLine1\": \"<string>\",\n    \"home_AddressLine2\": \"<string>\",\n    \"home_City\": \"<string>\",\n    \"home_Country\": \"<string>\",\n    \"home_PostCode\": \"<string>\",\n    \"home_State\": \"<string>\",\n    \"postal_AddressLine1\": \"<string>\",\n    \"postal_AddressLine2\": \"<string>\",\n    \"postal_City\": \"<string>\",\n    \"postal_Country\": \"<string>\",\n    \"postal_PostCode\": \"<string>\",\n    \"postal_State\": \"<string>\",\n    \"postalIsHome\": \"<boolean>\",\n    \"username\": \"<string>\",\n    \"payrollNumber\": \"<string>\",\n    \"divisionCode\": \"<string>\",\n    \"divisionName\": \"<string>\",\n    \"unitCode\": \"<string>\",\n    \"unitName\": \"<string>\",\n    \"sectionCode\": \"<string>\",\n    \"sectionName\": \"<string>\",\n    \"supervisorEmail\": \"<string>\",\n    \"teamName\": \"<string>\",\n    \"pulseRepresentativeEmail\": \"<string>\",\n    \"employmentStartDate\": \"<string>\",\n    \"employmentEndDate\": \"<string>\",\n    \"reasonOfTermination\": \"<string>\",\n    \"emergencyContact1_Name\": \"<string>\",\n    \"emergencyContact1_Relationship\": \"<string>\",\n    \"emergencyContact1_AddressLine1\": \"<string>\",\n    \"emergencyContact1_AddressLine2\": \"<string>\",\n    \"emergencyContact1_City\": \"<string>\",\n    \"emergencyContact1_State\": \"<string>\",\n    \"emergencyContact1_Country\": \"<string>\",\n    \"emergencyContact1_Postcode\": \"<string>\",\n    \"emergencyContact1_Mobile\": \"<string>\",\n    \"emergencyContact1_WorkPhone\": \"<string>\",\n    \"emergencyContact1_Telephone\": \"<string>\",\n    \"emergencyContact1_Email\": \"<string>\",\n    \"emergencyContact2_Name\": \"<string>\",\n    \"emergencyContact2_Relationship\": \"<string>\",\n    \"emergencyContact2_AddressLine1\": \"<string>\",\n    \"emergencyContact2_AddressLine2\": \"<string>\",\n    \"emergencyContact2_City\": \"<string>\",\n    \"emergencyContact2_State\": \"<string>\",\n    \"emergencyContact2_Country\": \"<string>\",\n    \"emergencyContact2_Postcode\": \"<string>\",\n    \"emergencyContact2_Mobile\": \"<string>\",\n    \"emergencyContact2_WorkPhone\": \"<string>\",\n    \"emergencyContact2_Telephone\": \"<string>\",\n    \"emergencyContact2_Email\": \"<string>\",\n    \"primaryPositionNumber\": \"<string>\",\n    \"primaryPositionName\": \"<string>\",\n    \"primaryPositionStartDate\": \"<string>\",\n    \"primaryPositionEndDate\": \"<string>\",\n    \"primaryPositionNotes\": \"<string>\",\n    \"employmentType\": \"<string>\",\n    \"onboarding\": [\n      {\n        \"portalID\": \"<integer>\",\n        \"portalName\": \"<string>\",\n        \"activeDate\": \"<string>\",\n        \"dueDate\": \"<string>\"\n      },\n      {\n        \"portalID\": \"<integer>\",\n        \"portalName\": \"<string>\",\n        \"activeDate\": \"<string>\",\n        \"dueDate\": \"<string>\"\n      }\n    ],\n    \"additionalPositions\": [\n      {\n        \"positionNo\": \"<string>\",\n        \"positionName\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"notes\": \"<string>\",\n        \"supervisorEmail\": \"<string>\"\n      },\n      {\n        \"positionNo\": \"<string>\",\n        \"positionName\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"notes\": \"<string>\",\n        \"supervisorEmail\": \"<string>\"\n      }\n    ],\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"userAdditionalAttributes\": [\n      {\n        \"tabId\": \"<integer>\",\n        \"tabName\": \"<string>\",\n        \"attributeId\": \"<integer>\",\n        \"attributeName\": \"<string>\",\n        \"attributeValue\": \"<string>\",\n        \"attributeDataType\": \"<string>\"\n      },\n      {\n        \"tabId\": \"<integer>\",\n        \"tabName\": \"<string>\",\n        \"attributeId\": \"<integer>\",\n        \"attributeName\": \"<string>\",\n        \"attributeValue\": \"<string>\",\n        \"attributeDataType\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a5479a3f-0b9e-47d5-9719-09b78069b31e",
+              "name": "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "UserDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3fc5175c-97ee-4f6a-96da-3533aefe7c0e",
+              "name": "The user corresponding to the given JWT token does not have access to this module.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "UserDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bcd72088-c9bc-408d-9e16-9870cb1b9b68",
+              "name": "User not found by specified user id",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "UserDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://*.pulsesoftware.com/webservices/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ec4948dd-f5b9-4a79-a4c3-2f6c697ac09a",
+    "name": "Pulse Public Authentication User Details API v2 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Pulse API is targeted towards developers looking to automate tasks in Pulse. \n\n# Authentication\nAll endpoints in Pulse require authentication.  Legacy endpoints require only a Private API Key, while all new endpoints incorporate JSON Web Tokens.  \n\n**API Key**\nTo consume a Pulse endpoint using API Key authentication, :\n  * Contact Pulse support at support@pulsesoftware.com to enable the Pulse Public API and issue your API key.\n  * Pass the API key in the **'x-Api-Key'** header with each request.\n\nNote: It is recommended to use a User Private API key where possible, rather than the Application Private Key. When using a User API key, functionality will be restricted based on the role of the User for which the API key was generated.  See API endpoint documentation for authorised roles. \n\n**JSON Web Token (JWT)**\nTo consume a Pulse endpoint using JWT authentication:\n  * Contact Pulse support at support@pulsesoftware.com to enable the Pulse Public API and issue your API key.\n  * Request a bearer token from /pulse/jwt, passing the API key in the **'x-Api-Key'** header with the request.\n  * Pass the token issued in the **'Authorization'** header of all requests as **'bearer [token]'**\n\n**Note** Tokens will expire 60 minutes after being issued, at which point your application will need to request a new token.\n\n# Requests\nThe Pulse API follows REST principles.  Data resources are accessed via standard HTTPS requests in UTF-8 format to an API endpoint. Where possible, Web API uses appropriate HTTP verbs for each action.\nHTTP Verbs:\n  * **GET** Retrieves resources\n  * **POST** Creates resources\n  * **PUT** Changes and/or replaces resources or collections\n  * **DELETE** Deletes resources\n\nThe Pulse API accepts the following ISO-8601 formats for date strings:\n  * Date, Time, Timezone: e.g. \"2021-06-02T21:39:18+00:00\"\n  * Date, Time: e.g. \"2021-06-02T21:39:18Z\"\n  * Date: e.g. \"2021-06-02\"\n\n# Responses\nPulse API returns all response data as a JSON object.  \n\n# Response Status Codes\nPulse API uses the following status codes:\n  * **200** OK - Request succeeded.  Result provided in response body.\n  * **400** Bad Request - Malformed syntax.  See message body for information.\n  * **401** Unauthorised - Missing authentication (API Key or JWT).\n  * **403** Forbidden - API user is not authorised to access requested resource.\n  * **404** Not Found - Request resource does not exist.\n\n# Support\nContact support@pulsesoftware.com for any queries or issues related to this API\n\n\nContact Support:\n Email: support@pulsesoftware.com",
+      "type": "text/plain"
+    }
+  }
+}

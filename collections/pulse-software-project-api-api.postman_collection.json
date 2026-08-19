@@ -1,0 +1,297 @@
+{
+  "item": [
+    {
+      "id": "dd441a66-2b24-4906-b886-a3618efaa25d",
+      "name": "Project API",
+      "description": {
+        "content": "API for managing project info in Pulse",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1360e229-5d47-477e-880f-d457e2502bb6",
+          "name": "Sends Project Component BIS data to Pulse",
+          "request": {
+            "name": "Sends Project Component BIS data to Pulse",
+            "description": {
+              "content": "Performs a bulk upsert of BIS financial information relating to specific project codes (Project Components) at the individual project execution level.\nThis matches on existing Project Executions by Project Component, which have to be pre-filled in the Projects Module on the Pulse website.\nSome preliminary setup is required before this API endpoint can be consumed. Additionally, only Admin users in the Projects Module will be able to consume this API endpoint.\nSetup instructions:\n1. Contact Pulse support at support@pulsesoftware.com to enable the Pulse Public API. Make sure you follow the steps outlined in the Authentication section to enable JWT authentication.\n2. In the Projects module, navigate to the Admin page.\n3. Click 'Manage Forms'.\n4. In a form of your choice, add the new fields that you would like to populate using this API endpoint. Ensure you make a field named 'Project Component'. This field will contain the unique Project Component value required to link a Project Execution in Pulse to a BIS Financial information record.\n5. These fields will need to be linked to this API endpoint before it can be consumed. Contact Pulse support at support@pulsesoftware.com so that they can do this for you.\n6. Once the new fields have been linked to the API, navigate to the Project Executions page in the Projects module and view the details of a Project Execution you would like to update via the API.\n7. In the Project Component field you created in step 4, add the unique identifier that will link the Project Execution to a BIS financial information record.\n\n**Note**: if any of the linked fields are deleted and re-added, you will need to contact Pulse support (support@pulsesoftware.com) to re-link the fields to the API.\n\n**Authorised Roles:** *ProjectAdmin*\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "project",
+                "projectexecutionfinancialsync"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorisation"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": [\n    {\n      \"Project Component\": \"<string>\"\n    },\n    {\n      \"Project Component\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "49d41f8d-7163-4935-858c-1b45fdacb71c",
+              "name": "OK. Request completed successfully. Please see the updatedProjectComponents list in the response for the Project Components updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "project",
+                    "projectexecutionfinancialsync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"Project Component\": \"W046-100\",\n      \"Description\": \"This is a test.\",\n      \"Full Year Original Budget\": 447085,\n      \"Full Year Revised Budget\": 111771.36,\n      \"YTD Budget\": 335314.1,\n      \"YTD Commitments\": 447085.46,\n      \"YTD Actuals\": 765454,\n      \"Available Budget\": 125412\n    },\n    {\n      \"Project Component\": \"W046-101\",\n      \"Description\": \"This is also a test.\",\n      \"Full Year Original Budget\": 44799.1,\n      \"Full Year Revised Budget\": 111999.36,\n      \"YTD Budget\": 999314.1,\n      \"YTD Commitments\": 499085.46,\n      \"YTD Actuals\": 87765,\n      \"Available Budget\": 215545\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"error num\": \"0003\",\n      \"project-component\": \"W046-100\",\n      \"error message\": \"Project-Component not found in Pulse.\",\n      \"error detail\": \"Please ensure that the Project-Component exists in Pulse.\"\n    },\n    {\n      \"error num\": \"0001\",\n      \"project-component\": \"\",\n      \"error message\": \"Missing Project Component Id.\",\n      \"error detail\": \"Data must contain key 'Project Component'.\"\n    }\n  ],\n  \"updatedProjectComponents\": [\n    \"project component code 1\",\n    \"project component code 2\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b124bc7c-692c-45f5-9e68-4e244db015a5",
+              "name": "Request completed with some validation errors. Please see response for validation errors and list of updated Project Components.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "project",
+                    "projectexecutionfinancialsync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"Project Component\": \"W046-100\",\n      \"Description\": \"This is a test.\",\n      \"Full Year Original Budget\": 447085,\n      \"Full Year Revised Budget\": 111771.36,\n      \"YTD Budget\": 335314.1,\n      \"YTD Commitments\": 447085.46,\n      \"YTD Actuals\": 765454,\n      \"Available Budget\": 125412\n    },\n    {\n      \"Project Component\": \"W046-101\",\n      \"Description\": \"This is also a test.\",\n      \"Full Year Original Budget\": 44799.1,\n      \"Full Year Revised Budget\": 111999.36,\n      \"YTD Budget\": 999314.1,\n      \"YTD Commitments\": 499085.46,\n      \"YTD Actuals\": 87765,\n      \"Available Budget\": 215545\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"error num\": \"0003\",\n      \"project-component\": \"W046-100\",\n      \"error message\": \"Project-Component not found in Pulse.\",\n      \"error detail\": \"Please ensure that the Project-Component exists in Pulse.\"\n    },\n    {\n      \"error num\": \"0001\",\n      \"project-component\": \"\",\n      \"error message\": \"Missing Project Component Id.\",\n      \"error detail\": \"Data must contain key 'Project Component'.\"\n    }\n  ],\n  \"updatedProjectComponents\": [\n    \"project component code 1\",\n    \"project component code 2\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ff6fcb8-63f8-402f-a270-b96423e01e7e",
+              "name": "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "project",
+                    "projectexecutionfinancialsync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"Project Component\": \"W046-100\",\n      \"Description\": \"This is a test.\",\n      \"Full Year Original Budget\": 447085,\n      \"Full Year Revised Budget\": 111771.36,\n      \"YTD Budget\": 335314.1,\n      \"YTD Commitments\": 447085.46,\n      \"YTD Actuals\": 765454,\n      \"Available Budget\": 125412\n    },\n    {\n      \"Project Component\": \"W046-101\",\n      \"Description\": \"This is also a test.\",\n      \"Full Year Original Budget\": 44799.1,\n      \"Full Year Revised Budget\": 111999.36,\n      \"YTD Budget\": 999314.1,\n      \"YTD Commitments\": 499085.46,\n      \"YTD Actuals\": 87765,\n      \"Available Budget\": 215545\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f08347ec-9b63-4058-8821-2a03e2a6f527",
+              "name": "The user corresponding to the given JWT token does not have access to this module.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "project",
+                    "projectexecutionfinancialsync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"Project Component\": \"W046-100\",\n      \"Description\": \"This is a test.\",\n      \"Full Year Original Budget\": 447085,\n      \"Full Year Revised Budget\": 111771.36,\n      \"YTD Budget\": 335314.1,\n      \"YTD Commitments\": 447085.46,\n      \"YTD Actuals\": 765454,\n      \"Available Budget\": 125412\n    },\n    {\n      \"Project Component\": \"W046-101\",\n      \"Description\": \"This is also a test.\",\n      \"Full Year Original Budget\": 44799.1,\n      \"Full Year Revised Budget\": 111999.36,\n      \"YTD Budget\": 999314.1,\n      \"YTD Commitments\": 499085.46,\n      \"YTD Actuals\": 87765,\n      \"Available Budget\": 215545\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://*.pulsesoftware.com/webservices/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4bb4c15a-1e25-4a87-bee6-f14940110992",
+    "name": "Pulse Public Authentication Project API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Pulse API is targeted towards developers looking to automate tasks in Pulse. \n\n# Authentication\nAll endpoints in Pulse require authentication.  Legacy endpoints require only a Private API Key, while all new endpoints incorporate JSON Web Tokens.  \n\n**API Key**\nTo consume a Pulse endpoint using API Key authentication, :\n  * Contact Pulse support at support@pulsesoftware.com to enable the Pulse Public API and issue your API key.\n  * Pass the API key in the **'x-Api-Key'** header with each request.\n\nNote: It is recommended to use a User Private API key where possible, rather than the Application Private Key. When using a User API key, functionality will be restricted based on the role of the User for which the API key was generated.  See API endpoint documentation for authorised roles. \n\n**JSON Web Token (JWT)**\nTo consume a Pulse endpoint using JWT authentication:\n  * Contact Pulse support at support@pulsesoftware.com to enable the Pulse Public API and issue your API key.\n  * Request a bearer token from /pulse/jwt, passing the API key in the **'x-Api-Key'** header with the request.\n  * Pass the token issued in the **'Authorization'** header of all requests as **'bearer [token]'**\n\n**Note** Tokens will expire 60 minutes after being issued, at which point your application will need to request a new token.\n\n# Requests\nThe Pulse API follows REST principles.  Data resources are accessed via standard HTTPS requests in UTF-8 format to an API endpoint. Where possible, Web API uses appropriate HTTP verbs for each action.\nHTTP Verbs:\n  * **GET** Retrieves resources\n  * **POST** Creates resources\n  * **PUT** Changes and/or replaces resources or collections\n  * **DELETE** Deletes resources\n\nThe Pulse API accepts the following ISO-8601 formats for date strings:\n  * Date, Time, Timezone: e.g. \"2021-06-02T21:39:18+00:00\"\n  * Date, Time: e.g. \"2021-06-02T21:39:18Z\"\n  * Date: e.g. \"2021-06-02\"\n\n# Responses\nPulse API returns all response data as a JSON object.  \n\n# Response Status Codes\nPulse API uses the following status codes:\n  * **200** OK - Request succeeded.  Result provided in response body.\n  * **400** Bad Request - Malformed syntax.  See message body for information.\n  * **401** Unauthorised - Missing authentication (API Key or JWT).\n  * **403** Forbidden - API user is not authorised to access requested resource.\n  * **404** Not Found - Request resource does not exist.\n\n# Support\nContact support@pulsesoftware.com for any queries or issues related to this API\n\n\nContact Support:\n Email: support@pulsesoftware.com",
+      "type": "text/plain"
+    }
+  }
+}

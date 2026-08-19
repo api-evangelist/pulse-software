@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pulse Public Authentication Sync API API",
+    "version": "1.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sync API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update user in Pulse",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/security/PatchUserSync",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Update user in Pulse based on userId provided in request body\n"
+        },
+        {
+          "info": {
+            "name": "Store integration sync data in Pulse for history purpose",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/security/IntegrationSyncData",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Store integration sync data in Pulse for history purpose\n"
+        },
+        {
+          "info": {
+            "name": "Add sync history in Pulse",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/security/IntegrationSyncToPayrollLog",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Add sync history in Pulse\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

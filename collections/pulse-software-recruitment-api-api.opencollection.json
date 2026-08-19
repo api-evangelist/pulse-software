@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pulse Public Authentication Recruitment API API",
+    "version": "1.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Recruitment API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Jobs records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/rcm/jobs/jobsV2",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "internalOnly",
+                "value": "",
+                "type": "query",
+                "description": "Returns only Recruitment Jobs that are marked as Internal"
+              }
+            ]
+          },
+          "docs": "Retrieve Recruitment Job Records secured by Private API key\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

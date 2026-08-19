@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pulse Public Authentication User Details API API",
+    "version": "1.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User Details API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve user details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/security/users/:value",
+            "params": [
+              {
+                "name": "value",
+                "value": "",
+                "type": "path",
+                "description": "UserID, Username or Email of the desired user."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of users matching a provided user identifier. Includes an 'active' flag which indicates whether or not a user is active."
+        },
+        {
+          "info": {
+            "name": "Retrieve a complete list of users in Pulse",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/security/users"
+          },
+          "docs": "Returns a list of all users in Pulse (including inactive users). Includes an 'active' flag which indicates whether or not a user is active."
+        },
+        {
+          "info": {
+            "name": "Add a new user to Pulse",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/security/users"
+          },
+          "docs": "Notifications can be enabled for this endpoint. Contact Pulse support at support@pulsesoftware.com to enable notifications via the UserSyncEnableNotification config."
+        },
+        {
+          "info": {
+            "name": "Replaces an existing user in Pulse or creates a user if the specified user does not exist.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/security/users"
+          },
+          "docs": "Notifications can be enabled for this endpoint. Contact Pulse support at support@pulsesoftware.com to enable notifications via the UserSyncEnableNotification config."
+        },
+        {
+          "info": {
+            "name": "Delete a user from Pulse",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/security/users"
+          },
+          "docs": "Deletes a user from Pulse using the given userId or email"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

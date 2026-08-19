@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pulse Public Authentication API",
+    "version": "1.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Issue JWT Bearer Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/pulse/jwt"
+          },
+          "docs": "Issues a JSON Web Token for authentication with a 60 minute expiry. If requested using User API Key, token will be granted all role privileges of the User. If requested using Application API Key, no role privileges will be granted."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

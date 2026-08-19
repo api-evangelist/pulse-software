@@ -1,0 +1,573 @@
+{
+  "item": [
+    {
+      "id": "6972c00b-d7cf-4476-8eb7-3b2efc3213f7",
+      "name": "Sync API",
+      "description": {
+        "content": "API for handling synchronisation data from and/or to Pulse including for managing sync history records",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c5da21f5-2672-48b2-bbc7-bd2291a5fca5",
+          "name": "Update user in Pulse",
+          "request": {
+            "name": "Update user in Pulse",
+            "description": {
+              "content": "Update user in Pulse based on userId provided in request body\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "security",
+                "PatchUserSync"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API key",
+                "key": "x-api-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorisation"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"title\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"surname\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"preferredName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"additionalEmail\": \"<string>\",\n    \"dob\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"mobilePhone\": \"<string>\",\n    \"workPhone\": \"<string>\",\n    \"telephone\": \"<string>\",\n    \"home_AddressLine1\": \"<string>\",\n    \"home_AddressLine2\": \"<string>\",\n    \"home_City\": \"<string>\",\n    \"home_Country\": \"<string>\",\n    \"home_PostCode\": \"<string>\",\n    \"home_State\": \"<string>\",\n    \"postal_AddressLine1\": \"<string>\",\n    \"postal_AddressLine2\": \"<string>\",\n    \"postal_City\": \"<string>\",\n    \"postal_Country\": \"<string>\",\n    \"postal_PostCode\": \"<string>\",\n    \"postal_State\": \"<string>\",\n    \"employmentStartDate\": \"<string>\",\n    \"employmentEndDate\": \"<string>\",\n    \"reasonOfTermination\": \"<string>\",\n    \"councilNetworkLogin\": \"<string>\",\n    \"payrollNo\": \"<string>\",\n    \"positionNo\": \"<string>\",\n    \"positionName\": \"<string>\",\n    \"positionStartDate\": \"<string>\",\n    \"positionEndDate\": \"<string>\",\n    \"positionDivision\": \"<string>\",\n    \"positionUnit\": \"<string>\",\n    \"positionSection\": \"<string>\",\n    \"positionTeam\": \"<string>\",\n    \"positionSupervisor\": \"<string>\",\n    \"positionIncumbentsAssigned\": \"<string>\",\n    \"supervisor\": \"<string>\",\n    \"supervisorPayrollNo\": \"<string>\",\n    \"divisionCode\": \"<string>\",\n    \"divisionName\": \"<string>\",\n    \"unitCode\": \"<string>\",\n    \"unitName\": \"<string>\",\n    \"sectionCode\": \"<string>\",\n    \"sectionName\": \"<string>\",\n    \"empType\": \"<string>\",\n    \"team\": \"<string>\",\n    \"emergencyContact1_Name\": \"<string>\",\n    \"emergencyContact1_Relationship\": \"<string>\",\n    \"emergencyContact1_AddressLine1\": \"<string>\",\n    \"emergencyContact1_AddressLine2\": \"<string>\",\n    \"emergencyContact1_City\": \"<string>\",\n    \"emergencyContact1_State\": \"<string>\",\n    \"emergencyContact1_PostCode\": \"<string>\",\n    \"emergencyContact1_Country\": \"<string>\",\n    \"emergencyContact1_Mobile\": \"<string>\",\n    \"emergencyContact1_WorkPhone\": \"<string>\",\n    \"emergencyContact1_Email\": \"<string>\",\n    \"emergencyContact1_Telephone\": \"<string>\",\n    \"emergencyContact2_Name\": \"<string>\",\n    \"emergencyContact2_Relationship\": \"<string>\",\n    \"emergencyContact2_AddressLine1\": \"<string>\",\n    \"emergencyContact2_AddressLine2\": \"<string>\",\n    \"emergencyContact2_City\": \"<string>\",\n    \"emergencyContact2_State\": \"<string>\",\n    \"emergencyContact2_PostCode\": \"<string>\",\n    \"emergencyContact2_Country\": \"<string>\",\n    \"emergencyContact2_Mobile\": \"<string>\",\n    \"emergencyContact2_WorkPhone\": \"<string>\",\n    \"emergencyContact2_Email\": \"<string>\",\n    \"emergencyContact2_Telephone\": \"<string>\",\n    \"isActive\": \"<string>\",\n    \"externalUserId\": \"<string>\",\n    \"integrationName\": \"<string>\",\n    \"siteName\": \"<string>\",\n    \"employmentType\": \"<string>\",\n    \"permissions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"additionalAttributes\": [\n      {\n        \"tabId\": \"<integer>\",\n        \"tabName\": \"<string>\",\n        \"attributeId\": \"<integer>\",\n        \"attributeName\": \"<string>\",\n        \"attributeValue\": \"<string>\",\n        \"attributeDataType\": \"<string>\"\n      },\n      {\n        \"tabId\": \"<integer>\",\n        \"tabName\": \"<string>\",\n        \"attributeId\": \"<integer>\",\n        \"attributeName\": \"<string>\",\n        \"attributeValue\": \"<string>\",\n        \"attributeDataType\": \"<string>\"\n      }\n    ],\n    \"additionalPositions\": \"<string>\",\n    \"additionalUserPositions\": [\n      {\n        \"positionNo\": \"<string>\",\n        \"positionName\": \"<string>\",\n        \"positionStartDate\": \"<string>\",\n        \"positionEndDate\": \"<string>\",\n        \"positionDivision\": \"<string>\",\n        \"positionUnit\": \"<string>\",\n        \"positionSection\": \"<string>\",\n        \"positionSupervisor\": \"<string>\",\n        \"positionTeam\": \"<string>\",\n        \"positionIncumbentsAssigned\": \"<string>\"\n      },\n      {\n        \"positionNo\": \"<string>\",\n        \"positionName\": \"<string>\",\n        \"positionStartDate\": \"<string>\",\n        \"positionEndDate\": \"<string>\",\n        \"positionDivision\": \"<string>\",\n        \"positionUnit\": \"<string>\",\n        \"positionSection\": \"<string>\",\n        \"positionSupervisor\": \"<string>\",\n        \"positionTeam\": \"<string>\",\n        \"positionIncumbentsAssigned\": \"<string>\"\n      }\n    ],\n    \"roles\": \"<string>\"\n  },\n  {\n    \"title\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"surname\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"preferredName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"additionalEmail\": \"<string>\",\n    \"dob\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"mobilePhone\": \"<string>\",\n    \"workPhone\": \"<string>\",\n    \"telephone\": \"<string>\",\n    \"home_AddressLine1\": \"<string>\",\n    \"home_AddressLine2\": \"<string>\",\n    \"home_City\": \"<string>\",\n    \"home_Country\": \"<string>\",\n    \"home_PostCode\": \"<string>\",\n    \"home_State\": \"<string>\",\n    \"postal_AddressLine1\": \"<string>\",\n    \"postal_AddressLine2\": \"<string>\",\n    \"postal_City\": \"<string>\",\n    \"postal_Country\": \"<string>\",\n    \"postal_PostCode\": \"<string>\",\n    \"postal_State\": \"<string>\",\n    \"employmentStartDate\": \"<string>\",\n    \"employmentEndDate\": \"<string>\",\n    \"reasonOfTermination\": \"<string>\",\n    \"councilNetworkLogin\": \"<string>\",\n    \"payrollNo\": \"<string>\",\n    \"positionNo\": \"<string>\",\n    \"positionName\": \"<string>\",\n    \"positionStartDate\": \"<string>\",\n    \"positionEndDate\": \"<string>\",\n    \"positionDivision\": \"<string>\",\n    \"positionUnit\": \"<string>\",\n    \"positionSection\": \"<string>\",\n    \"positionTeam\": \"<string>\",\n    \"positionSupervisor\": \"<string>\",\n    \"positionIncumbentsAssigned\": \"<string>\",\n    \"supervisor\": \"<string>\",\n    \"supervisorPayrollNo\": \"<string>\",\n    \"divisionCode\": \"<string>\",\n    \"divisionName\": \"<string>\",\n    \"unitCode\": \"<string>\",\n    \"unitName\": \"<string>\",\n    \"sectionCode\": \"<string>\",\n    \"sectionName\": \"<string>\",\n    \"empType\": \"<string>\",\n    \"team\": \"<string>\",\n    \"emergencyContact1_Name\": \"<string>\",\n    \"emergencyContact1_Relationship\": \"<string>\",\n    \"emergencyContact1_AddressLine1\": \"<string>\",\n    \"emergencyContact1_AddressLine2\": \"<string>\",\n    \"emergencyContact1_City\": \"<string>\",\n    \"emergencyContact1_State\": \"<string>\",\n    \"emergencyContact1_PostCode\": \"<string>\",\n    \"emergencyContact1_Country\": \"<string>\",\n    \"emergencyContact1_Mobile\": \"<string>\",\n    \"emergencyContact1_WorkPhone\": \"<string>\",\n    \"emergencyContact1_Email\": \"<string>\",\n    \"emergencyContact1_Telephone\": \"<string>\",\n    \"emergencyContact2_Name\": \"<string>\",\n    \"emergencyContact2_Relationship\": \"<string>\",\n    \"emergencyContact2_AddressLine1\": \"<string>\",\n    \"emergencyContact2_AddressLine2\": \"<string>\",\n    \"emergencyContact2_City\": \"<string>\",\n    \"emergencyContact2_State\": \"<string>\",\n    \"emergencyContact2_PostCode\": \"<string>\",\n    \"emergencyContact2_Country\": \"<string>\",\n    \"emergencyContact2_Mobile\": \"<string>\",\n    \"emergencyContact2_WorkPhone\": \"<string>\",\n    \"emergencyContact2_Email\": \"<string>\",\n    \"emergencyContact2_Telephone\": \"<string>\",\n    \"isActive\": \"<string>\",\n    \"externalUserId\": \"<string>\",\n    \"integrationName\": \"<string>\",\n    \"siteName\": \"<string>\",\n    \"employmentType\": \"<string>\",\n    \"permissions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"additionalAttributes\": [\n      {\n        \"tabId\": \"<integer>\",\n        \"tabName\": \"<string>\",\n        \"attributeId\": \"<integer>\",\n        \"attributeName\": \"<string>\",\n        \"attributeValue\": \"<string>\",\n        \"attributeDataType\": \"<string>\"\n      },\n      {\n        \"tabId\": \"<integer>\",\n        \"tabName\": \"<string>\",\n        \"attributeId\": \"<integer>\",\n        \"attributeName\": \"<string>\",\n        \"attributeValue\": \"<string>\",\n        \"attributeDataType\": \"<string>\"\n      }\n    ],\n    \"additionalPositions\": \"<string>\",\n    \"additionalUserPositions\": [\n      {\n        \"positionNo\": \"<string>\",\n        \"positionName\": \"<string>\",\n        \"positionStartDate\": \"<string>\",\n        \"positionEndDate\": \"<string>\",\n        \"positionDivision\": \"<string>\",\n        \"positionUnit\": \"<string>\",\n        \"positionSection\": \"<string>\",\n        \"positionSupervisor\": \"<string>\",\n        \"positionTeam\": \"<string>\",\n        \"positionIncumbentsAssigned\": \"<string>\"\n      },\n      {\n        \"positionNo\": \"<string>\",\n        \"positionName\": \"<string>\",\n        \"positionStartDate\": \"<string>\",\n        \"positionEndDate\": \"<string>\",\n        \"positionDivision\": \"<string>\",\n        \"positionUnit\": \"<string>\",\n        \"positionSection\": \"<string>\",\n        \"positionSupervisor\": \"<string>\",\n        \"positionTeam\": \"<string>\",\n        \"positionIncumbentsAssigned\": \"<string>\"\n      }\n    ],\n    \"roles\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "132cfd55-2314-4d69-81f5-4fadf089ddbd",
+              "name": "OK. Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "PatchUserSync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"title\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"surname\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"preferredName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"additionalEmail\": \"<string>\",\n    \"dob\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"mobilePhone\": \"<string>\",\n    \"workPhone\": \"<string>\",\n    \"telephone\": \"<string>\",\n    \"home_AddressLine1\": \"<string>\",\n    \"home_AddressLine2\": \"<string>\",\n    \"home_City\": \"<string>\",\n    \"home_Country\": \"<string>\",\n    \"home_PostCode\": \"<string>\",\n    \"home_State\": \"<string>\",\n    \"postal_AddressLine1\": \"<string>\",\n    \"postal_AddressLine2\": \"<string>\",\n    \"postal_City\": \"<string>\",\n    \"postal_Country\": \"<string>\",\n    \"postal_PostCode\": \"<string>\",\n    \"postal_State\": \"<string>\",\n    \"employmentStartDate\": \"<string>\",\n    \"employmentEndDate\": \"<string>\",\n    \"reasonOfTermination\": \"<string>\",\n    \"councilNetworkLogin\": \"<string>\",\n    \"payrollNo\": \"<string>\",\n    \"positionNo\": \"<string>\",\n    \"positionName\": \"<string>\",\n    \"positionStartDate\": \"<string>\",\n    \"positionEndDate\": \"<string>\",\n    \"positionDivision\": \"<string>\",\n    \"positionUnit\": \"<string>\",\n    \"positionSection\": \"<string>\",\n    \"positionTeam\": \"<string>\",\n    \"positionSupervisor\": \"<string>\",\n    \"positionIncumbentsAssigned\": \"<string>\",\n    \"supervisor\": \"<string>\",\n    \"supervisorPayrollNo\": \"<string>\",\n    \"divisionCode\": \"<string>\",\n    \"divisionName\": \"<string>\",\n    \"unitCode\": \"<string>\",\n    \"unitName\": \"<string>\",\n    \"sectionCode\": \"<string>\",\n    \"sectionName\": \"<string>\",\n    \"empType\": \"<string>\",\n    \"team\": \"<string>\",\n    \"emergencyContact1_Name\": \"<string>\",\n    \"emergencyContact1_Relationship\": \"<string>\",\n    \"emergencyContact1_AddressLine1\": \"<string>\",\n    \"emergencyContact1_AddressLine2\": \"<string>\",\n    \"emergencyContact1_City\": \"<string>\",\n    \"emergencyContact1_State\": \"<string>\",\n    \"emergencyContact1_PostCode\": \"<string>\",\n    \"emergencyContact1_Country\": \"<string>\",\n    \"emergencyContact1_Mobile\": \"<string>\",\n    \"emergencyContact1_WorkPhone\": \"<string>\",\n    \"emergencyContact1_Email\": \"<string>\",\n    \"emergencyContact1_Telephone\": \"<string>\",\n    \"emergencyContact2_Name\": \"<string>\",\n    \"emergencyContact2_Relationship\": \"<string>\",\n    \"emergencyContact2_AddressLine1\": \"<string>\",\n    \"emergencyContact2_AddressLine2\": \"<string>\",\n    \"emergencyContact2_City\": \"<string>\",\n    \"emergencyContact2_State\": \"<string>\",\n    \"emergencyContact2_PostCode\": \"<string>\",\n    \"emergencyContact2_Country\": \"<string>\",\n    \"emergencyContact2_Mobile\": \"<string>\",\n    \"emergencyContact2_WorkPhone\": \"<string>\",\n    \"emergencyContact2_Email\": \"<string>\",\n    \"emergencyContact2_Telephone\": \"<string>\",\n    \"isActive\": \"<string>\",\n    \"externalUserId\": \"<string>\",\n    \"integrationName\": \"<string>\",\n    \"siteName\": \"<string>\",\n    \"employmentType\": \"<string>\",\n    \"permissions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"additionalAttributes\": [\n      {\n        \"tabId\": \"<integer>\",\n        \"tabName\": \"<string>\",\n        \"attributeId\": \"<integer>\",\n        \"attributeName\": \"<string>\",\n        \"attributeValue\": \"<string>\",\n        \"attributeDataType\": \"<string>\"\n      },\n      {\n        \"tabId\": \"<integer>\",\n        \"tabName\": \"<string>\",\n        \"attributeId\": \"<integer>\",\n        \"attributeName\": \"<string>\",\n        \"attributeValue\": \"<string>\",\n        \"attributeDataType\": \"<string>\"\n      }\n    ],\n    \"additionalPositions\": \"<string>\",\n    \"additionalUserPositions\": [\n      {\n        \"positionNo\": \"<string>\",\n        \"positionName\": \"<string>\",\n        \"positionStartDate\": \"<string>\",\n        \"positionEndDate\": \"<string>\",\n        \"positionDivision\": \"<string>\",\n        \"positionUnit\": \"<string>\",\n        \"positionSection\": \"<string>\",\n        \"positionSupervisor\": \"<string>\",\n        \"positionTeam\": \"<string>\",\n        \"positionIncumbentsAssigned\": \"<string>\"\n      },\n      {\n        \"positionNo\": \"<string>\",\n        \"positionName\": \"<string>\",\n        \"positionStartDate\": \"<string>\",\n        \"positionEndDate\": \"<string>\",\n        \"positionDivision\": \"<string>\",\n        \"positionUnit\": \"<string>\",\n        \"positionSection\": \"<string>\",\n        \"positionSupervisor\": \"<string>\",\n        \"positionTeam\": \"<string>\",\n        \"positionIncumbentsAssigned\": \"<string>\"\n      }\n    ],\n    \"roles\": \"<string>\"\n  },\n  {\n    \"title\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"surname\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"preferredName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"additionalEmail\": \"<string>\",\n    \"dob\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"mobilePhone\": \"<string>\",\n    \"workPhone\": \"<string>\",\n    \"telephone\": \"<string>\",\n    \"home_AddressLine1\": \"<string>\",\n    \"home_AddressLine2\": \"<string>\",\n    \"home_City\": \"<string>\",\n    \"home_Country\": \"<string>\",\n    \"home_PostCode\": \"<string>\",\n    \"home_State\": \"<string>\",\n    \"postal_AddressLine1\": \"<string>\",\n    \"postal_AddressLine2\": \"<string>\",\n    \"postal_City\": \"<string>\",\n    \"postal_Country\": \"<string>\",\n    \"postal_PostCode\": \"<string>\",\n    \"postal_State\": \"<string>\",\n    \"employmentStartDate\": \"<string>\",\n    \"employmentEndDate\": \"<string>\",\n    \"reasonOfTermination\": \"<string>\",\n    \"councilNetworkLogin\": \"<string>\",\n    \"payrollNo\": \"<string>\",\n    \"positionNo\": \"<string>\",\n    \"positionName\": \"<string>\",\n    \"positionStartDate\": \"<string>\",\n    \"positionEndDate\": \"<string>\",\n    \"positionDivision\": \"<string>\",\n    \"positionUnit\": \"<string>\",\n    \"positionSection\": \"<string>\",\n    \"positionTeam\": \"<string>\",\n    \"positionSupervisor\": \"<string>\",\n    \"positionIncumbentsAssigned\": \"<string>\",\n    \"supervisor\": \"<string>\",\n    \"supervisorPayrollNo\": \"<string>\",\n    \"divisionCode\": \"<string>\",\n    \"divisionName\": \"<string>\",\n    \"unitCode\": \"<string>\",\n    \"unitName\": \"<string>\",\n    \"sectionCode\": \"<string>\",\n    \"sectionName\": \"<string>\",\n    \"empType\": \"<string>\",\n    \"team\": \"<string>\",\n    \"emergencyContact1_Name\": \"<string>\",\n    \"emergencyContact1_Relationship\": \"<string>\",\n    \"emergencyContact1_AddressLine1\": \"<string>\",\n    \"emergencyContact1_AddressLine2\": \"<string>\",\n    \"emergencyContact1_City\": \"<string>\",\n    \"emergencyContact1_State\": \"<string>\",\n    \"emergencyContact1_PostCode\": \"<string>\",\n    \"emergencyContact1_Country\": \"<string>\",\n    \"emergencyContact1_Mobile\": \"<string>\",\n    \"emergencyContact1_WorkPhone\": \"<string>\",\n    \"emergencyContact1_Email\": \"<string>\",\n    \"emergencyContact1_Telephone\": \"<string>\",\n    \"emergencyContact2_Name\": \"<string>\",\n    \"emergencyContact2_Relationship\": \"<string>\",\n    \"emergencyContact2_AddressLine1\": \"<string>\",\n    \"emergencyContact2_AddressLine2\": \"<string>\",\n    \"emergencyContact2_City\": \"<string>\",\n    \"emergencyContact2_State\": \"<string>\",\n    \"emergencyContact2_PostCode\": \"<string>\",\n    \"emergencyContact2_Country\": \"<string>\",\n    \"emergencyContact2_Mobile\": \"<string>\",\n    \"emergencyContact2_WorkPhone\": \"<string>\",\n    \"emergencyContact2_Email\": \"<string>\",\n    \"emergencyContact2_Telephone\": \"<string>\",\n    \"isActive\": \"<string>\",\n    \"externalUserId\": \"<string>\",\n    \"integrationName\": \"<string>\",\n    \"siteName\": \"<string>\",\n    \"employmentType\": \"<string>\",\n    \"permissions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"additionalAttributes\": [\n      {\n        \"tabId\": \"<integer>\",\n        \"tabName\": \"<string>\",\n        \"attributeId\": \"<integer>\",\n        \"attributeName\": \"<string>\",\n        \"attributeValue\": \"<string>\",\n        \"attributeDataType\": \"<string>\"\n      },\n      {\n        \"tabId\": \"<integer>\",\n        \"tabName\": \"<string>\",\n        \"attributeId\": \"<integer>\",\n        \"attributeName\": \"<string>\",\n        \"attributeValue\": \"<string>\",\n        \"attributeDataType\": \"<string>\"\n      }\n    ],\n    \"additionalPositions\": \"<string>\",\n    \"additionalUserPositions\": [\n      {\n        \"positionNo\": \"<string>\",\n        \"positionName\": \"<string>\",\n        \"positionStartDate\": \"<string>\",\n        \"positionEndDate\": \"<string>\",\n        \"positionDivision\": \"<string>\",\n        \"positionUnit\": \"<string>\",\n        \"positionSection\": \"<string>\",\n        \"positionSupervisor\": \"<string>\",\n        \"positionTeam\": \"<string>\",\n        \"positionIncumbentsAssigned\": \"<string>\"\n      },\n      {\n        \"positionNo\": \"<string>\",\n        \"positionName\": \"<string>\",\n        \"positionStartDate\": \"<string>\",\n        \"positionEndDate\": \"<string>\",\n        \"positionDivision\": \"<string>\",\n        \"positionUnit\": \"<string>\",\n        \"positionSection\": \"<string>\",\n        \"positionSupervisor\": \"<string>\",\n        \"positionTeam\": \"<string>\",\n        \"positionIncumbentsAssigned\": \"<string>\"\n      }\n    ],\n    \"roles\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "710e19f3-de28-4c47-af09-267588d48878",
+              "name": "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "PatchUserSync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"title\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"surname\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"preferredName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"additionalEmail\": \"<string>\",\n    \"dob\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"mobilePhone\": \"<string>\",\n    \"workPhone\": \"<string>\",\n    \"telephone\": \"<string>\",\n    \"home_AddressLine1\": \"<string>\",\n    \"home_AddressLine2\": \"<string>\",\n    \"home_City\": \"<string>\",\n    \"home_Country\": \"<string>\",\n    \"home_PostCode\": \"<string>\",\n    \"home_State\": \"<string>\",\n    \"postal_AddressLine1\": \"<string>\",\n    \"postal_AddressLine2\": \"<string>\",\n    \"postal_City\": \"<string>\",\n    \"postal_Country\": \"<string>\",\n    \"postal_PostCode\": \"<string>\",\n    \"postal_State\": \"<string>\",\n    \"employmentStartDate\": \"<string>\",\n    \"employmentEndDate\": \"<string>\",\n    \"reasonOfTermination\": \"<string>\",\n    \"councilNetworkLogin\": \"<string>\",\n    \"payrollNo\": \"<string>\",\n    \"positionNo\": \"<string>\",\n    \"positionName\": \"<string>\",\n    \"positionStartDate\": \"<string>\",\n    \"positionEndDate\": \"<string>\",\n    \"positionDivision\": \"<string>\",\n    \"positionUnit\": \"<string>\",\n    \"positionSection\": \"<string>\",\n    \"positionTeam\": \"<string>\",\n    \"positionSupervisor\": \"<string>\",\n    \"positionIncumbentsAssigned\": \"<string>\",\n    \"supervisor\": \"<string>\",\n    \"supervisorPayrollNo\": \"<string>\",\n    \"divisionCode\": \"<string>\",\n    \"divisionName\": \"<string>\",\n    \"unitCode\": \"<string>\",\n    \"unitName\": \"<string>\",\n    \"sectionCode\": \"<string>\",\n    \"sectionName\": \"<string>\",\n    \"empType\": \"<string>\",\n    \"team\": \"<string>\",\n    \"emergencyContact1_Name\": \"<string>\",\n    \"emergencyContact1_Relationship\": \"<string>\",\n    \"emergencyContact1_AddressLine1\": \"<string>\",\n    \"emergencyContact1_AddressLine2\": \"<string>\",\n    \"emergencyContact1_City\": \"<string>\",\n    \"emergencyContact1_State\": \"<string>\",\n    \"emergencyContact1_PostCode\": \"<string>\",\n    \"emergencyContact1_Country\": \"<string>\",\n    \"emergencyContact1_Mobile\": \"<string>\",\n    \"emergencyContact1_WorkPhone\": \"<string>\",\n    \"emergencyContact1_Email\": \"<string>\",\n    \"emergencyContact1_Telephone\": \"<string>\",\n    \"emergencyContact2_Name\": \"<string>\",\n    \"emergencyContact2_Relationship\": \"<string>\",\n    \"emergencyContact2_AddressLine1\": \"<string>\",\n    \"emergencyContact2_AddressLine2\": \"<string>\",\n    \"emergencyContact2_City\": \"<string>\",\n    \"emergencyContact2_State\": \"<string>\",\n    \"emergencyContact2_PostCode\": \"<string>\",\n    \"emergencyContact2_Country\": \"<string>\",\n    \"emergencyContact2_Mobile\": \"<string>\",\n    \"emergencyContact2_WorkPhone\": \"<string>\",\n    \"emergencyContact2_Email\": \"<string>\",\n    \"emergencyContact2_Telephone\": \"<string>\",\n    \"isActive\": \"<string>\",\n    \"externalUserId\": \"<string>\",\n    \"integrationName\": \"<string>\",\n    \"siteName\": \"<string>\",\n    \"employmentType\": \"<string>\",\n    \"permissions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"additionalAttributes\": [\n      {\n        \"tabId\": \"<integer>\",\n        \"tabName\": \"<string>\",\n        \"attributeId\": \"<integer>\",\n        \"attributeName\": \"<string>\",\n        \"attributeValue\": \"<string>\",\n        \"attributeDataType\": \"<string>\"\n      },\n      {\n        \"tabId\": \"<integer>\",\n        \"tabName\": \"<string>\",\n        \"attributeId\": \"<integer>\",\n        \"attributeName\": \"<string>\",\n        \"attributeValue\": \"<string>\",\n        \"attributeDataType\": \"<string>\"\n      }\n    ],\n    \"additionalPositions\": \"<string>\",\n    \"additionalUserPositions\": [\n      {\n        \"positionNo\": \"<string>\",\n        \"positionName\": \"<string>\",\n        \"positionStartDate\": \"<string>\",\n        \"positionEndDate\": \"<string>\",\n        \"positionDivision\": \"<string>\",\n        \"positionUnit\": \"<string>\",\n        \"positionSection\": \"<string>\",\n        \"positionSupervisor\": \"<string>\",\n        \"positionTeam\": \"<string>\",\n        \"positionIncumbentsAssigned\": \"<string>\"\n      },\n      {\n        \"positionNo\": \"<string>\",\n        \"positionName\": \"<string>\",\n        \"positionStartDate\": \"<string>\",\n        \"positionEndDate\": \"<string>\",\n        \"positionDivision\": \"<string>\",\n        \"positionUnit\": \"<string>\",\n        \"positionSection\": \"<string>\",\n        \"positionSupervisor\": \"<string>\",\n        \"positionTeam\": \"<string>\",\n        \"positionIncumbentsAssigned\": \"<string>\"\n      }\n    ],\n    \"roles\": \"<string>\"\n  },\n  {\n    \"title\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"surname\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"preferredName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"additionalEmail\": \"<string>\",\n    \"dob\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"mobilePhone\": \"<string>\",\n    \"workPhone\": \"<string>\",\n    \"telephone\": \"<string>\",\n    \"home_AddressLine1\": \"<string>\",\n    \"home_AddressLine2\": \"<string>\",\n    \"home_City\": \"<string>\",\n    \"home_Country\": \"<string>\",\n    \"home_PostCode\": \"<string>\",\n    \"home_State\": \"<string>\",\n    \"postal_AddressLine1\": \"<string>\",\n    \"postal_AddressLine2\": \"<string>\",\n    \"postal_City\": \"<string>\",\n    \"postal_Country\": \"<string>\",\n    \"postal_PostCode\": \"<string>\",\n    \"postal_State\": \"<string>\",\n    \"employmentStartDate\": \"<string>\",\n    \"employmentEndDate\": \"<string>\",\n    \"reasonOfTermination\": \"<string>\",\n    \"councilNetworkLogin\": \"<string>\",\n    \"payrollNo\": \"<string>\",\n    \"positionNo\": \"<string>\",\n    \"positionName\": \"<string>\",\n    \"positionStartDate\": \"<string>\",\n    \"positionEndDate\": \"<string>\",\n    \"positionDivision\": \"<string>\",\n    \"positionUnit\": \"<string>\",\n    \"positionSection\": \"<string>\",\n    \"positionTeam\": \"<string>\",\n    \"positionSupervisor\": \"<string>\",\n    \"positionIncumbentsAssigned\": \"<string>\",\n    \"supervisor\": \"<string>\",\n    \"supervisorPayrollNo\": \"<string>\",\n    \"divisionCode\": \"<string>\",\n    \"divisionName\": \"<string>\",\n    \"unitCode\": \"<string>\",\n    \"unitName\": \"<string>\",\n    \"sectionCode\": \"<string>\",\n    \"sectionName\": \"<string>\",\n    \"empType\": \"<string>\",\n    \"team\": \"<string>\",\n    \"emergencyContact1_Name\": \"<string>\",\n    \"emergencyContact1_Relationship\": \"<string>\",\n    \"emergencyContact1_AddressLine1\": \"<string>\",\n    \"emergencyContact1_AddressLine2\": \"<string>\",\n    \"emergencyContact1_City\": \"<string>\",\n    \"emergencyContact1_State\": \"<string>\",\n    \"emergencyContact1_PostCode\": \"<string>\",\n    \"emergencyContact1_Country\": \"<string>\",\n    \"emergencyContact1_Mobile\": \"<string>\",\n    \"emergencyContact1_WorkPhone\": \"<string>\",\n    \"emergencyContact1_Email\": \"<string>\",\n    \"emergencyContact1_Telephone\": \"<string>\",\n    \"emergencyContact2_Name\": \"<string>\",\n    \"emergencyContact2_Relationship\": \"<string>\",\n    \"emergencyContact2_AddressLine1\": \"<string>\",\n    \"emergencyContact2_AddressLine2\": \"<string>\",\n    \"emergencyContact2_City\": \"<string>\",\n    \"emergencyContact2_State\": \"<string>\",\n    \"emergencyContact2_PostCode\": \"<string>\",\n    \"emergencyContact2_Country\": \"<string>\",\n    \"emergencyContact2_Mobile\": \"<string>\",\n    \"emergencyContact2_WorkPhone\": \"<string>\",\n    \"emergencyContact2_Email\": \"<string>\",\n    \"emergencyContact2_Telephone\": \"<string>\",\n    \"isActive\": \"<string>\",\n    \"externalUserId\": \"<string>\",\n    \"integrationName\": \"<string>\",\n    \"siteName\": \"<string>\",\n    \"employmentType\": \"<string>\",\n    \"permissions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"additionalAttributes\": [\n      {\n        \"tabId\": \"<integer>\",\n        \"tabName\": \"<string>\",\n        \"attributeId\": \"<integer>\",\n        \"attributeName\": \"<string>\",\n        \"attributeValue\": \"<string>\",\n        \"attributeDataType\": \"<string>\"\n      },\n      {\n        \"tabId\": \"<integer>\",\n        \"tabName\": \"<string>\",\n        \"attributeId\": \"<integer>\",\n        \"attributeName\": \"<string>\",\n        \"attributeValue\": \"<string>\",\n        \"attributeDataType\": \"<string>\"\n      }\n    ],\n    \"additionalPositions\": \"<string>\",\n    \"additionalUserPositions\": [\n      {\n        \"positionNo\": \"<string>\",\n        \"positionName\": \"<string>\",\n        \"positionStartDate\": \"<string>\",\n        \"positionEndDate\": \"<string>\",\n        \"positionDivision\": \"<string>\",\n        \"positionUnit\": \"<string>\",\n        \"positionSection\": \"<string>\",\n        \"positionSupervisor\": \"<string>\",\n        \"positionTeam\": \"<string>\",\n        \"positionIncumbentsAssigned\": \"<string>\"\n      },\n      {\n        \"positionNo\": \"<string>\",\n        \"positionName\": \"<string>\",\n        \"positionStartDate\": \"<string>\",\n        \"positionEndDate\": \"<string>\",\n        \"positionDivision\": \"<string>\",\n        \"positionUnit\": \"<string>\",\n        \"positionSection\": \"<string>\",\n        \"positionSupervisor\": \"<string>\",\n        \"positionTeam\": \"<string>\",\n        \"positionIncumbentsAssigned\": \"<string>\"\n      }\n    ],\n    \"roles\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "414690e4-6779-4581-89a6-430e8a88cd97",
+          "name": "Store integration sync data in Pulse for history purpose",
+          "request": {
+            "name": "Store integration sync data in Pulse for history purpose",
+            "description": {
+              "content": "Store integration sync data in Pulse for history purpose\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "security",
+                "IntegrationSyncData"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API key",
+                "key": "x-api-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorisation"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonStringData\": \"<string>\",\n  \"folder\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9da35832-37a1-4f6e-a1e6-f62e197297aa",
+              "name": "OK. Request completed successfully. Returns the fileId of the logged sync data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "IntegrationSyncData"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jsonStringData\": \"<string>\",\n  \"folder\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e1b5ee50-546c-47ad-a8a6-b2a63dbdf591",
+              "name": "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "IntegrationSyncData"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jsonStringData\": \"<string>\",\n  \"folder\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9a08eef4-8dfb-4c7c-aeae-10eca548dc2f",
+          "name": "Add sync history in Pulse",
+          "request": {
+            "name": "Add sync history in Pulse",
+            "description": {
+              "content": "Add sync history in Pulse\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "security",
+                "IntegrationSyncToPayrollLog"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API key",
+                "key": "x-api-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorisation"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integrationName\": \"<string>\",\n  \"jsonFile\": \"<string>\",\n  \"userId\": \"<uuid>\",\n  \"source\": \"<string>\",\n  \"externalUserSyncStatuses\": [\n    {\n      \"userId\": \"<string>\",\n      \"status\": \"<string>\",\n      \"syncCategory\": \"<string>\",\n      \"message\": \"<string>\",\n      \"integrationUserId\": \"<string>\",\n      \"integrationName\": \"<string>\",\n      \"objectHash\": \"<string>\",\n      \"details\": [\n        {\n          \"status\": \"<string>\",\n          \"syncCategory\": \"<string>\",\n          \"key\": \"<string>\",\n          \"objectHash\": \"<string>\"\n        },\n        {\n          \"status\": \"<string>\",\n          \"syncCategory\": \"<string>\",\n          \"key\": \"<string>\",\n          \"objectHash\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"userId\": \"<string>\",\n      \"status\": \"<string>\",\n      \"syncCategory\": \"<string>\",\n      \"message\": \"<string>\",\n      \"integrationUserId\": \"<string>\",\n      \"integrationName\": \"<string>\",\n      \"objectHash\": \"<string>\",\n      \"details\": [\n        {\n          \"status\": \"<string>\",\n          \"syncCategory\": \"<string>\",\n          \"key\": \"<string>\",\n          \"objectHash\": \"<string>\"\n        },\n        {\n          \"status\": \"<string>\",\n          \"syncCategory\": \"<string>\",\n          \"key\": \"<string>\",\n          \"objectHash\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b096e6aa-0208-47b6-9939-d996226b4ab1",
+              "name": "OK. Request completed successfully. Returns the id of the sync history.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "IntegrationSyncToPayrollLog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integrationName\": \"<string>\",\n  \"jsonFile\": \"<string>\",\n  \"userId\": \"<uuid>\",\n  \"source\": \"<string>\",\n  \"externalUserSyncStatuses\": [\n    {\n      \"userId\": \"<string>\",\n      \"status\": \"<string>\",\n      \"syncCategory\": \"<string>\",\n      \"message\": \"<string>\",\n      \"integrationUserId\": \"<string>\",\n      \"integrationName\": \"<string>\",\n      \"objectHash\": \"<string>\",\n      \"details\": [\n        {\n          \"status\": \"<string>\",\n          \"syncCategory\": \"<string>\",\n          \"key\": \"<string>\",\n          \"objectHash\": \"<string>\"\n        },\n        {\n          \"status\": \"<string>\",\n          \"syncCategory\": \"<string>\",\n          \"key\": \"<string>\",\n          \"objectHash\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"userId\": \"<string>\",\n      \"status\": \"<string>\",\n      \"syncCategory\": \"<string>\",\n      \"message\": \"<string>\",\n      \"integrationUserId\": \"<string>\",\n      \"integrationName\": \"<string>\",\n      \"objectHash\": \"<string>\",\n      \"details\": [\n        {\n          \"status\": \"<string>\",\n          \"syncCategory\": \"<string>\",\n          \"key\": \"<string>\",\n          \"objectHash\": \"<string>\"\n        },\n        {\n          \"status\": \"<string>\",\n          \"syncCategory\": \"<string>\",\n          \"key\": \"<string>\",\n          \"objectHash\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "7458.338481961264",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a1b6366-5d49-4e31-bed7-d4745779fffe",
+              "name": "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "IntegrationSyncToPayrollLog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integrationName\": \"<string>\",\n  \"jsonFile\": \"<string>\",\n  \"userId\": \"<uuid>\",\n  \"source\": \"<string>\",\n  \"externalUserSyncStatuses\": [\n    {\n      \"userId\": \"<string>\",\n      \"status\": \"<string>\",\n      \"syncCategory\": \"<string>\",\n      \"message\": \"<string>\",\n      \"integrationUserId\": \"<string>\",\n      \"integrationName\": \"<string>\",\n      \"objectHash\": \"<string>\",\n      \"details\": [\n        {\n          \"status\": \"<string>\",\n          \"syncCategory\": \"<string>\",\n          \"key\": \"<string>\",\n          \"objectHash\": \"<string>\"\n        },\n        {\n          \"status\": \"<string>\",\n          \"syncCategory\": \"<string>\",\n          \"key\": \"<string>\",\n          \"objectHash\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"userId\": \"<string>\",\n      \"status\": \"<string>\",\n      \"syncCategory\": \"<string>\",\n      \"message\": \"<string>\",\n      \"integrationUserId\": \"<string>\",\n      \"integrationName\": \"<string>\",\n      \"objectHash\": \"<string>\",\n      \"details\": [\n        {\n          \"status\": \"<string>\",\n          \"syncCategory\": \"<string>\",\n          \"key\": \"<string>\",\n          \"objectHash\": \"<string>\"\n        },\n        {\n          \"status\": \"<string>\",\n          \"syncCategory\": \"<string>\",\n          \"key\": \"<string>\",\n          \"objectHash\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://*.pulsesoftware.com/webservices/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "343cda11-1cac-4668-be34-9bc7aa8aa264",
+    "name": "Pulse Public Authentication Sync API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Pulse API is targeted towards developers looking to automate tasks in Pulse. \n\n# Authentication\nAll endpoints in Pulse require authentication.  Legacy endpoints require only a Private API Key, while all new endpoints incorporate JSON Web Tokens.  \n\n**API Key**\nTo consume a Pulse endpoint using API Key authentication, :\n  * Contact Pulse support at support@pulsesoftware.com to enable the Pulse Public API and issue your API key.\n  * Pass the API key in the **'x-Api-Key'** header with each request.\n\nNote: It is recommended to use a User Private API key where possible, rather than the Application Private Key. When using a User API key, functionality will be restricted based on the role of the User for which the API key was generated.  See API endpoint documentation for authorised roles. \n\n**JSON Web Token (JWT)**\nTo consume a Pulse endpoint using JWT authentication:\n  * Contact Pulse support at support@pulsesoftware.com to enable the Pulse Public API and issue your API key.\n  * Request a bearer token from /pulse/jwt, passing the API key in the **'x-Api-Key'** header with the request.\n  * Pass the token issued in the **'Authorization'** header of all requests as **'bearer [token]'**\n\n**Note** Tokens will expire 60 minutes after being issued, at which point your application will need to request a new token.\n\n# Requests\nThe Pulse API follows REST principles.  Data resources are accessed via standard HTTPS requests in UTF-8 format to an API endpoint. Where possible, Web API uses appropriate HTTP verbs for each action.\nHTTP Verbs:\n  * **GET** Retrieves resources\n  * **POST** Creates resources\n  * **PUT** Changes and/or replaces resources or collections\n  * **DELETE** Deletes resources\n\nThe Pulse API accepts the following ISO-8601 formats for date strings:\n  * Date, Time, Timezone: e.g. \"2021-06-02T21:39:18+00:00\"\n  * Date, Time: e.g. \"2021-06-02T21:39:18Z\"\n  * Date: e.g. \"2021-06-02\"\n\n# Responses\nPulse API returns all response data as a JSON object.  \n\n# Response Status Codes\nPulse API uses the following status codes:\n  * **200** OK - Request succeeded.  Result provided in response body.\n  * **400** Bad Request - Malformed syntax.  See message body for information.\n  * **401** Unauthorised - Missing authentication (API Key or JWT).\n  * **403** Forbidden - API user is not authorised to access requested resource.\n  * **404** Not Found - Request resource does not exist.\n\n# Support\nContact support@pulsesoftware.com for any queries or issues related to this API\n\n\nContact Support:\n Email: support@pulsesoftware.com",
+      "type": "text/plain"
+    }
+  }
+}

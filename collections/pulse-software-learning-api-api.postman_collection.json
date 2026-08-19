@@ -1,0 +1,244 @@
+{
+  "item": [
+    {
+      "id": "fccb2e9a-f723-4e4e-a326-49ae7065981f",
+      "name": "Learning API",
+      "description": {
+        "content": "API for managing learning info in Pulse",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dae8466d-804d-4076-8549-46462380ebe9",
+          "name": "Retrieve training history records verified in the last specified number of hours",
+          "request": {
+            "name": "Retrieve training history records verified in the last specified number of hours",
+            "description": {
+              "content": "Retrieve training history records verified in the last specified number of hours (defaults to 12 hours if no value is given)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "training",
+                "traininghistoryrecord",
+                ":hours"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<number>",
+                  "key": "hours",
+                  "description": "(Required) The max number of hours to look back when retrieving training records based on their date of verification"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-Api-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c4cbfc26-0fbb-4097-a7c6-ae5c6034e783",
+              "name": "OK. Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "training",
+                    "traininghistoryrecord",
+                    ":hours"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "hours",
+                      "description": "(Required) The max number of hours to look back when retrieving training records based on their date of verification"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Payroll_Num\": \"string\",\n    \"Username\": \"string\",\n    \"Email\": \"string\",\n    \"Given_Name\": \"string\",\n    \"Surname\": \"string\",\n    \"Course_Name\": \"string\",\n    \"Course_Code\": \"string\",\n    \"Completion_Date\": \"string\"\n  },\n  {\n    \"Payroll_Num\": \"string\",\n    \"Username\": \"string\",\n    \"Email\": \"string\",\n    \"Given_Name\": \"string\",\n    \"Surname\": \"string\",\n    \"Course_Name\": \"string\",\n    \"Course_Code\": \"string\",\n    \"Completion_Date\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "920c133a-ebc3-40d8-98b3-56bcfa798d84",
+              "name": "The provided API Key is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "training",
+                    "traininghistoryrecord",
+                    ":hours"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "hours",
+                      "description": "(Required) The max number of hours to look back when retrieving training records based on their date of verification"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3ee72561-63e9-4b85-9b52-db6b00411486",
+              "name": "An API Key must be provided to use this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "training",
+                    "traininghistoryrecord",
+                    ":hours"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "hours",
+                      "description": "(Required) The max number of hours to look back when retrieving training records based on their date of verification"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://*.pulsesoftware.com/webservices/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "43a92551-c434-4212-a832-ce7427d396cb",
+    "name": "Pulse Public Authentication Learning API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Pulse API is targeted towards developers looking to automate tasks in Pulse. \n\n# Authentication\nAll endpoints in Pulse require authentication.  Legacy endpoints require only a Private API Key, while all new endpoints incorporate JSON Web Tokens.  \n\n**API Key**\nTo consume a Pulse endpoint using API Key authentication, :\n  * Contact Pulse support at support@pulsesoftware.com to enable the Pulse Public API and issue your API key.\n  * Pass the API key in the **'x-Api-Key'** header with each request.\n\nNote: It is recommended to use a User Private API key where possible, rather than the Application Private Key. When using a User API key, functionality will be restricted based on the role of the User for which the API key was generated.  See API endpoint documentation for authorised roles. \n\n**JSON Web Token (JWT)**\nTo consume a Pulse endpoint using JWT authentication:\n  * Contact Pulse support at support@pulsesoftware.com to enable the Pulse Public API and issue your API key.\n  * Request a bearer token from /pulse/jwt, passing the API key in the **'x-Api-Key'** header with the request.\n  * Pass the token issued in the **'Authorization'** header of all requests as **'bearer [token]'**\n\n**Note** Tokens will expire 60 minutes after being issued, at which point your application will need to request a new token.\n\n# Requests\nThe Pulse API follows REST principles.  Data resources are accessed via standard HTTPS requests in UTF-8 format to an API endpoint. Where possible, Web API uses appropriate HTTP verbs for each action.\nHTTP Verbs:\n  * **GET** Retrieves resources\n  * **POST** Creates resources\n  * **PUT** Changes and/or replaces resources or collections\n  * **DELETE** Deletes resources\n\nThe Pulse API accepts the following ISO-8601 formats for date strings:\n  * Date, Time, Timezone: e.g. \"2021-06-02T21:39:18+00:00\"\n  * Date, Time: e.g. \"2021-06-02T21:39:18Z\"\n  * Date: e.g. \"2021-06-02\"\n\n# Responses\nPulse API returns all response data as a JSON object.  \n\n# Response Status Codes\nPulse API uses the following status codes:\n  * **200** OK - Request succeeded.  Result provided in response body.\n  * **400** Bad Request - Malformed syntax.  See message body for information.\n  * **401** Unauthorised - Missing authentication (API Key or JWT).\n  * **403** Forbidden - API user is not authorised to access requested resource.\n  * **404** Not Found - Request resource does not exist.\n\n# Support\nContact support@pulsesoftware.com for any queries or issues related to this API\n\n\nContact Support:\n Email: support@pulsesoftware.com",
+      "type": "text/plain"
+    }
+  }
+}

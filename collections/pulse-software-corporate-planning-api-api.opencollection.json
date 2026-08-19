@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pulse Public Authentication Corporate Planning API API",
+    "version": "1.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Corporate Planning API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CPI Progress Update bulk upsert",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/prf/progressupdate_bulk"
+          },
+          "docs": "Performs a bulk upsert of CPI Progress Updates, matching on existing records by Reference and Year\n\n**Authorised Roles:** *PRFAdmin*\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

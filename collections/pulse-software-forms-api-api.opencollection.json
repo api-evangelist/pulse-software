@@ -1,0 +1,390 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pulse Public Authentication Forms API API",
+    "version": "1.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Forms API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Records by Ref ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/forms/record/recordsByRef",
+            "params": [
+              {
+                "name": "refId",
+                "value": "",
+                "type": "query",
+                "description": "Ref ID"
+              },
+              {
+                "name": "submittedStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted Start Date Eg. 01/01/2023"
+              },
+              {
+                "name": "submittedEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted End Date Eg. 31/01/2023"
+              }
+            ]
+          },
+          "docs": "Retrieve Records submitted by Form ID with or without Date Range.\n\n**Authorised Roles:** *ICMUser, OnboardingFormsUser, FormsUser, RCMUser*\n"
+        },
+        {
+          "info": {
+            "name": "Records Count by Ref ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/forms/record/recordsCountByRef",
+            "params": [
+              {
+                "name": "refId",
+                "value": "",
+                "type": "query",
+                "description": "Ref ID"
+              },
+              {
+                "name": "submittedStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted Start Date Eg. 01/01/2023"
+              },
+              {
+                "name": "submittedEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted End Date Eg. 31/01/2023"
+              }
+            ]
+          },
+          "docs": "Retrieve Records submitted by Form ID with or without Date Range.\n\n**Authorised Roles:** *ICMUser, OnboardingFormsUser, FormsUser, RCMUser*\n"
+        },
+        {
+          "info": {
+            "name": "Flatten Records by Ref ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/forms/record/flattenRecordsByRef",
+            "params": [
+              {
+                "name": "refId",
+                "value": "",
+                "type": "query",
+                "description": "Ref ID"
+              },
+              {
+                "name": "submittedStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted Start Date Eg. 01/01/2023"
+              },
+              {
+                "name": "submittedEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted End Date Eg. 31/01/2023"
+              }
+            ]
+          },
+          "docs": "Retrieve Flatten Records submitted by Form ID with or without Date Range.\n\n**Authorised Roles:** *ICMUser, OnboardingFormsUser, FormsUser, RCMUser*\n"
+        },
+        {
+          "info": {
+            "name": "Records by Form ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/forms/record/recordsByFormId",
+            "params": [
+              {
+                "name": "formId",
+                "value": "",
+                "type": "query",
+                "description": "Form ID"
+              },
+              {
+                "name": "submittedStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted Start Date Eg. 01/01/2023"
+              },
+              {
+                "name": "submittedEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted End Date Eg. 31/01/2023"
+              }
+            ]
+          },
+          "docs": "Retrieve Records submitted by Form ID with or without Date Range.\n\n**Authorised Roles:** *ICMUser, OnboardingFormsUser, FormsUser, RCMUser*\n"
+        },
+        {
+          "info": {
+            "name": "Records by Form ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/forms/record/recordsCountByFormId",
+            "params": [
+              {
+                "name": "formId",
+                "value": "",
+                "type": "query",
+                "description": "Form ID"
+              },
+              {
+                "name": "submittedStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted Start Date Eg. 01/01/2023"
+              },
+              {
+                "name": "submittedEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted End Date Eg. 31/01/2023"
+              }
+            ]
+          },
+          "docs": "Retrieve Records submitted by Form ID with or without Date Range.\n\n**Authorised Roles:** *ICMUser, OnboardingFormsUser, FormsUser, RCMUser*\n"
+        },
+        {
+          "info": {
+            "name": "Records by Form ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/forms/record/flattenRecordsByFormId",
+            "params": [
+              {
+                "name": "formId",
+                "value": "",
+                "type": "query",
+                "description": "Form ID"
+              },
+              {
+                "name": "submittedStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted Start Date Eg. 01/01/2023"
+              },
+              {
+                "name": "submittedEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted End Date Eg. 31/01/2023"
+              }
+            ]
+          },
+          "docs": "Retrieve Flatten Records submitted by Form ID with or without Date Range.\n\n**Authorised Roles:** *ICMUser, OnboardingFormsUser, FormsUser, RCMUser*\n"
+        },
+        {
+          "info": {
+            "name": "Flatten Records by Tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/forms/record/flattenRecordsByTag",
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Tag"
+              },
+              {
+                "name": "submittedStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted Start Date Eg. 01/01/2023"
+              },
+              {
+                "name": "submittedEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted End Date Eg. 31/01/2023"
+              }
+            ]
+          },
+          "docs": "Retrieve Flatten Records submitted by Tag with or without Date Range\n\n**Authorised Roles:** *PRFAdmin*\n"
+        },
+        {
+          "info": {
+            "name": "Records by Tag and Fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/forms/record/flattenRecordsByTag",
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Tag"
+              },
+              {
+                "name": "submittedStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted Start Date Eg. 01/01/2023"
+              },
+              {
+                "name": "submittedEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted End Date Eg. 31/01/2023"
+              }
+            ]
+          },
+          "docs": "Retrieve Records submitted by Tag with or without Date Range filter by Fields\n\n**Authorised Roles:** *PRFAdmin*\n"
+        },
+        {
+          "info": {
+            "name": "Records Count by Tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/forms/record/recordsCountByTag",
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Tag"
+              },
+              {
+                "name": "submittedStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted Start Date Eg. 01/01/2023"
+              },
+              {
+                "name": "submittedEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted End Date Eg. 31/01/2023"
+              }
+            ]
+          },
+          "docs": "Retrieve Records Count submitted by Tag with or without Date Range\n\n**Authorised Roles:** *PRFAdmin*\n"
+        },
+        {
+          "info": {
+            "name": "Records by Tag and Fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/forms/record/recordsCountByTag",
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Tag"
+              },
+              {
+                "name": "submittedStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted Start Date Eg. 01/01/2023"
+              },
+              {
+                "name": "submittedEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted End Date Eg. 31/01/2023"
+              }
+            ]
+          },
+          "docs": "Retrieve Records submitted by Tag with or without Date Range filter by Fields\n\n**Authorised Roles:** *PRFAdmin*\n"
+        },
+        {
+          "info": {
+            "name": "Records by Tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/forms/record/recordsByTag",
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Tag"
+              },
+              {
+                "name": "submittedStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted Start Date Eg. 01/01/2023"
+              },
+              {
+                "name": "submittedEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted End Date Eg. 31/01/2023"
+              }
+            ]
+          },
+          "docs": "Retrieve Records submitted by Tag with or without Date Range\n\n**Authorised Roles:** *PRFAdmin*\n"
+        },
+        {
+          "info": {
+            "name": "Records by Tag and Fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/forms/record/recordsByTag",
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Tag"
+              },
+              {
+                "name": "submittedStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted Start Date Eg. 01/01/2023"
+              },
+              {
+                "name": "submittedEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Submitted End Date Eg. 31/01/2023"
+              }
+            ]
+          },
+          "docs": "Retrieve Records submitted by Tag with or without Date Range filter by Fields\n\n**Authorised Roles:** *PRFAdmin*\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,268 @@
+{
+  "item": [
+    {
+      "id": "0cfd7a55-ad5d-4f9f-8160-9f9abdfbd731",
+      "name": "Corporate Planning API",
+      "description": {
+        "content": "API for managing CPR data in Pulse",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "352f6cc0-3496-46c4-a39d-02f2b4cdcfe7",
+          "name": "CPI Progress Update bulk upsert",
+          "request": {
+            "name": "CPI Progress Update bulk upsert",
+            "description": {
+              "content": "Performs a bulk upsert of CPI Progress Updates, matching on existing records by Reference and Year\n\n**Authorised Roles:** *PRFAdmin*\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "prf",
+                "progressupdate_bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "appliation/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorisation"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": [\n    {\n      \"uniqueReference\": \"<string>\",\n      \"prfYear\": \"<integer>\",\n      \"periodType\": \"<string>\",\n      \"actualResult\": \"<string>\",\n      \"actualNumerator\": \"<number>\",\n      \"actualDenominator\": \"<number>\",\n      \"month\": \"<string>\",\n      \"quarter\": \"<string>\",\n      \"halfYear\": \"<string>\",\n      \"year\": \"<string>\",\n      \"overwrite\": \"<boolean>\"\n    },\n    {\n      \"uniqueReference\": \"<string>\",\n      \"prfYear\": \"<integer>\",\n      \"periodType\": \"<string>\",\n      \"actualResult\": \"<string>\",\n      \"actualNumerator\": \"<number>\",\n      \"actualDenominator\": \"<number>\",\n      \"month\": \"<string>\",\n      \"quarter\": \"<string>\",\n      \"halfYear\": \"<string>\",\n      \"year\": \"<string>\",\n      \"overwrite\": \"<boolean>\"\n    }\n  ]\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "8df0c845-718a-4238-8376-587c86bdd06e",
+              "name": "OK. Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prf",
+                    "progressupdate_bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"uniqueReference\": \"K-2S0\",\n      \"prfYear\": 2020,\n      \"periodType\": \"M\",\n      \"actualResult\": \"55.4\",\n      \"actualNumerator\": \"<number>\",\n      \"actualDenominator\": \"<number>\",\n      \"month\": \"Jan\",\n      \"quarter\": \"Q1\",\n      \"halfYear\": \"H1\",\n      \"year\": \"2020\",\n      \"overwrite\": true\n    },\n    {\n      \"uniqueReference\": \"K-2S0\",\n      \"prfYear\": 2020,\n      \"periodType\": \"M\",\n      \"actualResult\": \"55.4\",\n      \"actualNumerator\": \"<number>\",\n      \"actualDenominator\": \"<number>\",\n      \"month\": \"Jan\",\n      \"quarter\": \"Q1\",\n      \"halfYear\": \"H1\",\n      \"year\": \"2020\",\n      \"overwrite\": true\n    }\n  ]\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c872ab41-f4c9-4254-a746-5b73763cdfac",
+              "name": "Missing JWT Bearer token in the Authorization header or the given JWT token is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prf",
+                    "progressupdate_bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"uniqueReference\": \"K-2S0\",\n      \"prfYear\": 2020,\n      \"periodType\": \"M\",\n      \"actualResult\": \"55.4\",\n      \"actualNumerator\": \"<number>\",\n      \"actualDenominator\": \"<number>\",\n      \"month\": \"Jan\",\n      \"quarter\": \"Q1\",\n      \"halfYear\": \"H1\",\n      \"year\": \"2020\",\n      \"overwrite\": true\n    },\n    {\n      \"uniqueReference\": \"K-2S0\",\n      \"prfYear\": 2020,\n      \"periodType\": \"M\",\n      \"actualResult\": \"55.4\",\n      \"actualNumerator\": \"<number>\",\n      \"actualDenominator\": \"<number>\",\n      \"month\": \"Jan\",\n      \"quarter\": \"Q1\",\n      \"halfYear\": \"H1\",\n      \"year\": \"2020\",\n      \"overwrite\": true\n    }\n  ]\n}"
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "96456915-c1ff-4af4-b66b-0070bb7bc62c",
+              "name": "The user corresponding to the given JWT token does not have access to this module.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prf",
+                    "progressupdate_bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"uniqueReference\": \"K-2S0\",\n      \"prfYear\": 2020,\n      \"periodType\": \"M\",\n      \"actualResult\": \"55.4\",\n      \"actualNumerator\": \"<number>\",\n      \"actualDenominator\": \"<number>\",\n      \"month\": \"Jan\",\n      \"quarter\": \"Q1\",\n      \"halfYear\": \"H1\",\n      \"year\": \"2020\",\n      \"overwrite\": true\n    },\n    {\n      \"uniqueReference\": \"K-2S0\",\n      \"prfYear\": 2020,\n      \"periodType\": \"M\",\n      \"actualResult\": \"55.4\",\n      \"actualNumerator\": \"<number>\",\n      \"actualDenominator\": \"<number>\",\n      \"month\": \"Jan\",\n      \"quarter\": \"Q1\",\n      \"halfYear\": \"H1\",\n      \"year\": \"2020\",\n      \"overwrite\": true\n    }\n  ]\n}"
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "039fad9d-b7f1-4393-aaae-66fbf5ceba09",
+              "name": "Submitted data failed validation, see errors object in response for details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prf",
+                    "progressupdate_bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorisation",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"uniqueReference\": \"K-2S0\",\n      \"prfYear\": 2020,\n      \"periodType\": \"M\",\n      \"actualResult\": \"55.4\",\n      \"actualNumerator\": \"<number>\",\n      \"actualDenominator\": \"<number>\",\n      \"month\": \"Jan\",\n      \"quarter\": \"Q1\",\n      \"halfYear\": \"H1\",\n      \"year\": \"2020\",\n      \"overwrite\": true\n    },\n    {\n      \"uniqueReference\": \"K-2S0\",\n      \"prfYear\": 2020,\n      \"periodType\": \"M\",\n      \"actualResult\": \"55.4\",\n      \"actualNumerator\": \"<number>\",\n      \"actualDenominator\": \"<number>\",\n      \"month\": \"Jan\",\n      \"quarter\": \"Q1\",\n      \"halfYear\": \"H1\",\n      \"year\": \"2020\",\n      \"overwrite\": true\n    }\n  ]\n}"
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"PRF/ProgressUpdate/Reference_MissingReference\",\n      \"detail\": \"Mandatory field Reference was not supplied.\",\n      \"source\": \"/data/0/uniqueReference\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://*.pulsesoftware.com/webservices/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9626b01f-ffaa-40ba-b51a-67a628918042",
+    "name": "Pulse Public Authentication Corporate Planning API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Pulse API is targeted towards developers looking to automate tasks in Pulse. \n\n# Authentication\nAll endpoints in Pulse require authentication.  Legacy endpoints require only a Private API Key, while all new endpoints incorporate JSON Web Tokens.  \n\n**API Key**\nTo consume a Pulse endpoint using API Key authentication, :\n  * Contact Pulse support at support@pulsesoftware.com to enable the Pulse Public API and issue your API key.\n  * Pass the API key in the **'x-Api-Key'** header with each request.\n\nNote: It is recommended to use a User Private API key where possible, rather than the Application Private Key. When using a User API key, functionality will be restricted based on the role of the User for which the API key was generated.  See API endpoint documentation for authorised roles. \n\n**JSON Web Token (JWT)**\nTo consume a Pulse endpoint using JWT authentication:\n  * Contact Pulse support at support@pulsesoftware.com to enable the Pulse Public API and issue your API key.\n  * Request a bearer token from /pulse/jwt, passing the API key in the **'x-Api-Key'** header with the request.\n  * Pass the token issued in the **'Authorization'** header of all requests as **'bearer [token]'**\n\n**Note** Tokens will expire 60 minutes after being issued, at which point your application will need to request a new token.\n\n# Requests\nThe Pulse API follows REST principles.  Data resources are accessed via standard HTTPS requests in UTF-8 format to an API endpoint. Where possible, Web API uses appropriate HTTP verbs for each action.\nHTTP Verbs:\n  * **GET** Retrieves resources\n  * **POST** Creates resources\n  * **PUT** Changes and/or replaces resources or collections\n  * **DELETE** Deletes resources\n\nThe Pulse API accepts the following ISO-8601 formats for date strings:\n  * Date, Time, Timezone: e.g. \"2021-06-02T21:39:18+00:00\"\n  * Date, Time: e.g. \"2021-06-02T21:39:18Z\"\n  * Date: e.g. \"2021-06-02\"\n\n# Responses\nPulse API returns all response data as a JSON object.  \n\n# Response Status Codes\nPulse API uses the following status codes:\n  * **200** OK - Request succeeded.  Result provided in response body.\n  * **400** Bad Request - Malformed syntax.  See message body for information.\n  * **401** Unauthorised - Missing authentication (API Key or JWT).\n  * **403** Forbidden - API user is not authorised to access requested resource.\n  * **404** Not Found - Request resource does not exist.\n\n# Support\nContact support@pulsesoftware.com for any queries or issues related to this API\n\n\nContact Support:\n Email: support@pulsesoftware.com",
+      "type": "text/plain"
+    }
+  }
+}

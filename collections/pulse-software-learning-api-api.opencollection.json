@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pulse Public Authentication Learning API API",
+    "version": "1.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Learning API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve training history records verified in the last specified number of hours",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/training/traininghistoryrecord/:hours",
+            "params": [
+              {
+                "name": "hours",
+                "value": "",
+                "type": "path",
+                "description": "The max number of hours to look back when retrieving training records based on their date of verification"
+              }
+            ]
+          },
+          "docs": "Retrieve training history records verified in the last specified number of hours (defaults to 12 hours if no value is given)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

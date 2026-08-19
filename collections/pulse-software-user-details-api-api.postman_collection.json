@@ -1,0 +1,866 @@
+{
+  "item": [
+    {
+      "id": "0f6a4736-b3c3-46ec-afc0-506d6a1cd434",
+      "name": "User Details API",
+      "description": {
+        "content": "API for managing user details in Pulse",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "487c3793-e90b-4dbc-91c0-39df52a0d2dd",
+          "name": "Retrieve user details",
+          "request": {
+            "name": "Retrieve user details",
+            "description": {
+              "content": "Retrieves a list of users matching a provided user identifier. Includes an 'active' flag which indicates whether or not a user is active.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "security",
+                "users",
+                ":value"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "value",
+                  "description": "(Required) UserID, Username or Email of the desired user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-Api-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "60a185ae-6920-4fee-92ee-10d1751f5e6a",
+              "name": "OK. Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "users",
+                    ":value"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "value",
+                      "description": "(Required) UserID, Username or Email of the desired user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"active\": true,\n    \"firstName\": \"John\",\n    \"lastName\": \"Jovi\",\n    \"networkLogin\": \"johnj\",\n    \"phone\": \"(02) 9983 0039\",\n    \"mobile\": \"+61 412 030 992\",\n    \"streetAddress\": \"1 Talavera Rd\",\n    \"suburb\": \"Macquarie Park\",\n    \"state\": \"NSW\",\n    \"postcode\": \"2113\",\n    \"country\": \"Australia\",\n    \"payrollNumber\": \"A123B\",\n    \"positionNumber\": \"1005\",\n    \"positionName\": \"Financial Accountant\",\n    \"applicationDate\": \"2020-12-30\",\n    \"supervisorEmail\": \"super@gmail.com\",\n    \"onboarding\": {\n      \"enrol\": false,\n      \"portalId\": 2223,\n      \"dueDate\": \"2021-12-30\",\n      \"activeDate\": \"2020-12-30\"\n    },\n    \"additionalPositions\": [\n      {\n        \"startDate\": \"2021-02-11\",\n        \"endDate\": \"2021-08-11\",\n        \"positionNumber\": \"1006\",\n        \"positionName\": \"Financial Accountant\"\n      },\n      {\n        \"startDate\": \"2021-02-11\",\n        \"endDate\": \"2021-08-11\",\n        \"positionNumber\": \"1006\",\n        \"positionName\": \"Financial Accountant\"\n      }\n    ],\n    \"roles\": [\n      \"cpruser\",\n      \"cpruser\"\n    ],\n    \"divisionName\": \"Business Performance\",\n    \"divisionCode\": \"BP\",\n    \"unitName\": \"Finance\",\n    \"unitCode\": \"FIN\",\n    \"sectionName\": \"Financial Accounting\",\n    \"sectionCode\": \"FA\",\n    \"userId\": \"00000000-0000-0000-0000-000000000000\",\n    \"email\": \"jbjovi@gmail.com\"\n  },\n  {\n    \"active\": true,\n    \"firstName\": \"John\",\n    \"lastName\": \"Jovi\",\n    \"networkLogin\": \"johnj\",\n    \"phone\": \"(02) 9983 0039\",\n    \"mobile\": \"+61 412 030 992\",\n    \"streetAddress\": \"1 Talavera Rd\",\n    \"suburb\": \"Macquarie Park\",\n    \"state\": \"NSW\",\n    \"postcode\": \"2113\",\n    \"country\": \"Australia\",\n    \"payrollNumber\": \"A123B\",\n    \"positionNumber\": \"1005\",\n    \"positionName\": \"Financial Accountant\",\n    \"applicationDate\": \"2020-12-30\",\n    \"supervisorEmail\": \"super@gmail.com\",\n    \"onboarding\": {\n      \"enrol\": true,\n      \"portalId\": 422,\n      \"dueDate\": \"2021-12-30\",\n      \"activeDate\": \"2020-12-30\"\n    },\n    \"additionalPositions\": [\n      {\n        \"startDate\": \"2021-02-11\",\n        \"endDate\": \"2021-08-11\",\n        \"positionNumber\": \"1006\",\n        \"positionName\": \"Financial Accountant\"\n      },\n      {\n        \"startDate\": \"2021-02-11\",\n        \"endDate\": \"2021-08-11\",\n        \"positionNumber\": \"1006\",\n        \"positionName\": \"Financial Accountant\"\n      }\n    ],\n    \"roles\": [\n      \"cpruser\",\n      \"cpruser\"\n    ],\n    \"divisionName\": \"Business Performance\",\n    \"divisionCode\": \"BP\",\n    \"unitName\": \"Finance\",\n    \"unitCode\": \"FIN\",\n    \"sectionName\": \"Financial Accounting\",\n    \"sectionCode\": \"FA\",\n    \"userId\": \"00000000-0000-0000-0000-000000000000\",\n    \"email\": \"jbjovi@gmail.com\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1092a556-9192-432f-be73-500aafc25081",
+              "name": "Missing x-api-key or the given x-api-key does not grant client with access to this API.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "users",
+                    ":value"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "value",
+                      "description": "(Required) UserID, Username or Email of the desired user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9c985317-bbdb-41b0-9cef-01023036d6a3",
+              "name": "User not found in Pulse.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "users",
+                    ":value"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "value",
+                      "description": "(Required) UserID, Username or Email of the desired user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c9d73ff-1bca-4313-9b82-6e65a48f7e9e",
+          "name": "Retrieve a complete list of users in Pulse",
+          "request": {
+            "name": "Retrieve a complete list of users in Pulse",
+            "description": {
+              "content": "Returns a list of all users in Pulse (including inactive users). Includes an 'active' flag which indicates whether or not a user is active.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "security",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-Api-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d73780e4-fffe-48f9-86f0-01175fca55cd",
+              "name": "OK. Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"active\": true,\n    \"firstName\": \"John\",\n    \"lastName\": \"Jovi\",\n    \"networkLogin\": \"johnj\",\n    \"phone\": \"(02) 9983 0039\",\n    \"mobile\": \"+61 412 030 992\",\n    \"streetAddress\": \"1 Talavera Rd\",\n    \"suburb\": \"Macquarie Park\",\n    \"state\": \"NSW\",\n    \"postcode\": \"2113\",\n    \"country\": \"Australia\",\n    \"payrollNumber\": \"A123B\",\n    \"positionNumber\": \"1005\",\n    \"positionName\": \"Financial Accountant\",\n    \"applicationDate\": \"2020-12-30\",\n    \"supervisorEmail\": \"super@gmail.com\",\n    \"onboarding\": {\n      \"enrol\": true,\n      \"portalId\": 9815,\n      \"dueDate\": \"2021-12-30\",\n      \"activeDate\": \"2020-12-30\"\n    },\n    \"additionalPositions\": [\n      {\n        \"startDate\": \"2021-02-11\",\n        \"endDate\": \"2021-08-11\",\n        \"positionNumber\": \"1006\",\n        \"positionName\": \"Financial Accountant\"\n      },\n      {\n        \"startDate\": \"2021-02-11\",\n        \"endDate\": \"2021-08-11\",\n        \"positionNumber\": \"1006\",\n        \"positionName\": \"Financial Accountant\"\n      }\n    ],\n    \"roles\": [\n      \"cpruser\",\n      \"cpruser\"\n    ],\n    \"divisionName\": \"Business Performance\",\n    \"divisionCode\": \"BP\",\n    \"unitName\": \"Finance\",\n    \"unitCode\": \"FIN\",\n    \"sectionName\": \"Financial Accounting\",\n    \"sectionCode\": \"FA\",\n    \"userId\": \"00000000-0000-0000-0000-000000000000\",\n    \"email\": \"jbjovi@gmail.com\"\n  },\n  {\n    \"active\": true,\n    \"firstName\": \"John\",\n    \"lastName\": \"Jovi\",\n    \"networkLogin\": \"johnj\",\n    \"phone\": \"(02) 9983 0039\",\n    \"mobile\": \"+61 412 030 992\",\n    \"streetAddress\": \"1 Talavera Rd\",\n    \"suburb\": \"Macquarie Park\",\n    \"state\": \"NSW\",\n    \"postcode\": \"2113\",\n    \"country\": \"Australia\",\n    \"payrollNumber\": \"A123B\",\n    \"positionNumber\": \"1005\",\n    \"positionName\": \"Financial Accountant\",\n    \"applicationDate\": \"2020-12-30\",\n    \"supervisorEmail\": \"super@gmail.com\",\n    \"onboarding\": {\n      \"enrol\": false,\n      \"portalId\": 3387,\n      \"dueDate\": \"2021-12-30\",\n      \"activeDate\": \"2020-12-30\"\n    },\n    \"additionalPositions\": [\n      {\n        \"startDate\": \"2021-02-11\",\n        \"endDate\": \"2021-08-11\",\n        \"positionNumber\": \"1006\",\n        \"positionName\": \"Financial Accountant\"\n      },\n      {\n        \"startDate\": \"2021-02-11\",\n        \"endDate\": \"2021-08-11\",\n        \"positionNumber\": \"1006\",\n        \"positionName\": \"Financial Accountant\"\n      }\n    ],\n    \"roles\": [\n      \"cpruser\",\n      \"cpruser\"\n    ],\n    \"divisionName\": \"Business Performance\",\n    \"divisionCode\": \"BP\",\n    \"unitName\": \"Finance\",\n    \"unitCode\": \"FIN\",\n    \"sectionName\": \"Financial Accounting\",\n    \"sectionCode\": \"FA\",\n    \"userId\": \"00000000-0000-0000-0000-000000000000\",\n    \"email\": \"jbjovi@gmail.com\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09478592-ce5e-4ae3-b193-55d17fd984b3",
+              "name": "Missing x-api-key or the given x-api-key does not grant client with access to this API.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "211eec29-b813-4d48-8b5f-9a3e44e9946c",
+          "name": "Add a new user to Pulse",
+          "request": {
+            "name": "Add a new user to Pulse",
+            "description": {
+              "content": "Notifications can be enabled for this endpoint. Contact Pulse support at support@pulsesoftware.com to enable notifications via the UserSyncEnableNotification config.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "security",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-Api-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"networkLogin\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"streetAddress\": \"<string>\",\n  \"suburb\": \"<string>\",\n  \"state\": \"<string>\",\n  \"postcode\": \"<string>\",\n  \"country\": \"<string>\",\n  \"payrollNumber\": \"<string>\",\n  \"positionNumber\": \"<string>\",\n  \"positionName\": \"<string>\",\n  \"applicationDate\": \"<string>\",\n  \"supervisorEmail\": \"<string>\",\n  \"onboarding\": {\n    \"enrol\": \"<boolean>\",\n    \"portalId\": \"<integer>\",\n    \"dueDate\": \"<string>\",\n    \"activeDate\": \"<string>\"\n  },\n  \"additionalPositions\": [\n    {\n      \"startDate\": \"<string>\",\n      \"endDate\": \"<string>\",\n      \"positionNumber\": \"<string>\",\n      \"positionName\": \"<string>\"\n    },\n    {\n      \"startDate\": \"<string>\",\n      \"endDate\": \"<string>\",\n      \"positionNumber\": \"<string>\",\n      \"positionName\": \"<string>\"\n    }\n  ],\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"divisionName\": \"<string>\",\n  \"divisionCode\": \"<string>\",\n  \"unitName\": \"<string>\",\n  \"unitCode\": \"<string>\",\n  \"sectionName\": \"<string>\",\n  \"sectionCode\": \"<string>\",\n  \"userId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4e22385e-1c0d-44dc-bc58-35dff1f8ec4b",
+              "name": "OK. Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Jovi\",\n  \"email\": \"jbjovi@gmail.com\",\n  \"active\": true,\n  \"networkLogin\": \"johnj\",\n  \"phone\": \"(02) 9983 0039\",\n  \"mobile\": \"+61 412 030 992\",\n  \"streetAddress\": \"1 Talavera Rd\",\n  \"suburb\": \"Macquarie Park\",\n  \"state\": \"NSW\",\n  \"postcode\": \"2113\",\n  \"country\": \"Australia\",\n  \"payrollNumber\": \"A123B\",\n  \"positionNumber\": \"1005\",\n  \"positionName\": \"Financial Accountant\",\n  \"applicationDate\": \"2020-12-30\",\n  \"supervisorEmail\": \"super@gmail.com\",\n  \"onboarding\": {\n    \"enrol\": \"<boolean>\",\n    \"portalId\": \"<integer>\",\n    \"dueDate\": \"2021-12-30\",\n    \"activeDate\": \"2020-12-30\"\n  },\n  \"additionalPositions\": [\n    {\n      \"startDate\": \"2021-02-11\",\n      \"endDate\": \"2021-08-11\",\n      \"positionNumber\": \"1006\",\n      \"positionName\": \"Financial Accountant\"\n    },\n    {\n      \"startDate\": \"2021-02-11\",\n      \"endDate\": \"2021-08-11\",\n      \"positionNumber\": \"1006\",\n      \"positionName\": \"Financial Accountant\"\n    }\n  ],\n  \"roles\": [\n    \"cpruser\",\n    \"cpruser\"\n  ],\n  \"divisionName\": \"Business Performance\",\n  \"divisionCode\": \"BP\",\n  \"unitName\": \"Finance\",\n  \"unitCode\": \"FIN\",\n  \"sectionName\": \"Financial Accounting\",\n  \"sectionCode\": \"FA\",\n  \"userId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"PRF/ProgressUpdate/Reference_MissingReference\",\n      \"detail\": \"Mandatory field Reference was not supplied.\",\n      \"source\": \"/data/0/uniqueReference\"\n    },\n    {\n      \"code\": \"PRF/ProgressUpdate/Reference_MissingReference\",\n      \"detail\": \"Mandatory field Reference was not supplied.\",\n      \"source\": \"/data/0/uniqueReference\"\n    }\n  ],\n  \"data\": {\n    \"active\": true,\n    \"firstName\": \"John\",\n    \"lastName\": \"Jovi\",\n    \"networkLogin\": \"johnj\",\n    \"phone\": \"(02) 9983 0039\",\n    \"mobile\": \"+61 412 030 992\",\n    \"streetAddress\": \"1 Talavera Rd\",\n    \"suburb\": \"Macquarie Park\",\n    \"state\": \"NSW\",\n    \"postcode\": \"2113\",\n    \"country\": \"Australia\",\n    \"payrollNumber\": \"A123B\",\n    \"positionNumber\": \"1005\",\n    \"positionName\": \"Financial Accountant\",\n    \"applicationDate\": \"2020-12-30\",\n    \"supervisorEmail\": \"super@gmail.com\",\n    \"onboarding\": {\n      \"enrol\": \"<boolean>\",\n      \"portalId\": \"<integer>\",\n      \"dueDate\": \"2021-12-30\",\n      \"activeDate\": \"2020-12-30\"\n    },\n    \"additionalPositions\": [\n      {\n        \"startDate\": \"2021-02-11\",\n        \"endDate\": \"2021-08-11\",\n        \"positionNumber\": \"1006\",\n        \"positionName\": \"Financial Accountant\"\n      },\n      {\n        \"startDate\": \"2021-02-11\",\n        \"endDate\": \"2021-08-11\",\n        \"positionNumber\": \"1006\",\n        \"positionName\": \"Financial Accountant\"\n      }\n    ],\n    \"roles\": [\n      \"cpruser\",\n      \"cpruser\"\n    ],\n    \"divisionName\": \"Business Performance\",\n    \"divisionCode\": \"BP\",\n    \"unitName\": \"Finance\",\n    \"unitCode\": \"FIN\",\n    \"sectionName\": \"Financial Accounting\",\n    \"sectionCode\": \"FA\",\n    \"userId\": \"00000000-0000-0000-0000-000000000000\",\n    \"email\": \"jbjovi@gmail.com\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "508e7a04-e78b-4261-b807-a869a0f959db",
+              "name": "Missing x-api-key or the given x-api-key does not grant client with access to this API.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Jovi\",\n  \"email\": \"jbjovi@gmail.com\",\n  \"active\": true,\n  \"networkLogin\": \"johnj\",\n  \"phone\": \"(02) 9983 0039\",\n  \"mobile\": \"+61 412 030 992\",\n  \"streetAddress\": \"1 Talavera Rd\",\n  \"suburb\": \"Macquarie Park\",\n  \"state\": \"NSW\",\n  \"postcode\": \"2113\",\n  \"country\": \"Australia\",\n  \"payrollNumber\": \"A123B\",\n  \"positionNumber\": \"1005\",\n  \"positionName\": \"Financial Accountant\",\n  \"applicationDate\": \"2020-12-30\",\n  \"supervisorEmail\": \"super@gmail.com\",\n  \"onboarding\": {\n    \"enrol\": \"<boolean>\",\n    \"portalId\": \"<integer>\",\n    \"dueDate\": \"2021-12-30\",\n    \"activeDate\": \"2020-12-30\"\n  },\n  \"additionalPositions\": [\n    {\n      \"startDate\": \"2021-02-11\",\n      \"endDate\": \"2021-08-11\",\n      \"positionNumber\": \"1006\",\n      \"positionName\": \"Financial Accountant\"\n    },\n    {\n      \"startDate\": \"2021-02-11\",\n      \"endDate\": \"2021-08-11\",\n      \"positionNumber\": \"1006\",\n      \"positionName\": \"Financial Accountant\"\n    }\n  ],\n  \"roles\": [\n    \"cpruser\",\n    \"cpruser\"\n  ],\n  \"divisionName\": \"Business Performance\",\n  \"divisionCode\": \"BP\",\n  \"unitName\": \"Finance\",\n  \"unitCode\": \"FIN\",\n  \"sectionName\": \"Financial Accounting\",\n  \"sectionCode\": \"FA\",\n  \"userId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ffd3cdd-83be-4b8a-9d4e-40f9e7458d06",
+          "name": "Replaces an existing user in Pulse or creates a user if the specified user does not exist.",
+          "request": {
+            "name": "Replaces an existing user in Pulse or creates a user if the specified user does not exist.",
+            "description": {
+              "content": "Notifications can be enabled for this endpoint. Contact Pulse support at support@pulsesoftware.com to enable notifications via the UserSyncEnableNotification config.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "security",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-Api-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"<string>\",\n  \"email\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"additionalPositions\": [\n    {\n      \"startDate\": \"<string>\",\n      \"endDate\": \"<string>\",\n      \"positionNumber\": \"<string>\",\n      \"positionName\": \"<string>\"\n    },\n    {\n      \"startDate\": \"<string>\",\n      \"endDate\": \"<string>\",\n      \"positionNumber\": \"<string>\",\n      \"positionName\": \"<string>\"\n    }\n  ],\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"phone\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"streetAddress\": \"<string>\",\n  \"suburb\": \"<string>\",\n  \"state\": \"<string>\",\n  \"postcode\": \"<string>\",\n  \"country\": \"<string>\",\n  \"payrollNumber\": \"<string>\",\n  \"positionNumber\": \"<string>\",\n  \"positionName\": \"<string>\",\n  \"supervisorEmail\": \"<string>\",\n  \"divisionName\": \"<string>\",\n  \"divisionCode\": \"<string>\",\n  \"unitName\": \"<string>\",\n  \"unitCode\": \"<string>\",\n  \"sectionName\": \"<string>\",\n  \"sectionCode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "67f32c94-bbe5-46d3-8661-7970ccf42918",
+              "name": "OK. Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"00000000-0000-0000-0000-000000000000\",\n  \"email\": \"testuser@mail.com\",\n  \"firstName\": \"Johnny\",\n  \"lastName\": \"Samson\",\n  \"additionalPositions\": [\n    {\n      \"startDate\": \"2021-02-11\",\n      \"endDate\": \"2021-08-11\",\n      \"positionNumber\": \"1006\",\n      \"positionName\": \"Financial Accountant\"\n    },\n    {\n      \"startDate\": \"2021-02-11\",\n      \"endDate\": \"2021-08-11\",\n      \"positionNumber\": \"1006\",\n      \"positionName\": \"Financial Accountant\"\n    }\n  ],\n  \"roles\": [\n    \"cpruser\",\n    \"cpruser\"\n  ],\n  \"phone\": \"(02) 9983 0039\",\n  \"mobile\": \"+61 412 030 992\",\n  \"streetAddress\": \"1 Talavera Rd\",\n  \"suburb\": \"Macquarie Park\",\n  \"state\": \"NSW\",\n  \"postcode\": \"2113\",\n  \"country\": \"Australia\",\n  \"payrollNumber\": \"A123B\",\n  \"positionNumber\": \"1005\",\n  \"positionName\": \"Financial Accountant\",\n  \"supervisorEmail\": \"super@gmail.com\",\n  \"divisionName\": \"Business Performance\",\n  \"divisionCode\": \"BP\",\n  \"unitName\": \"Finance\",\n  \"unitCode\": \"FIN\",\n  \"sectionName\": \"Financial Accounting\",\n  \"sectionCode\": \"FA\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"PRF/ProgressUpdate/Reference_MissingReference\",\n      \"detail\": \"Mandatory field Reference was not supplied.\",\n      \"source\": \"/data/0/uniqueReference\"\n    },\n    {\n      \"code\": \"PRF/ProgressUpdate/Reference_MissingReference\",\n      \"detail\": \"Mandatory field Reference was not supplied.\",\n      \"source\": \"/data/0/uniqueReference\"\n    }\n  ],\n  \"data\": {\n    \"active\": true,\n    \"firstName\": \"John\",\n    \"lastName\": \"Jovi\",\n    \"networkLogin\": \"johnj\",\n    \"phone\": \"(02) 9983 0039\",\n    \"mobile\": \"+61 412 030 992\",\n    \"streetAddress\": \"1 Talavera Rd\",\n    \"suburb\": \"Macquarie Park\",\n    \"state\": \"NSW\",\n    \"postcode\": \"2113\",\n    \"country\": \"Australia\",\n    \"payrollNumber\": \"A123B\",\n    \"positionNumber\": \"1005\",\n    \"positionName\": \"Financial Accountant\",\n    \"applicationDate\": \"2020-12-30\",\n    \"supervisorEmail\": \"super@gmail.com\",\n    \"onboarding\": {\n      \"enrol\": \"<boolean>\",\n      \"portalId\": \"<integer>\",\n      \"dueDate\": \"2021-12-30\",\n      \"activeDate\": \"2020-12-30\"\n    },\n    \"additionalPositions\": [\n      {\n        \"startDate\": \"2021-02-11\",\n        \"endDate\": \"2021-08-11\",\n        \"positionNumber\": \"1006\",\n        \"positionName\": \"Financial Accountant\"\n      },\n      {\n        \"startDate\": \"2021-02-11\",\n        \"endDate\": \"2021-08-11\",\n        \"positionNumber\": \"1006\",\n        \"positionName\": \"Financial Accountant\"\n      }\n    ],\n    \"roles\": [\n      \"cpruser\",\n      \"cpruser\"\n    ],\n    \"divisionName\": \"Business Performance\",\n    \"divisionCode\": \"BP\",\n    \"unitName\": \"Finance\",\n    \"unitCode\": \"FIN\",\n    \"sectionName\": \"Financial Accounting\",\n    \"sectionCode\": \"FA\",\n    \"userId\": \"00000000-0000-0000-0000-000000000000\",\n    \"email\": \"jbjovi@gmail.com\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b444f24-c692-42d6-beba-30a95e08e50c",
+              "name": "Missing x-api-key or the given x-api-key does not grant client with access to this API.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"00000000-0000-0000-0000-000000000000\",\n  \"email\": \"testuser@mail.com\",\n  \"firstName\": \"Johnny\",\n  \"lastName\": \"Samson\",\n  \"additionalPositions\": [\n    {\n      \"startDate\": \"2021-02-11\",\n      \"endDate\": \"2021-08-11\",\n      \"positionNumber\": \"1006\",\n      \"positionName\": \"Financial Accountant\"\n    },\n    {\n      \"startDate\": \"2021-02-11\",\n      \"endDate\": \"2021-08-11\",\n      \"positionNumber\": \"1006\",\n      \"positionName\": \"Financial Accountant\"\n    }\n  ],\n  \"roles\": [\n    \"cpruser\",\n    \"cpruser\"\n  ],\n  \"phone\": \"(02) 9983 0039\",\n  \"mobile\": \"+61 412 030 992\",\n  \"streetAddress\": \"1 Talavera Rd\",\n  \"suburb\": \"Macquarie Park\",\n  \"state\": \"NSW\",\n  \"postcode\": \"2113\",\n  \"country\": \"Australia\",\n  \"payrollNumber\": \"A123B\",\n  \"positionNumber\": \"1005\",\n  \"positionName\": \"Financial Accountant\",\n  \"supervisorEmail\": \"super@gmail.com\",\n  \"divisionName\": \"Business Performance\",\n  \"divisionCode\": \"BP\",\n  \"unitName\": \"Finance\",\n  \"unitCode\": \"FIN\",\n  \"sectionName\": \"Financial Accounting\",\n  \"sectionCode\": \"FA\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd67aa39-54c0-4baf-b931-72fb4d6448eb",
+          "name": "Delete a user from Pulse",
+          "request": {
+            "name": "Delete a user from Pulse",
+            "description": {
+              "content": "Deletes a user from Pulse using the given userId or email",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "security",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-Api-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "025796bb-b3f1-4152-864a-d9247a3427fa",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"00000000-0000-0000-0000-000000000000\",\n  \"email\": \"jbjovi@gmail.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ad72dc7d-255c-4279-8ff4-16537fcab22e",
+              "name": "Missing x-api-key or the given x-api-key does not grant client with access to this API.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"00000000-0000-0000-0000-000000000000\",\n  \"email\": \"jbjovi@gmail.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://*.pulsesoftware.com/webservices/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "58c7bb0e-3ba8-4bf7-b84d-98741e9283ed",
+    "name": "Pulse Public Authentication User Details API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Pulse API is targeted towards developers looking to automate tasks in Pulse. \n\n# Authentication\nAll endpoints in Pulse require authentication.  Legacy endpoints require only a Private API Key, while all new endpoints incorporate JSON Web Tokens.  \n\n**API Key**\nTo consume a Pulse endpoint using API Key authentication, :\n  * Contact Pulse support at support@pulsesoftware.com to enable the Pulse Public API and issue your API key.\n  * Pass the API key in the **'x-Api-Key'** header with each request.\n\nNote: It is recommended to use a User Private API key where possible, rather than the Application Private Key. When using a User API key, functionality will be restricted based on the role of the User for which the API key was generated.  See API endpoint documentation for authorised roles. \n\n**JSON Web Token (JWT)**\nTo consume a Pulse endpoint using JWT authentication:\n  * Contact Pulse support at support@pulsesoftware.com to enable the Pulse Public API and issue your API key.\n  * Request a bearer token from /pulse/jwt, passing the API key in the **'x-Api-Key'** header with the request.\n  * Pass the token issued in the **'Authorization'** header of all requests as **'bearer [token]'**\n\n**Note** Tokens will expire 60 minutes after being issued, at which point your application will need to request a new token.\n\n# Requests\nThe Pulse API follows REST principles.  Data resources are accessed via standard HTTPS requests in UTF-8 format to an API endpoint. Where possible, Web API uses appropriate HTTP verbs for each action.\nHTTP Verbs:\n  * **GET** Retrieves resources\n  * **POST** Creates resources\n  * **PUT** Changes and/or replaces resources or collections\n  * **DELETE** Deletes resources\n\nThe Pulse API accepts the following ISO-8601 formats for date strings:\n  * Date, Time, Timezone: e.g. \"2021-06-02T21:39:18+00:00\"\n  * Date, Time: e.g. \"2021-06-02T21:39:18Z\"\n  * Date: e.g. \"2021-06-02\"\n\n# Responses\nPulse API returns all response data as a JSON object.  \n\n# Response Status Codes\nPulse API uses the following status codes:\n  * **200** OK - Request succeeded.  Result provided in response body.\n  * **400** Bad Request - Malformed syntax.  See message body for information.\n  * **401** Unauthorised - Missing authentication (API Key or JWT).\n  * **403** Forbidden - API user is not authorised to access requested resource.\n  * **404** Not Found - Request resource does not exist.\n\n# Support\nContact support@pulsesoftware.com for any queries or issues related to this API\n\n\nContact Support:\n Email: support@pulsesoftware.com",
+      "type": "text/plain"
+    }
+  }
+}
