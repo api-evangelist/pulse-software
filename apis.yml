@@ -22,6 +22,10 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/pulse-soft
 tags:
   - Pulse
   - Automation
+  - Developers
+tags_raw:
+  - Pulse
+  - Automation
   - Developer
 created: '2025-02-24'
 modified: '2026-04-28'
@@ -43,6 +47,10 @@ apis:
   description: The Pulse API is targeted towards developers looking to automate tasks in Pulse.
   humanURL: https://apidoc.pulsesoftware.com/
   tags:
+  - Pulse
+  - Automation
+  - Developers
+  tags_raw:
   - Pulse
   - Automation
   - Developer
