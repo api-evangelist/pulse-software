@@ -43,6 +43,8 @@ modified: '2026-09-16'
 url: https://raw.githubusercontent.com/api-evangelist/pulse-software/refs/heads/main/apis.yml
 specificationVersion: '0.23'
 common:
+- type: Website
+  url: https://pulsesoftware.com
 - type: AgenticAccess
   url: agentic-access/pulse-software-agentic-access.yml
 - type: DomainSecurity
