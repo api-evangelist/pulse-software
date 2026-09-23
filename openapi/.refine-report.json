@@ -1,15 +1,7 @@
 {
   "provider": "pulse-software",
   "sources": [
-    "pulse-software-authentication-api-openapi.yml",
-    "pulse-software-corporate-planning-api-api-openapi.yml",
-    "pulse-software-forms-api-api-openapi.yml",
-    "pulse-software-learning-api-api-openapi.yml",
-    "pulse-software-project-api-api-openapi.yml",
-    "pulse-software-recruitment-api-api-openapi.yml",
-    "pulse-software-sync-api-api-openapi.yml",
-    "pulse-software-user-details-api-api-openapi.yml",
-    "pulse-software-user-details-api-v2-api-openapi.yml"
+    "_original/pulse-software-openapi.yml"
   ],
   "outputs": [
     "pulse-software-authentication-api-openapi.yml",
@@ -25,6 +17,20 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "pulse-software-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "pulse-software-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pulse-software-corporate-planning-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pulse-software-forms-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pulse-software-learning-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pulse-software-project-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pulse-software-recruitment-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pulse-software-sync-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pulse-software-user-details-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pulse-software-user-details-api-v2-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
