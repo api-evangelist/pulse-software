@@ -111,23 +111,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    AdditionalAttributesDTO:
-      type: object
-      properties:
-        tabId:
-          type: integer
-          format: int32
-        tabName:
-          type: string
-        attributeId:
-          type: integer
-          format: int32
-        attributeName:
-          type: string
-        attributeValue:
-          type: string
-        attributeDataType:
-          type: string
     ExternalUserSyncStatusDetailDTO:
       type: object
       properties:
@@ -138,34 +121,6 @@ components:
         key:
           type: string
         objectHash:
-          type: string
-    ExternalUserSyncStatusDTO:
-      type: object
-      properties:
-        userId:
-          type: string
-        status:
-          type: string
-        syncCategory:
-          type: string
-        message:
-          type: string
-        integrationUserId:
-          type: string
-        integrationName:
-          type: string
-        objectHash:
-          type: string
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/ExternalUserSyncStatusDetailDTO'
-    StoreSyncData:
-      type: object
-      properties:
-        jsonStringData:
-          type: string
-        folder:
           type: string
     AdditionalPositionsDTO:
       type: object
@@ -206,6 +161,38 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ExternalUserSyncStatusDTO'
+    StoreSyncData:
+      type: object
+      properties:
+        jsonStringData:
+          type: string
+        folder:
+          type: string
+    ExternalUserSyncStatusDTO:
+      type: object
+      properties:
+        userId:
+          type: string
+        status:
+          type: string
+        syncCategory:
+          type: string
+        message:
+          type: string
+        integrationUserId:
+          type: string
+        integrationName:
+          type: string
+        objectHash:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExternalUserSyncStatusDetailDTO'
+    UserSyncDTOs:
+      type: array
+      items:
+        $ref: '#/components/schemas/UserSyncDTO'
     UserSyncDTO:
       type: object
       properties:
@@ -383,10 +370,23 @@ components:
             $ref: '#/components/schemas/AdditionalPositionsDTO'
         roles:
           type: string
-    UserSyncDTOs:
-      type: array
-      items:
-        $ref: '#/components/schemas/UserSyncDTO'
+    AdditionalAttributesDTO:
+      type: object
+      properties:
+        tabId:
+          type: integer
+          format: int32
+        tabName:
+          type: string
+        attributeId:
+          type: integer
+          format: int32
+        attributeName:
+          type: string
+        attributeValue:
+          type: string
+        attributeDataType:
+          type: string
   securitySchemes:
     ApiKey:
       type: apiKey

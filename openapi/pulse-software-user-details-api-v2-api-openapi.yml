@@ -211,6 +211,43 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    AddUserInfo:
+      allOf:
+      - $ref: '#/components/schemas/UserInfo'
+      - type: object
+        properties:
+          password:
+            type: string
+          confirmPassword:
+            type: string
+          sendWelcomeEmail:
+            type: boolean
+    UserAdditionalPositionDTO:
+      type: object
+      properties:
+        positionNo:
+          type: string
+        positionName:
+          type: string
+        startDate:
+          type: string
+        endDate:
+          type: string
+        notes:
+          type: string
+        supervisorEmail:
+          type: string
+    UserInfos:
+      type: array
+      items:
+        $ref: '#/components/schemas/UserInfo'
+    UserDetailsV2ApiError:
+      type: object
+      properties:
+        field:
+          type: string
+        message:
+          type: string
     UserOnboardingDetailsDTO:
       type: object
       properties:
@@ -223,13 +260,17 @@ components:
           type: string
         dueDate:
           type: string
-    UserDetailsV2ApiError:
+    UserDetailsV2Response:
       type: object
       properties:
-        field:
+        status:
           type: string
-        message:
-          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserDetailsV2ApiError'
+        data:
+          $ref: '#/components/schemas/UserInfo'
     AdditionalAttributesDTO:
       type: object
       properties:
@@ -409,47 +450,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AdditionalAttributesDTO'
-    UserAdditionalPositionDTO:
-      type: object
-      properties:
-        positionNo:
-          type: string
-        positionName:
-          type: string
-        startDate:
-          type: string
-        endDate:
-          type: string
-        notes:
-          type: string
-        supervisorEmail:
-          type: string
-    UserInfos:
-      type: array
-      items:
-        $ref: '#/components/schemas/UserInfo'
-    AddUserInfo:
-      allOf:
-      - $ref: '#/components/schemas/UserInfo'
-      - type: object
-        properties:
-          password:
-            type: string
-          confirmPassword:
-            type: string
-          sendWelcomeEmail:
-            type: boolean
-    UserDetailsV2Response:
-      type: object
-      properties:
-        status:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserDetailsV2ApiError'
-        data:
-          $ref: '#/components/schemas/UserInfo'
   securitySchemes:
     ApiKey:
       type: apiKey

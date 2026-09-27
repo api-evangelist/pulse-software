@@ -45,25 +45,6 @@ paths:
           description: An API Key must be provided to use this resource.
 components:
   schemas:
-    TrainingHistoryRecord:
-      type: object
-      properties:
-        Payroll_Num:
-          type: string
-        Username:
-          type: string
-        Email:
-          type: string
-        Given_Name:
-          type: string
-        Surname:
-          type: string
-        Course_Name:
-          type: string
-        Course_Code:
-          type: string
-        Completion_Date:
-          type: string
     GetTrainingHistoryRecordsResponse:
       type: array
       items:
@@ -85,6 +66,25 @@ components:
         Course_Name: Agile Methodologies
         Course_Code: agile123
         Completion_Date: 9/05/2021 3:36:28 PM
+    TrainingHistoryRecord:
+      type: object
+      properties:
+        Payroll_Num:
+          type: string
+        Username:
+          type: string
+        Email:
+          type: string
+        Given_Name:
+          type: string
+        Surname:
+          type: string
+        Course_Name:
+          type: string
+        Course_Code:
+          type: string
+        Completion_Date:
+          type: string
   securitySchemes:
     ApiKey:
       type: apiKey

@@ -135,124 +135,6 @@ paths:
         required: true
 components:
   schemas:
-    UpdateUser:
-      type: object
-      required:
-      - userId
-      - email
-      properties:
-        userId:
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        email:
-          type: string
-          example: testuser@mail.com
-        firstName:
-          type: string
-          example: Johnny
-        lastName:
-          type: string
-          example: Samson
-        additionalPositions:
-          type: array
-          items:
-            $ref: '#/components/schemas/AdditionalPosition'
-        roles:
-          type: array
-          items:
-            type: string
-            example: cpruser
-        phone:
-          type: string
-          example: (02) 9983 0039
-        mobile:
-          type: string
-          example: +61 412 030 992
-        streetAddress:
-          type: string
-          example: 1 Talavera Rd
-        suburb:
-          type: string
-          example: Macquarie Park
-        state:
-          type: string
-          example: NSW
-        postcode:
-          type: string
-          example: '2113'
-        country:
-          type: string
-          example: Australia
-        payrollNumber:
-          type: string
-          example: A123B
-        positionNumber:
-          type: string
-          example: '1005'
-        positionName:
-          type: string
-          example: Financial Accountant
-        supervisorEmail:
-          type: string
-          example: super@gmail.com
-        divisionName:
-          type: string
-          example: Business Performance
-        divisionCode:
-          type: string
-          example: BP
-        unitName:
-          type: string
-          example: Finance
-        unitCode:
-          type: string
-          example: FIN
-        sectionName:
-          type: string
-          example: Financial Accounting
-        sectionCode:
-          type: string
-          example: FA
-    UpdateUserResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/PulseApiError'
-        data:
-          $ref: '#/components/schemas/GetResponse'
-    DeleteUser:
-      type: object
-      required:
-      - userId
-      - email
-      properties:
-        userId:
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        email:
-          type: string
-          example: jbjovi@gmail.com
-      xml:
-        name: DeleteUser
-    OnboardingEnrolment:
-      type: object
-      required:
-      - enrol
-      properties:
-        enrol:
-          type: boolean
-          example: 'true'
-        portalId:
-          type: integer
-          example: '1'
-        dueDate:
-          type: string
-          example: '2021-12-30'
-        activeDate:
-          type: string
-          example: '2020-12-30'
     User:
       type: object
       required:
@@ -345,6 +227,23 @@ components:
           example: jbjovi@gmail.com
       xml:
         name: User
+    OnboardingEnrolment:
+      type: object
+      required:
+      - enrol
+      properties:
+        enrol:
+          type: boolean
+          example: 'true'
+        portalId:
+          type: integer
+          example: '1'
+        dueDate:
+          type: string
+          example: '2021-12-30'
+        activeDate:
+          type: string
+          example: '2020-12-30'
     AdditionalPosition:
       type: object
       required:
@@ -363,18 +262,107 @@ components:
         endDate:
           type: string
           example: '2021-08-11'
-    PulseApiError:
+    DeleteUser:
+      type: object
+      required:
+      - userId
+      - email
+      properties:
+        userId:
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        email:
+          type: string
+          example: jbjovi@gmail.com
+      xml:
+        name: DeleteUser
+    UpdateUserResponse:
       type: object
       properties:
-        code:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/PulseApiError'
+        data:
+          $ref: '#/components/schemas/GetResponse'
+    UpdateUser:
+      type: object
+      required:
+      - userId
+      - email
+      properties:
+        userId:
           type: string
-          example: PRF/ProgressUpdate/Reference_MissingReference
-        detail:
+          example: 00000000-0000-0000-0000-000000000000
+        email:
           type: string
-          example: Mandatory field Reference was not supplied.
-        source:
+          example: testuser@mail.com
+        firstName:
           type: string
-          example: /data/0/uniqueReference
+          example: Johnny
+        lastName:
+          type: string
+          example: Samson
+        additionalPositions:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdditionalPosition'
+        roles:
+          type: array
+          items:
+            type: string
+            example: cpruser
+        phone:
+          type: string
+          example: (02) 9983 0039
+        mobile:
+          type: string
+          example: +61 412 030 992
+        streetAddress:
+          type: string
+          example: 1 Talavera Rd
+        suburb:
+          type: string
+          example: Macquarie Park
+        state:
+          type: string
+          example: NSW
+        postcode:
+          type: string
+          example: '2113'
+        country:
+          type: string
+          example: Australia
+        payrollNumber:
+          type: string
+          example: A123B
+        positionNumber:
+          type: string
+          example: '1005'
+        positionName:
+          type: string
+          example: Financial Accountant
+        supervisorEmail:
+          type: string
+          example: super@gmail.com
+        divisionName:
+          type: string
+          example: Business Performance
+        divisionCode:
+          type: string
+          example: BP
+        unitName:
+          type: string
+          example: Finance
+        unitCode:
+          type: string
+          example: FIN
+        sectionName:
+          type: string
+          example: Financial Accounting
+        sectionCode:
+          type: string
+          example: FA
     GetResponse:
       type: object
       properties:
@@ -463,6 +451,18 @@ components:
           example: jbjovi@gmail.com
       xml:
         name: User
+    PulseApiError:
+      type: object
+      properties:
+        code:
+          type: string
+          example: PRF/ProgressUpdate/Reference_MissingReference
+        detail:
+          type: string
+          example: Mandatory field Reference was not supplied.
+        source:
+          type: string
+          example: /data/0/uniqueReference
   securitySchemes:
     ApiKey:
       type: apiKey
