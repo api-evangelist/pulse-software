@@ -103,6 +103,29 @@ components:
             YTD Commitments: 499085.46
             YTD Actuals: 87765
             Available Budget: 215545
+    UpdateProjectComponentResponseError:
+      type: object
+      properties:
+        error num:
+          type: string
+          example: '0001'
+        project-component:
+          type: string
+          example: W046-100
+        error message:
+          type: string
+          example: Project-Component not found in Pulse.
+        error detail:
+          type: string
+          example: Please ensure that the Project-Component exists in Pulse.
+    UpdateProjectComponentData:
+      type: object
+      required:
+      - Project Component
+      properties:
+        Project Component:
+          type: string
+          example: W046-100
     UpdateProjectComponentResponse:
       type: object
       properties:
@@ -126,29 +149,6 @@ components:
           example:
           - project component code 1
           - project component code 2
-    UpdateProjectComponentData:
-      type: object
-      required:
-      - Project Component
-      properties:
-        Project Component:
-          type: string
-          example: W046-100
-    UpdateProjectComponentResponseError:
-      type: object
-      properties:
-        error num:
-          type: string
-          example: '0001'
-        project-component:
-          type: string
-          example: W046-100
-        error message:
-          type: string
-          example: Project-Component not found in Pulse.
-        error detail:
-          type: string
-          example: Please ensure that the Project-Component exists in Pulse.
   securitySchemes:
     ApiKey:
       type: apiKey

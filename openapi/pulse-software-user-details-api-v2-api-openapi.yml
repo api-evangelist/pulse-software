@@ -211,43 +211,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    AddUserInfo:
-      allOf:
-      - $ref: '#/components/schemas/UserInfo'
-      - type: object
-        properties:
-          password:
-            type: string
-          confirmPassword:
-            type: string
-          sendWelcomeEmail:
-            type: boolean
-    UserAdditionalPositionDTO:
-      type: object
-      properties:
-        positionNo:
-          type: string
-        positionName:
-          type: string
-        startDate:
-          type: string
-        endDate:
-          type: string
-        notes:
-          type: string
-        supervisorEmail:
-          type: string
-    UserInfos:
-      type: array
-      items:
-        $ref: '#/components/schemas/UserInfo'
-    UserDetailsV2ApiError:
-      type: object
-      properties:
-        field:
-          type: string
-        message:
-          type: string
     UserOnboardingDetailsDTO:
       type: object
       properties:
@@ -260,17 +223,6 @@ components:
           type: string
         dueDate:
           type: string
-    UserDetailsV2Response:
-      type: object
-      properties:
-        status:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserDetailsV2ApiError'
-        data:
-          $ref: '#/components/schemas/UserInfo'
     AdditionalAttributesDTO:
       type: object
       properties:
@@ -287,6 +239,36 @@ components:
         attributeValue:
           type: string
         attributeDataType:
+          type: string
+    UserInfos:
+      type: array
+      items:
+        $ref: '#/components/schemas/UserInfo'
+    UserDetailsV2Response:
+      type: object
+      properties:
+        status:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserDetailsV2ApiError'
+        data:
+          $ref: '#/components/schemas/UserInfo'
+    UserAdditionalPositionDTO:
+      type: object
+      properties:
+        positionNo:
+          type: string
+        positionName:
+          type: string
+        startDate:
+          type: string
+        endDate:
+          type: string
+        notes:
+          type: string
+        supervisorEmail:
           type: string
     UserInfo:
       type: object
@@ -450,6 +432,24 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AdditionalAttributesDTO'
+    UserDetailsV2ApiError:
+      type: object
+      properties:
+        field:
+          type: string
+        message:
+          type: string
+    AddUserInfo:
+      allOf:
+      - $ref: '#/components/schemas/UserInfo'
+      - type: object
+        properties:
+          password:
+            type: string
+          confirmPassword:
+            type: string
+          sendWelcomeEmail:
+            type: boolean
   securitySchemes:
     ApiKey:
       type: apiKey
