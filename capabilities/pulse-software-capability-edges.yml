@@ -1,0 +1,47 @@
+slug: pulse-software
+provider: Pulse Software
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Learning API
+  spec_file: pulse-software-learning-api-api-openapi.yml
+  capability_id: BC-300.40
+  capability_id_l1: BC-300
+  capability_name: Learning & Development Management
+  confidence: 0.85
+  evidence: GET /training/traininghistoryrecord/{hours}  'Retrieve training history records verified in
+    the last specified number of hours' (schemas TrainingHistoryRecord)
+  reason: Operation and schema plainly expose employee training completion/verification history, which
+    is Learning & Development Management within Human Capital Management. Single read endpoint keeps confidence
+    below 0.95.
+- tag: Recruitment API
+  spec_file: pulse-software-recruitment-api-api-openapi.yml
+  capability_id: BC-300.10
+  capability_id_l1: BC-300
+  capability_name: Talent Acquisition Management
+  confidence: 0.72
+  evidence: tag "Recruitment API"; GET /rcm/jobs/jobsV2 getRcmJobsJobsV2 "Jobs records"
+  reason: The sole operation retrieves recruitment job records under an /rcm/jobs path, which is hiring/requisition
+    data — i.e. talent acquisition within HCM. Evidence is thin (one GET, no schemas), so confidence is
+    moderate rather than high.
+- tag: User Details API
+  spec_file: pulse-software-user-details-api-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: GET /security/users getUsers "Retrieve a complete list of users in Pulse"; POST /security/users
+    addUser; DELETE /security/users deleteUser
+  reason: Full CRUD over application user accounts under /security — joiner-mover-leaver style user administration,
+    i.e. identity and access management, not employee HR records. Schemas like OnboardingEnrolment leave
+    some ambiguity about an HR reading.
