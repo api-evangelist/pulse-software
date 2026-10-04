@@ -50,28 +50,6 @@ paths:
         required: true
 components:
   schemas:
-    PulseApiError:
-      type: object
-      properties:
-        code:
-          type: string
-          example: PRF/ProgressUpdate/Reference_MissingReference
-        detail:
-          type: string
-          example: Mandatory field Reference was not supplied.
-        source:
-          type: string
-          example: /data/0/uniqueReference
-    PulseApiErrorResponse:
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/PulseApiError'
-          example:
-          - code: PRF/ProgressUpdate/Reference_MissingReference
-            detail: Mandatory field Reference was not supplied.
-            source: /data/0/uniqueReference
     ProgressUpdate_Bulk:
       type: object
       required:
@@ -153,6 +131,28 @@ components:
           type: boolean
           example: true
           description: "Flag required to perform updates of existing Progress Updates.  When this flag is set to true, Pulse will update existing Progress Updates with the data submitted via API.  \nIf this flag is set to false, attemtping to update any Progress Update for which there is existing data will result in an error. \n"
+    PulseApiError:
+      type: object
+      properties:
+        code:
+          type: string
+          example: PRF/ProgressUpdate/Reference_MissingReference
+        detail:
+          type: string
+          example: Mandatory field Reference was not supplied.
+        source:
+          type: string
+          example: /data/0/uniqueReference
+    PulseApiErrorResponse:
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/PulseApiError'
+          example:
+          - code: PRF/ProgressUpdate/Reference_MissingReference
+            detail: Mandatory field Reference was not supplied.
+            source: /data/0/uniqueReference
   securitySchemes:
     ApiKey:
       type: apiKey

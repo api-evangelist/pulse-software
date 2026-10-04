@@ -77,6 +77,52 @@ paths:
         required: true
 components:
   schemas:
+    UpdateProjectComponentResponseError:
+      type: object
+      properties:
+        error num:
+          type: string
+          example: '0001'
+        project-component:
+          type: string
+          example: W046-100
+        error message:
+          type: string
+          example: Project-Component not found in Pulse.
+        error detail:
+          type: string
+          example: Please ensure that the Project-Component exists in Pulse.
+    UpdateProjectComponentResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/UpdateProjectComponentResponseError'
+          example:
+          - error num: '0003'
+            project-component: W046-100
+            error message: Project-Component not found in Pulse.
+            error detail: Please ensure that the Project-Component exists in Pulse.
+          - error num: '0001'
+            project-component: ''
+            error message: Missing Project Component Id.
+            error detail: Data must contain key 'Project Component'.
+        updatedProjectComponents:
+          type: array
+          items:
+            type: string
+          example:
+          - project component code 1
+          - project component code 2
+    UpdateProjectComponentData:
+      type: object
+      required:
+      - Project Component
+      properties:
+        Project Component:
+          type: string
+          example: W046-100
     UpdateProjectComponent:
       type: object
       required:
@@ -103,52 +149,6 @@ components:
             YTD Commitments: 499085.46
             YTD Actuals: 87765
             Available Budget: 215545
-    UpdateProjectComponentResponseError:
-      type: object
-      properties:
-        error num:
-          type: string
-          example: '0001'
-        project-component:
-          type: string
-          example: W046-100
-        error message:
-          type: string
-          example: Project-Component not found in Pulse.
-        error detail:
-          type: string
-          example: Please ensure that the Project-Component exists in Pulse.
-    UpdateProjectComponentData:
-      type: object
-      required:
-      - Project Component
-      properties:
-        Project Component:
-          type: string
-          example: W046-100
-    UpdateProjectComponentResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/UpdateProjectComponentResponseError'
-          example:
-          - error num: '0003'
-            project-component: W046-100
-            error message: Project-Component not found in Pulse.
-            error detail: Please ensure that the Project-Component exists in Pulse.
-          - error num: '0001'
-            project-component: ''
-            error message: Missing Project Component Id.
-            error detail: Data must contain key 'Project Component'.
-        updatedProjectComponents:
-          type: array
-          items:
-            type: string
-          example:
-          - project component code 1
-          - project component code 2
   securitySchemes:
     ApiKey:
       type: apiKey

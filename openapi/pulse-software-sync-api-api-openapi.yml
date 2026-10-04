@@ -111,94 +111,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    AddIntegrationSyncToPayrollHistory:
-      type: object
-      properties:
-        integrationName:
-          type: string
-        jsonFile:
-          type: string
-        userId:
-          type: string
-          format: uuid
-        source:
-          type: string
-        externalUserSyncStatuses:
-          type: array
-          items:
-            $ref: '#/components/schemas/ExternalUserSyncStatusDTO'
-    AdditionalAttributesDTO:
-      type: object
-      properties:
-        tabId:
-          type: integer
-          format: int32
-        tabName:
-          type: string
-        attributeId:
-          type: integer
-          format: int32
-        attributeName:
-          type: string
-        attributeValue:
-          type: string
-        attributeDataType:
-          type: string
-    UserSyncDTOs:
-      type: array
-      items:
-        $ref: '#/components/schemas/UserSyncDTO'
-    StoreSyncData:
-      type: object
-      properties:
-        jsonStringData:
-          type: string
-        folder:
-          type: string
-    ExternalUserSyncStatusDTO:
-      type: object
-      properties:
-        userId:
-          type: string
-        status:
-          type: string
-        syncCategory:
-          type: string
-        message:
-          type: string
-        integrationUserId:
-          type: string
-        integrationName:
-          type: string
-        objectHash:
-          type: string
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/ExternalUserSyncStatusDetailDTO'
-    AdditionalPositionsDTO:
-      type: object
-      properties:
-        positionNo:
-          type: string
-        positionName:
-          type: string
-        positionStartDate:
-          type: string
-        positionEndDate:
-          type: string
-        positionDivision:
-          type: string
-        positionUnit:
-          type: string
-        positionSection:
-          type: string
-        positionSupervisor:
-          type: string
-        positionTeam:
-          type: string
-        positionIncumbentsAssigned:
-          type: string
     UserSyncDTO:
       type: object
       properties:
@@ -376,6 +288,83 @@ components:
             $ref: '#/components/schemas/AdditionalPositionsDTO'
         roles:
           type: string
+    AdditionalAttributesDTO:
+      type: object
+      properties:
+        tabId:
+          type: integer
+          format: int32
+        tabName:
+          type: string
+        attributeId:
+          type: integer
+          format: int32
+        attributeName:
+          type: string
+        attributeValue:
+          type: string
+        attributeDataType:
+          type: string
+    ExternalUserSyncStatusDTO:
+      type: object
+      properties:
+        userId:
+          type: string
+        status:
+          type: string
+        syncCategory:
+          type: string
+        message:
+          type: string
+        integrationUserId:
+          type: string
+        integrationName:
+          type: string
+        objectHash:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExternalUserSyncStatusDetailDTO'
+    AddIntegrationSyncToPayrollHistory:
+      type: object
+      properties:
+        integrationName:
+          type: string
+        jsonFile:
+          type: string
+        userId:
+          type: string
+          format: uuid
+        source:
+          type: string
+        externalUserSyncStatuses:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExternalUserSyncStatusDTO'
+    AdditionalPositionsDTO:
+      type: object
+      properties:
+        positionNo:
+          type: string
+        positionName:
+          type: string
+        positionStartDate:
+          type: string
+        positionEndDate:
+          type: string
+        positionDivision:
+          type: string
+        positionUnit:
+          type: string
+        positionSection:
+          type: string
+        positionSupervisor:
+          type: string
+        positionTeam:
+          type: string
+        positionIncumbentsAssigned:
+          type: string
     ExternalUserSyncStatusDetailDTO:
       type: object
       properties:
@@ -386,6 +375,17 @@ components:
         key:
           type: string
         objectHash:
+          type: string
+    UserSyncDTOs:
+      type: array
+      items:
+        $ref: '#/components/schemas/UserSyncDTO'
+    StoreSyncData:
+      type: object
+      properties:
+        jsonStringData:
+          type: string
+        folder:
           type: string
   securitySchemes:
     ApiKey:
