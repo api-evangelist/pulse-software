@@ -288,23 +288,26 @@ components:
             $ref: '#/components/schemas/AdditionalPositionsDTO'
         roles:
           type: string
-    AdditionalAttributesDTO:
+    UserSyncDTOs:
+      type: array
+      items:
+        $ref: '#/components/schemas/UserSyncDTO'
+    AddIntegrationSyncToPayrollHistory:
       type: object
       properties:
-        tabId:
-          type: integer
-          format: int32
-        tabName:
+        integrationName:
           type: string
-        attributeId:
-          type: integer
-          format: int32
-        attributeName:
+        jsonFile:
           type: string
-        attributeValue:
+        userId:
           type: string
-        attributeDataType:
+          format: uuid
+        source:
           type: string
+        externalUserSyncStatuses:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExternalUserSyncStatusDTO'
     ExternalUserSyncStatusDTO:
       type: object
       properties:
@@ -326,22 +329,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ExternalUserSyncStatusDetailDTO'
-    AddIntegrationSyncToPayrollHistory:
+    ExternalUserSyncStatusDetailDTO:
       type: object
       properties:
-        integrationName:
+        status:
           type: string
-        jsonFile:
+        syncCategory:
           type: string
-        userId:
+        key:
           type: string
-          format: uuid
-        source:
+        objectHash:
           type: string
-        externalUserSyncStatuses:
-          type: array
-          items:
-            $ref: '#/components/schemas/ExternalUserSyncStatusDTO'
     AdditionalPositionsDTO:
       type: object
       properties:
@@ -365,21 +363,23 @@ components:
           type: string
         positionIncumbentsAssigned:
           type: string
-    ExternalUserSyncStatusDetailDTO:
+    AdditionalAttributesDTO:
       type: object
       properties:
-        status:
+        tabId:
+          type: integer
+          format: int32
+        tabName:
           type: string
-        syncCategory:
+        attributeId:
+          type: integer
+          format: int32
+        attributeName:
           type: string
-        key:
+        attributeValue:
           type: string
-        objectHash:
+        attributeDataType:
           type: string
-    UserSyncDTOs:
-      type: array
-      items:
-        $ref: '#/components/schemas/UserSyncDTO'
     StoreSyncData:
       type: object
       properties:

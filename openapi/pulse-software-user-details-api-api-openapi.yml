@@ -135,41 +135,6 @@ paths:
         required: true
 components:
   schemas:
-    DeleteUser:
-      type: object
-      required:
-      - userId
-      - email
-      properties:
-        userId:
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        email:
-          type: string
-          example: jbjovi@gmail.com
-      xml:
-        name: DeleteUser
-    UpdateUserResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/PulseApiError'
-        data:
-          $ref: '#/components/schemas/GetResponse'
-    PulseApiError:
-      type: object
-      properties:
-        code:
-          type: string
-          example: PRF/ProgressUpdate/Reference_MissingReference
-        detail:
-          type: string
-          example: Mandatory field Reference was not supplied.
-        source:
-          type: string
-          example: /data/0/uniqueReference
     User:
       type: object
       required:
@@ -350,24 +315,32 @@ components:
           example: jbjovi@gmail.com
       xml:
         name: User
-    AdditionalPosition:
+    DeleteUser:
       type: object
       required:
-      - startDate
-      - endDate
+      - userId
+      - email
       properties:
-        positionNumber:
+        userId:
           type: string
-          example: '1006'
-        positionName:
+          example: 00000000-0000-0000-0000-000000000000
+        email:
           type: string
-          example: Financial Accountant
-        startDate:
+          example: jbjovi@gmail.com
+      xml:
+        name: DeleteUser
+    PulseApiError:
+      type: object
+      properties:
+        code:
           type: string
-          example: '2021-02-11'
-        endDate:
+          example: PRF/ProgressUpdate/Reference_MissingReference
+        detail:
           type: string
-          example: '2021-08-11'
+          example: Mandatory field Reference was not supplied.
+        source:
+          type: string
+          example: /data/0/uniqueReference
     UpdateUser:
       type: object
       required:
@@ -446,6 +419,24 @@ components:
         sectionCode:
           type: string
           example: FA
+    AdditionalPosition:
+      type: object
+      required:
+      - startDate
+      - endDate
+      properties:
+        positionNumber:
+          type: string
+          example: '1006'
+        positionName:
+          type: string
+          example: Financial Accountant
+        startDate:
+          type: string
+          example: '2021-02-11'
+        endDate:
+          type: string
+          example: '2021-08-11'
     OnboardingEnrolment:
       type: object
       required:
@@ -463,6 +454,15 @@ components:
         activeDate:
           type: string
           example: '2020-12-30'
+    UpdateUserResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/PulseApiError'
+        data:
+          $ref: '#/components/schemas/GetResponse'
   securitySchemes:
     ApiKey:
       type: apiKey

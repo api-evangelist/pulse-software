@@ -50,29 +50,6 @@ paths:
         required: true
 components:
   schemas:
-    ProgressUpdate_Bulk:
-      type: object
-      required:
-      - data
-      title: ProgressUpdateBulkObject
-      description: Request object for Progress Update bulk upserts.
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProgressUpdate_BulkData'
-          example:
-          - uniqueReference: K-2S0
-            prfYear: 2020
-            actualResult: '55.4'
-            periodType: Q
-            quarter: Q2
-            overwrite: true
-          - uniqueReference: IG-88
-            prfYear: 2020
-            actualNumerator: '2'
-            actualDenominator: '3'
-            periodType: M
     ProgressUpdate_BulkData:
       type: object
       required:
@@ -143,6 +120,29 @@ components:
         source:
           type: string
           example: /data/0/uniqueReference
+    ProgressUpdate_Bulk:
+      type: object
+      required:
+      - data
+      title: ProgressUpdateBulkObject
+      description: Request object for Progress Update bulk upserts.
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProgressUpdate_BulkData'
+          example:
+          - uniqueReference: K-2S0
+            prfYear: 2020
+            actualResult: '55.4'
+            periodType: Q
+            quarter: Q2
+            overwrite: true
+          - uniqueReference: IG-88
+            prfYear: 2020
+            actualNumerator: '2'
+            actualDenominator: '3'
+            periodType: M
     PulseApiErrorResponse:
       properties:
         errors:

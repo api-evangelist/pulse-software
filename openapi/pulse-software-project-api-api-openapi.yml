@@ -77,6 +77,32 @@ paths:
         required: true
 components:
   schemas:
+    UpdateProjectComponent:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UpdateProjectComponentData'
+          example:
+          - Project Component: W046-100
+            Description: This is a test.
+            Full Year Original Budget: 447085
+            Full Year Revised Budget: 111771.36
+            YTD Budget: 335314.1
+            YTD Commitments: 447085.46
+            YTD Actuals: 765454
+            Available Budget: 125412
+          - Project Component: W046-101
+            Description: This is also a test.
+            Full Year Original Budget: 44799.1
+            Full Year Revised Budget: 111999.36
+            YTD Budget: 999314.1
+            YTD Commitments: 499085.46
+            YTD Actuals: 87765
+            Available Budget: 215545
     UpdateProjectComponentResponseError:
       type: object
       properties:
@@ -123,32 +149,6 @@ components:
         Project Component:
           type: string
           example: W046-100
-    UpdateProjectComponent:
-      type: object
-      required:
-      - data
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/UpdateProjectComponentData'
-          example:
-          - Project Component: W046-100
-            Description: This is a test.
-            Full Year Original Budget: 447085
-            Full Year Revised Budget: 111771.36
-            YTD Budget: 335314.1
-            YTD Commitments: 447085.46
-            YTD Actuals: 765454
-            Available Budget: 125412
-          - Project Component: W046-101
-            Description: This is also a test.
-            Full Year Original Budget: 44799.1
-            Full Year Revised Budget: 111999.36
-            YTD Budget: 999314.1
-            YTD Commitments: 499085.46
-            YTD Actuals: 87765
-            Available Budget: 215545
   securitySchemes:
     ApiKey:
       type: apiKey
